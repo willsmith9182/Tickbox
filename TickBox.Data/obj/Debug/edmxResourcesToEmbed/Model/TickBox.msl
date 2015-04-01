@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TickBoxModelStoreContainer" CdmEntityContainer="TickBoxEntities">
+    <EntitySetMapping Name="Nodes">
+      <EntityTypeMapping TypeName="TickBoxModel.Node">
+        <MappingFragment StoreEntitySet="nodes">
+          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
+          <ScalarProperty Name="NodeTitle" ColumnName="nodeTitle" />
+          <ScalarProperty Name="NodeDescription" ColumnName="nodeDescription" />
+          <ScalarProperty Name="AllowMultiSelectChildren" ColumnName="allowMultiSelectChildren" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NodeSpecialisms">
+      <EntityTypeMapping TypeName="TickBoxModel.NodeSpecialism">
+        <MappingFragment StoreEntitySet="nodeSpecialisms">
+          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
+          <ScalarProperty Name="Guidelines" ColumnName="guidelines" />
+          <ScalarProperty Name="NodeSpecialismId" ColumnName="nodeSpecialismId" />
+          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
+          <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="sequenceOrder" />
+          <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specialisms">
+      <EntityTypeMapping TypeName="TickBoxModel.Specialism">
+        <MappingFragment StoreEntitySet="specialisms">
+          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
+          <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
+          <ScalarProperty Name="SpecialismTitle" ColumnName="specialismTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxonomies">
+      <EntityTypeMapping TypeName="TickBoxModel.Taxonomy">
+        <MappingFragment StoreEntitySet="taxonomies">
+          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
+          <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
+          <ScalarProperty Name="TemplateId" ColumnName="templateId" />
+          <ScalarProperty Name="Title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates">
+      <EntityTypeMapping TypeName="TickBoxModel.Template">
+        <MappingFragment StoreEntitySet="templates">
+          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
+          <ScalarProperty Name="TemplateId" ColumnName="templateId" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TreeNodes">
+      <EntityTypeMapping TypeName="TickBoxModel.TreeNode">
+        <MappingFragment StoreEntitySet="treeNodes">
+          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
+          <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
+          <ScalarProperty Name="TreeNodeId" ColumnName="treeNodeId" />
+          <ScalarProperty Name="ParentTreeNodeId" ColumnName="parentTreeNodeId" />
+          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="taxonomySpecialisms" TypeName="TickBoxModel.taxonomySpecialisms" StoreEntitySet="taxonomySpecialisms">
+      <EndProperty Name="Taxonomy">
+        <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
+      </EndProperty>
+      <EndProperty Name="Specialism">
+        <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,39 @@
+﻿@model TickBox.Web.Models.Node.NodeModel
+@{
+    ViewBag.Title = "Edit";
+}
+@section PageHeader
+{
+    <h2>Edit Node Details</h2>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Node {ID: @Model.Id, Parent ID: @Model.ParentId, Taxonomy ID: @Model.TaxonomyId}</legend>
+        @Html.HiddenFor(m => m.TaxonomyId)
+        @Html.HiddenFor(m => m.ParentId)
+        @Html.HiddenFor(model => model.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to Tree", "View", "Structure", new { taxononmyId = Model.TaxonomyId }, null)
+    <span> a link to edit specialisms on this node, maybe even a table for them below giving the option to edit.</span>
+</div>

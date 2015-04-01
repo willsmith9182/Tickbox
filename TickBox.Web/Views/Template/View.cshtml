@@ -1,0 +1,28 @@
+﻿@model TickBox.Web.Models.Template.TemplateViewModel
+@{
+    ViewBag.Title = "View";
+}
+@section PageHeader
+{
+    <h2>
+        Template Details</h2>
+}
+@using (Html.BeginForm("Create", "Taxonomy", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Template {ID: @Model.TemplateId}</legend>
+        <div class="display-label">
+            Name</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <div class="display-label">
+            DocumentLink</div>
+        <div class="display-field">
+            <a href="@Model.DocumentLink">@Model.DocumentLink</a>
+        </div>
+    </fieldset>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TemplateId })
+</p>

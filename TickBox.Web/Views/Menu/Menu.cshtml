@@ -1,0 +1,37 @@
+﻿@model TickBox.Web.Models.Menu.MenuViewModel
+<ul>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li><a id="newMsg" href="">Document Creator</a></li>
+    <li><a href="#">Templates</a>
+        <ul>
+            <li>@Html.ActionLink("Create New", "Create", "Template")</li>
+            @if (Model.HasTemplates)
+            {
+                <li>@Html.ActionLink("Structure Editor", "Index", "Template")</li>
+                <li>@Html.ActionLink("Details Editor", "Index", "Template")</li>
+            }
+        </ul>
+    </li>
+    <li><a href="#">Taxonomies</a>
+        <ul>
+            @if (Model.HasTemplates)
+            {
+                <li>@Html.ActionLink("Create New", "Create", "Taxonomy")</li>
+            }
+            @if (Model.HasTaxonomies)
+            {
+                <li>@Html.ActionLink("View Existing", "Index", "Taxonomy")</li>
+            }
+        </ul>
+    </li>
+    <li><a href="#">Spacialisms</a>
+        <ul>
+            <li>@Html.ActionLink("Create New", "Create", "Specialism")</li>
+            @if (Model.HasSpecialisms)
+            {
+                <li>@Html.ActionLink("View Existing", "Index", "Specialism")</li>
+            }
+        </ul>
+    </li>
+    
+</ul>

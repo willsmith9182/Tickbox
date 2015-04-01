@@ -1,0 +1,16 @@
+﻿@model TickBox.Models.Views.Base.BaseModel
+
+@{
+    ViewBag.Title = "Error";
+}
+@section Messages
+{
+    @Html.Partial("MessagesForForms", Model)
+}
+@section PageHeader
+{
+    <h2>Oops, something went wrong!</h2>
+}
+<h2>
+    Sorry, an error occurred while processing your request.
+</h2>

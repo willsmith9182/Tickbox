@@ -1,0 +1,38 @@
+﻿@model TickBox.Web.Models.Template.TemplateViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+@section PageHeader
+{
+    <h2>
+        Create New Template</h2>
+}
+
+@using (Html.BeginForm("Create", "Template", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Template</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DocumentLink)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DocumentLink)
+            @Html.ValidationMessageFor(model => model.DocumentLink)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "Index","Home")
+</div>

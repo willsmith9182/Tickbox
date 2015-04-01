@@ -1,0 +1,37 @@
+﻿@model TickBox.Web.Models.Taxonomy.TaxonomyEditViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+@section PageHeader
+{
+    <h2>
+        Create New Taxonomy</h2>
+}
+@using (Html.BeginForm("Create", "Taxonomy", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Taxonomy</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvailableTemplates)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.TemplateId, Model.AvailableTemplates,"<Template>")
+            @Html.ValidationMessageFor(model => model.TemplateId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "Index","Home")
+</div>

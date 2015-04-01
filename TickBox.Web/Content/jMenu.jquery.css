@@ -1,0 +1,163 @@
+body
+{
+    font-family: Tahoma, Geneva, sans-serif;
+}
+.jMenu
+{
+    display: table;
+    margin: 0;
+    padding: 0;
+}
+
+/* First level */
+.jMenu li
+{
+    display: table-cell;
+    background-color: #03436A;
+    margin: 0;
+}
+
+.jMenu li a
+{
+    padding: 10px;
+    display: block;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Lower levels */
+.jMenu li ul
+{
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+}
+
+.jMenu li ul li
+{
+    background-color: #03436A;
+    display: block;
+    border-bottom: 1px solid #163A50;
+    padding: 0;
+}
+
+.jMenu li ul li.arrow
+{
+    background-color: #03436A;
+    background-image: url('../Content/img/arrow_down.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 6px;
+    padding: 0;
+    border-bottom: none;
+    padding-bottom: 10px;
+}
+
+.jMenu li ul li a
+{
+    font-size: 12px;
+    text-transform: none;
+    padding: 7px;
+    display: block;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+.jMenu li ul li a.isParent
+{
+    background-color: #03436A;
+    background-image: url('../Content/img/arrow_right.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.jMenu li ul li a:hover
+{
+    background-color: #5491b4;
+    border-top: 1px solid #03436A;
+    border-bottom: 1px solid #03436A;
+}
+
+.jMenu li ul li.disabled a
+{
+    background-color: #808080;
+    color: #434343;
+}
+
+.jMenu li ul li.disabled a:hover
+{
+    background-color: #808080;
+    color: #434343;
+}
+
+div#notifications ul {
+    list-style: none;
+    text-align: right;
+    margin: 0;
+}
+div.message
+{
+    background-color: #fff;
+    font-weight: 600;
+    color: #434343;
+    padding-left: 10px;
+    font-style: italic;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    display: inline-block
+}
+span.dismiss a {
+    padding: 5px;
+}
+span.dismiss a
+{
+    color: #434343;
+    font-style: italic;
+}
+
+span.dismiss a:link
+{
+    color: #434343;
+    text-decoration: underline;
+}
+
+span.dismiss a:visited
+{
+    color: #434343;
+}
+
+span.dismiss a:hover
+{
+    color: #708090;
+    text-decoration: #434343;
+}
+
+span.dismiss a:active
+{
+    color: #434343;
+}
+
+div.message.Error
+{
+    background-color: #e06f6f;
+}
+div.message.Warning
+{
+    background-color: #f6ea59;
+}
+div.message.Success
+{
+    background-color: #afe5af;
+}
+div.message span span
+{
+    padding-left: 5px;
+    font-weight: normal;
+    font-style: normal;
+}

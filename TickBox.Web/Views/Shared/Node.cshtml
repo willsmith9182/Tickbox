@@ -1,0 +1,17 @@
+﻿@model TickBox.Models.Views.Tree.TreeNodeModel
+<li>@Model.Title <span class="nodeControls">
+    @Html.ActionLink("Add Sibling", "Add", "Node", new { parentNodeId = Model.ParentId }, null);
+    <span>|</span>
+    @Html.ActionLink("Add Child", "Add", "Node", new { parentNodeId = Model.Id }, null)
+    <span>|</span>
+    @Html.ActionLink("Edit", "Edit", "Node", new { id = Model.Id },null)
+</span></li>
+@if (Model.HasChildren)
+{
+    <ul>
+        @foreach (var node in Model.Children)
+        {
+            @Html.Partial("Node", node)
+        }
+    </ul>
+}

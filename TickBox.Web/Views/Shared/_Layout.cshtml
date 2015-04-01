@@ -1,0 +1,126 @@
+﻿<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet'
+        type='text/css' />
+    <link href="@Url.Content("~/Content//Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="rightMargin" class="pageMargin">
+    </div>
+    <div id="topMargin" class="pageMargin">
+    </div>
+    <div id="header">
+        <div class="triangle-r">
+        </div>
+        <div id="headerRibbon">
+            <div id="headerContent">
+                <div id="pageTitle">
+                    <span class="appTitle">TickBox&nbsp;-</span> <span class="title">@RenderSection("PageHeader")</span>
+                    <span class="pageControls"><span><a href="#">username/logout</a></span> <span><a
+                        href="#">settings</a></span> <span><a href="#">help!</a></span> </span>
+                </div>
+            </div>
+        </div>
+        <div id="mainMenu">
+            @Html.Action("Menu", "Menu")
+        </div>
+    </div>
+    <div id="pageMessageContainer">
+        @Html.Action("Notifications", "Notification")
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    @RenderSection("FootIncludes", false)
+    <script type="text/javascript">
+         (function ($) {
+
+             window.PageNotifier = function (id) {
+                 var container = $('#pageMessageContainer ul');
+                 var clearAllButton = $('#messageControls');
+                 var clearAllShowing = clearAllButton.is('.showing');
+                 var skipClearAll = false;
+                 if (id) {
+                     container = $('#' + id + ' ul');
+                     skipClearAll = true;
+
+                 }
+                 var AddMessage = function (messageType, messageSeperator, messageTitlePre, messageTitle, messageText, withClose, withUndo) {
+                     var newMessage = $('<li></li>', { 'class': 'pageMessage fadeMeIn' });
+                     var messageWrap = $('<div></div>', { 'class': 'messageWrap ' + messageType });
+                     if (withClose) {
+                         messageWrap.append($('<span></span>', { 'class': 'close' }).text('X'));
+                     }
+                     var titleWrap = $('<div></div>', { 'class': 'titleWrap' });
+                     titleWrap.append($('<span></span>', { 'class': 'title' }).text(messageTitlePre));
+                     titleWrap.append($('<span></span>', { 'class': 'spacer' }).text(messageSeperator));
+                     titleWrap.append($('<span></span>', { 'class': 'title' }).text(messageTitle));
+                     messageWrap.append(titleWrap);
+                     messageWrap.append($('<P></P>', { 'class': 'message' }).text(messageText));
+                     if (withUndo) {
+                         messageWrap.append($('<a></a>', { 'class': 'undo', 'href': '#' }).text('Undo.'));
+                     }
+                     newMessage.append(messageWrap);
+                     newMessage.hide();
+                     container.prepend(newMessage);
+                     var scrollTarget = container.parent();
+                     scrollTarget.stop().animate({ scrollTop: 0 }, 800);
+                     $('.fadeMeIn').fadeIn().removeClass('fadeMeIn');
+                     if (!clearAllShowing) {
+                         toggleClearButton();
+                     }
+                 };
+                 var removeMessage = function (messages, all) {
+                     var messageCount = container.children('.pageMessage').length;
+                     $(messages).fadeOut(1000, function () { this.remove(); });
+                     if (!all && messageCount == 1) {
+                         toggleClearButton();
+                     }
+                 };
+
+                 var ClearAll = function () {
+                     errorMessages = container.children('.pageMessage').filter(function (index) { return $(this).children('.error').length > 00; }).length > 0;
+                     removeMessage(container.children('.pageMessage').filter(function (index) { return $(this).children('.error').length == 0; }), true);
+                     if (!errorMessages) {
+                         toggleClearButton();
+                     }
+                 };
+
+                 var toggleClearButton = function () {
+                     if (!skipClearAll) {
+                         if (
+						clearAllShowing) {
+                             clearAllButton.removeClass('showing').fadeOut(1000);
+                         } else {
+                             clearAllButton.addClass('showing').fadeIn(1000);
+                         }
+                         clearAllShowing = !clearAllShowing
+                     }
+                 }
+
+                 return {
+                     AddSuccess: function (title, message) { AddMessage('success', ':', 'Success', title, message, true, false); },
+                     Clear: function () { ClearAll(); },
+                     Remove: function (messages) { removeMessage(messages) }
+                 };
+
+             };
+             
+             $('#pageMessageContainer').on('click', '.close', function (e) {
+                 var notifier = window.PageNotifier();
+                 var that = $(this).closest('.pageMessage');
+                 notifier.Remove(that);
+             });
+
+             $('#messageControls').click(function () {
+                 var notifier = window.PageNotifier();
+                 notifier.Clear();
+             });
+
+         })(jQuery)
+		</script>
+    @RenderSection("FootScripts", false)
+</body>
+</html>

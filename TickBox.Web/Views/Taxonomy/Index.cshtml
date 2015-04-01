@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TickBox.Web.Models.Taxonomy.TaxonomyViewModel>
+
+@{
+    ViewBag.Title = "All Taxonomies";
+}
+@section PageHeader
+{
+    <h1>
+        @ViewBag.Title</h1>
+}
+<table>
+    <tr>
+       
+        <th>
+            TemplateId
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            IsScaffold
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.TemplateId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsScaffold)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TaxonomyId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,34 @@
+﻿@model TickBox.Web.Models.Specialism.SpecialismViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section PageHeader
+{
+    <h2>
+        Create New Specialism</h2>
+}
+@using (Html.BeginForm("Create", "Specialism", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Specialism</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SpecialismTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SpecialismTitle)
+            @Html.ValidationMessageFor(model => model.SpecialismTitle)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index","Home")
+</div>

@@ -1,0 +1,23 @@
+﻿@model TickBox.Web.Models.Taxonomy.TaxonomyViewModel
+@{
+    ViewBag.Title = "View";
+}
+@section PageHeader
+{
+    <h2>
+        View Taxonomy</h2>
+}
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Taxonomy {ID: @Model.TaxonomyId}</legend>
+        <div class="display-label">
+            Title</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </fieldset>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaxonomyId })
+</p>

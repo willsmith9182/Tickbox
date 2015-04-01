@@ -1,0 +1,34 @@
+﻿@model TickBox.Web.Models.Node.NodeViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>New Node {Parent ID: @Model.ParentId, Taxonomy ID: @Model.TaxonomyId}</legend>
+        @Html.HiddenFor(m => m.TaxonomyId)
+        @Html.HiddenFor(m => m.ParentId)
+       
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NodeTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NodeTitle)
+            @Html.ValidationMessageFor(model => model.NodeTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NodeDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NodeDescription)
+            @Html.ValidationMessageFor(model => model.NodeDescription)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Tree", "View", "Structure", new { taxononmyId = Model.TaxonomyId }, null)
+</div>

@@ -1,0 +1,22 @@
+﻿@model TickBox.Models.Views.Tree.TreeModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+@section PageHeader
+{
+    <h2>Edit Node Structure</h2>
+}
+
+<div class="treeView">
+    @Html.Partial("RootNode",Model.RootNode)
+</div>
+<div class="infoPane">
+    <div class="detailsPane">
+        
+    </div>
+    <div class="specialismPane">
+        
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model TickBox.Web.Models.Specialism.SpecialismCheckBoxViewModel 
+<tr>
+    <td>
+        @Html.CheckBoxFor(m => Model.Selected)
+        @Html.HiddenFor(m=>Model.SpecialismId)
+    </td>
+    <td>
+        @Html.DisplayFor(m => Model.SpecialismTitle)
+    </td>           
+</tr>
+

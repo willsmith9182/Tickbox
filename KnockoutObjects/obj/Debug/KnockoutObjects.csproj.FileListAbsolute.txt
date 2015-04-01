@@ -1,0 +1,15 @@
+c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\Debug\KnockoutObjects.dll
+c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\Debug\KnockoutObjects.pdb
+c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\obj\Debug\KnockoutObjects.dll
+c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\obj\Debug\KnockoutObjects.pdb
+C:\Users\wjjs2\Documents\Visual Studio 2010\Projects\KnockoutObjects\KnockoutObjects\obj\Debug\KnockoutObjects.csprojResolveAssemblyReference.cache
+C:\Users\Will\Documents\Visual Studio 2010\TickBox\KnockoutObjects\bin\Debug\KnockoutObjects.dll
+C:\Users\Will\Documents\Visual Studio 2010\TickBox\KnockoutObjects\bin\Debug\KnockoutObjects.pdb
+C:\Users\Will\Documents\Visual Studio 2010\TickBox\KnockoutObjects\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Will\Documents\Visual Studio 2010\TickBox\KnockoutObjects\obj\Debug\KnockoutObjects.dll
+C:\Users\Will\Documents\Visual Studio 2010\TickBox\KnockoutObjects\obj\Debug\KnockoutObjects.pdb
+C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\KnockoutObjects\bin\Debug\KnockoutObjects.dll
+C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\KnockoutObjects\bin\Debug\KnockoutObjects.pdb
+C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\KnockoutObjects\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\KnockoutObjects\obj\Debug\KnockoutObjects.dll
+C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\KnockoutObjects\obj\Debug\KnockoutObjects.pdb
