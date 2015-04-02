@@ -6,188 +6,204 @@
     <edmx:StorageModels>
     <Schema Namespace="TickBoxModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="TickBoxModelStoreContainer">
-          <EntitySet Name="nodes" EntityType="TickBoxModel.Store.nodes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="nodeSpecialisms" EntityType="TickBoxModel.Store.nodeSpecialisms" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="specialisms" EntityType="TickBoxModel.Store.specialisms" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="taxonomies" EntityType="TickBoxModel.Store.taxonomies" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="taxonomySpecialisms" EntityType="TickBoxModel.Store.taxonomySpecialisms" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="templates" EntityType="TickBoxModel.Store.templates" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="treeNodes" EntityType="TickBoxModel.Store.treeNodes" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_nodeSpecialisms_nodes" Association="TickBoxModel.Store.FK_nodeSpecialisms_nodes">
-            <End Role="nodes" EntitySet="nodes" />
-            <End Role="nodeSpecialisms" EntitySet="nodeSpecialisms" />
+          <EntitySet Name="Node" EntityType="TickBoxModel.Store.Node" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NodeSpecialism" EntityType="TickBoxModel.Store.NodeSpecialism" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Specialism" EntityType="TickBoxModel.Store.Specialism" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Taxonomy" EntityType="TickBoxModel.Store.Taxonomy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TaxonomySpecialism" EntityType="TickBoxModel.Store.TaxonomySpecialism" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Template" EntityType="TickBoxModel.Store.Template" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TreeNode" EntityType="TickBoxModel.Store.TreeNode" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_NodeSpecialism_Node" Association="TickBoxModel.Store.FK_NodeSpecialism_Node">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="NodeSpecialism" EntitySet="NodeSpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_nodeSpecialisms_specialisms" Association="TickBoxModel.Store.FK_nodeSpecialisms_specialisms">
-            <End Role="specialisms" EntitySet="specialisms" />
-            <End Role="nodeSpecialisms" EntitySet="nodeSpecialisms" />
+          <AssociationSet Name="FK_NodeSpecialism_Specialism" Association="TickBoxModel.Store.FK_NodeSpecialism_Specialism">
+            <End Role="Specialism" EntitySet="Specialism" />
+            <End Role="NodeSpecialism" EntitySet="NodeSpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_taxonomies_templates" Association="TickBoxModel.Store.FK_taxonomies_templates">
-            <End Role="templates" EntitySet="templates" />
-            <End Role="taxonomies" EntitySet="taxonomies" />
+          <AssociationSet Name="FK_Taxonomy_Template" Association="TickBoxModel.Store.FK_Taxonomy_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="Taxonomy" EntitySet="Taxonomy" />
           </AssociationSet>
-          <AssociationSet Name="FK_taxonomySpecialisms_specialisms" Association="TickBoxModel.Store.FK_taxonomySpecialisms_specialisms">
-            <End Role="specialisms" EntitySet="specialisms" />
-            <End Role="taxonomySpecialisms" EntitySet="taxonomySpecialisms" />
+          <AssociationSet Name="FK_TaxonomySpecialism_Specialism" Association="TickBoxModel.Store.FK_TaxonomySpecialism_Specialism">
+            <End Role="Specialism" EntitySet="Specialism" />
+            <End Role="TaxonomySpecialism" EntitySet="TaxonomySpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_taxonomySpecialisms_taxonomies" Association="TickBoxModel.Store.FK_taxonomySpecialisms_taxonomies">
-            <End Role="taxonomies" EntitySet="taxonomies" />
-            <End Role="taxonomySpecialisms" EntitySet="taxonomySpecialisms" />
+          <AssociationSet Name="FK_TaxonomySpecialism_Taxonomy" Association="TickBoxModel.Store.FK_TaxonomySpecialism_Taxonomy">
+            <End Role="Taxonomy" EntitySet="Taxonomy" />
+            <End Role="TaxonomySpecialism" EntitySet="TaxonomySpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_treeNodes_nodes" Association="TickBoxModel.Store.FK_treeNodes_nodes">
-            <End Role="nodes" EntitySet="nodes" />
-            <End Role="treeNodes" EntitySet="treeNodes" />
+          <AssociationSet Name="FK_TreeNode_Node" Association="TickBoxModel.Store.FK_TreeNode_Node">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="TreeNode" EntitySet="TreeNode" />
           </AssociationSet>
-          <AssociationSet Name="FK_treeNodes_taxonomies" Association="TickBoxModel.Store.FK_treeNodes_taxonomies">
-            <End Role="taxonomies" EntitySet="taxonomies" />
-            <End Role="treeNodes" EntitySet="treeNodes" />
+          <AssociationSet Name="FK_TreeNode_Taxonomy" Association="TickBoxModel.Store.FK_TreeNode_Taxonomy">
+            <End Role="Taxonomy" EntitySet="Taxonomy" />
+            <End Role="TreeNode" EntitySet="TreeNode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeNode_TreeNode" Association="TickBoxModel.Store.FK_TreeNode_TreeNode">
+            <End Role="TreeNode" EntitySet="TreeNode" />
+            <End Role="TreeNode1" EntitySet="TreeNode" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="nodes">
+        <EntityType Name="Node">
           <Key>
-            <PropertyRef Name="nodeId" />
+            <PropertyRef Name="NodeId" />
           </Key>
-          <Property Name="nodeId" Type="int" Nullable="false" />
-          <Property Name="nodeTitle" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="nodeDescription" Type="varchar(max)" Nullable="false" />
-          <Property Name="allowMultiSelectChildren" Type="bit" Nullable="false" />
+          <Property Name="NodeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NodeTitle" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="NodeDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChildrenMultiSelect" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="nodeSpecialisms">
+        <EntityType Name="NodeSpecialism">
           <Key>
-            <PropertyRef Name="nodeSpecialismId" />
+            <PropertyRef Name="NodeSpecialismId" />
           </Key>
-          <Property Name="nodeSpecialismId" Type="int" Nullable="false" />
-          <Property Name="nodeId" Type="int" Nullable="false" />
-          <Property Name="specialismId" Type="int" Nullable="false" />
-          <Property Name="sequenceOrder" Type="int" Nullable="false" />
-          <Property Name="guidelines" Type="varchar(max)" Nullable="false" />
-          <Property Name="documentLink" Type="varchar" Nullable="false" MaxLength="150" />
-          <Property Name="isScaffold" Type="bit" Nullable="false" />
+          <Property Name="NodeSpecialismId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NodeId" Type="int" Nullable="false" />
+          <Property Name="SpecialismId" Type="int" Nullable="false" />
+          <Property Name="SequenceOrder" Type="int" Nullable="false" />
+          <Property Name="Guidelines" Type="varchar(max)" Nullable="false" />
+          <Property Name="DocumentLink" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsScaffold" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="specialisms">
+        <EntityType Name="Specialism">
           <Key>
-            <PropertyRef Name="specialismId" />
+            <PropertyRef Name="SpecialismId" />
           </Key>
-          <Property Name="specialismId" Type="int" Nullable="false" />
-          <Property Name="specialismTitle" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="isScaffold" Type="bit" Nullable="false" />
+          <Property Name="SpecialismId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialismDesc" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsScaffold" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="taxonomies">
+        <EntityType Name="Taxonomy">
           <Key>
-            <PropertyRef Name="taxonomyId" />
+            <PropertyRef Name="TaxonomyId" />
           </Key>
-          <Property Name="taxonomyId" Type="int" Nullable="false" />
-          <Property Name="templateId" Type="int" Nullable="false" />
-          <Property Name="title" Type="varchar" Nullable="false" MaxLength="150" />
-          <Property Name="isScaffold" Type="bit" Nullable="false" />
+          <Property Name="TaxonomyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="IsScaffold" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="taxonomySpecialisms">
+        <EntityType Name="TaxonomySpecialism">
           <Key>
-            <PropertyRef Name="taxonomyId" />
-            <PropertyRef Name="specialismId" />
+            <PropertyRef Name="TaxonomyId" />
+            <PropertyRef Name="SpecialismId" />
           </Key>
-          <Property Name="taxonomyId" Type="int" Nullable="false" />
-          <Property Name="specialismId" Type="int" Nullable="false" />
+          <Property Name="TaxonomyId" Type="int" Nullable="false" />
+          <Property Name="SpecialismId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="templates">
+        <EntityType Name="Template">
           <Key>
-            <PropertyRef Name="templateId" />
+            <PropertyRef Name="TemplateId" />
           </Key>
-          <Property Name="templateId" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="documentLink" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="isScaffold" Type="bit" Nullable="false" />
+          <Property Name="TemplateId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="DocumentLink" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsScaffold" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="treeNodes">
+        <EntityType Name="TreeNode">
           <Key>
-            <PropertyRef Name="treeNodeId" />
+            <PropertyRef Name="TreeNodeId" />
           </Key>
-          <Property Name="taxonomyId" Type="int" Nullable="false" />
-          <Property Name="treeNodeId" Type="int" Nullable="false" />
-          <Property Name="parentTreeNodeId" Type="int" />
-          <Property Name="nodeId" Type="int" Nullable="false" />
-          <Property Name="isScaffold" Type="bit" Nullable="false" />
+          <Property Name="TreeNodeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaxonomyId" Type="int" Nullable="false" />
+          <Property Name="ParentTreeNodeId" Type="int" />
+          <Property Name="NodeId" Type="int" Nullable="false" />
+          <Property Name="IsScaffold" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_nodeSpecialisms_nodes">
-          <End Role="nodes" Type="TickBoxModel.Store.nodes" Multiplicity="1" />
-          <End Role="nodeSpecialisms" Type="TickBoxModel.Store.nodeSpecialisms" Multiplicity="*" />
+        <Association Name="FK_NodeSpecialism_Node">
+          <End Role="Node" Type="TickBoxModel.Store.Node" Multiplicity="1" />
+          <End Role="NodeSpecialism" Type="TickBoxModel.Store.NodeSpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="nodes">
-              <PropertyRef Name="nodeId" />
+            <Principal Role="Node">
+              <PropertyRef Name="NodeId" />
             </Principal>
-            <Dependent Role="nodeSpecialisms">
-              <PropertyRef Name="nodeId" />
+            <Dependent Role="NodeSpecialism">
+              <PropertyRef Name="NodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_nodeSpecialisms_specialisms">
-          <End Role="specialisms" Type="TickBoxModel.Store.specialisms" Multiplicity="1" />
-          <End Role="nodeSpecialisms" Type="TickBoxModel.Store.nodeSpecialisms" Multiplicity="*" />
+        <Association Name="FK_NodeSpecialism_Specialism">
+          <End Role="Specialism" Type="TickBoxModel.Store.Specialism" Multiplicity="1" />
+          <End Role="NodeSpecialism" Type="TickBoxModel.Store.NodeSpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="specialisms">
-              <PropertyRef Name="specialismId" />
+            <Principal Role="Specialism">
+              <PropertyRef Name="SpecialismId" />
             </Principal>
-            <Dependent Role="nodeSpecialisms">
-              <PropertyRef Name="specialismId" />
+            <Dependent Role="NodeSpecialism">
+              <PropertyRef Name="SpecialismId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taxonomies_templates">
-          <End Role="templates" Type="TickBoxModel.Store.templates" Multiplicity="1" />
-          <End Role="taxonomies" Type="TickBoxModel.Store.taxonomies" Multiplicity="*" />
+        <Association Name="FK_Taxonomy_Template">
+          <End Role="Template" Type="TickBoxModel.Store.Template" Multiplicity="1" />
+          <End Role="Taxonomy" Type="TickBoxModel.Store.Taxonomy" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="templates">
-              <PropertyRef Name="templateId" />
+            <Principal Role="Template">
+              <PropertyRef Name="TemplateId" />
             </Principal>
-            <Dependent Role="taxonomies">
-              <PropertyRef Name="templateId" />
+            <Dependent Role="Taxonomy">
+              <PropertyRef Name="TemplateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taxonomySpecialisms_specialisms">
-          <End Role="specialisms" Type="TickBoxModel.Store.specialisms" Multiplicity="1" />
-          <End Role="taxonomySpecialisms" Type="TickBoxModel.Store.taxonomySpecialisms" Multiplicity="*" />
+        <Association Name="FK_TaxonomySpecialism_Specialism">
+          <End Role="Specialism" Type="TickBoxModel.Store.Specialism" Multiplicity="1" />
+          <End Role="TaxonomySpecialism" Type="TickBoxModel.Store.TaxonomySpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="specialisms">
-              <PropertyRef Name="specialismId" />
+            <Principal Role="Specialism">
+              <PropertyRef Name="SpecialismId" />
             </Principal>
-            <Dependent Role="taxonomySpecialisms">
-              <PropertyRef Name="specialismId" />
+            <Dependent Role="TaxonomySpecialism">
+              <PropertyRef Name="SpecialismId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taxonomySpecialisms_taxonomies">
-          <End Role="taxonomies" Type="TickBoxModel.Store.taxonomies" Multiplicity="1" />
-          <End Role="taxonomySpecialisms" Type="TickBoxModel.Store.taxonomySpecialisms" Multiplicity="*" />
+        <Association Name="FK_TaxonomySpecialism_Taxonomy">
+          <End Role="Taxonomy" Type="TickBoxModel.Store.Taxonomy" Multiplicity="1" />
+          <End Role="TaxonomySpecialism" Type="TickBoxModel.Store.TaxonomySpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="taxonomies">
-              <PropertyRef Name="taxonomyId" />
+            <Principal Role="Taxonomy">
+              <PropertyRef Name="TaxonomyId" />
             </Principal>
-            <Dependent Role="taxonomySpecialisms">
-              <PropertyRef Name="taxonomyId" />
+            <Dependent Role="TaxonomySpecialism">
+              <PropertyRef Name="TaxonomyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_treeNodes_nodes">
-          <End Role="nodes" Type="TickBoxModel.Store.nodes" Multiplicity="1" />
-          <End Role="treeNodes" Type="TickBoxModel.Store.treeNodes" Multiplicity="*" />
+        <Association Name="FK_TreeNode_Node">
+          <End Role="Node" Type="TickBoxModel.Store.Node" Multiplicity="1" />
+          <End Role="TreeNode" Type="TickBoxModel.Store.TreeNode" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="nodes">
-              <PropertyRef Name="nodeId" />
+            <Principal Role="Node">
+              <PropertyRef Name="NodeId" />
             </Principal>
-            <Dependent Role="treeNodes">
-              <PropertyRef Name="nodeId" />
+            <Dependent Role="TreeNode">
+              <PropertyRef Name="NodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_treeNodes_taxonomies">
-          <End Role="taxonomies" Type="TickBoxModel.Store.taxonomies" Multiplicity="1" />
-          <End Role="treeNodes" Type="TickBoxModel.Store.treeNodes" Multiplicity="*" />
+        <Association Name="FK_TreeNode_Taxonomy">
+          <End Role="Taxonomy" Type="TickBoxModel.Store.Taxonomy" Multiplicity="1" />
+          <End Role="TreeNode" Type="TickBoxModel.Store.TreeNode" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="taxonomies">
-              <PropertyRef Name="taxonomyId" />
+            <Principal Role="Taxonomy">
+              <PropertyRef Name="TaxonomyId" />
             </Principal>
-            <Dependent Role="treeNodes">
-              <PropertyRef Name="taxonomyId" />
+            <Dependent Role="TreeNode">
+              <PropertyRef Name="TaxonomyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreeNode_TreeNode">
+          <End Role="TreeNode" Type="TickBoxModel.Store.TreeNode" Multiplicity="0..1" />
+          <End Role="TreeNode1" Type="TickBoxModel.Store.TreeNode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeNode">
+              <PropertyRef Name="TreeNodeId" />
+            </Principal>
+            <Dependent Role="TreeNode1">
+              <PropertyRef Name="ParentTreeNodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,166 +213,184 @@
       <Schema Namespace="TickBoxModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="TickBoxEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Nodes" EntityType="TickBoxModel.Node" />
-          <EntitySet Name="NodeSpecialisms" EntityType="TickBoxModel.NodeSpecialism" />
-          <EntitySet Name="Specialisms" EntityType="TickBoxModel.Specialism" />
+          <EntitySet Name="NodeSpecialism" EntityType="TickBoxModel.NodeSpecialism" />
+          <EntitySet Name="Specialism" EntityType="TickBoxModel.Specialism" />
           <EntitySet Name="Taxonomies" EntityType="TickBoxModel.Taxonomy" />
           <EntitySet Name="Templates" EntityType="TickBoxModel.Template" />
           <EntitySet Name="TreeNodes" EntityType="TickBoxModel.TreeNode" />
-          <AssociationSet Name="FK_nodeSpecialisms_nodes" Association="TickBoxModel.FK_nodeSpecialisms_nodes">
-            <End Role="nodes" EntitySet="Nodes" />
-            <End Role="nodeSpecialisms" EntitySet="NodeSpecialisms" />
+          <AssociationSet Name="FK_NodeSpecialism_Node" Association="TickBoxModel.FK_NodeSpecialism_Node">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="NodeSpecialism" EntitySet="NodeSpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_treeNodes_nodes" Association="TickBoxModel.FK_treeNodes_nodes">
-            <End Role="nodes" EntitySet="Nodes" />
-            <End Role="treeNodes" EntitySet="TreeNodes" />
+          <AssociationSet Name="FK_TreeNode_Node" Association="TickBoxModel.FK_TreeNode_Node">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="TreeNode" EntitySet="TreeNodes" />
           </AssociationSet>
-          <AssociationSet Name="FK_nodeSpecialisms_specialisms" Association="TickBoxModel.FK_nodeSpecialisms_specialisms">
-            <End Role="specialisms" EntitySet="Specialisms" />
-            <End Role="nodeSpecialisms" EntitySet="NodeSpecialisms" />
+          <AssociationSet Name="FK_NodeSpecialism_Specialism" Association="TickBoxModel.FK_NodeSpecialism_Specialism">
+            <End Role="Specialism" EntitySet="Specialism" />
+            <End Role="NodeSpecialism" EntitySet="NodeSpecialism" />
           </AssociationSet>
-          <AssociationSet Name="FK_taxonomies_templates" Association="TickBoxModel.FK_taxonomies_templates">
-            <End Role="templates" EntitySet="Templates" />
-            <End Role="taxonomies" EntitySet="Taxonomies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_treeNodes_taxonomies" Association="TickBoxModel.FK_treeNodes_taxonomies">
-            <End Role="taxonomies" EntitySet="Taxonomies" />
-            <End Role="treeNodes" EntitySet="TreeNodes" />
-          </AssociationSet>
-          <AssociationSet Name="taxonomySpecialisms" Association="TickBoxModel.taxonomySpecialisms">
-            <End Role="Specialism" EntitySet="Specialisms" />
+          <AssociationSet Name="FK_Taxonomy_Template" Association="TickBoxModel.FK_Taxonomy_Template">
+            <End Role="Template" EntitySet="Templates" />
             <End Role="Taxonomy" EntitySet="Taxonomies" />
           </AssociationSet>
-          </EntityContainer>
+          <AssociationSet Name="FK_TreeNode_Taxonomy" Association="TickBoxModel.FK_TreeNode_Taxonomy">
+            <End Role="Taxonomy" EntitySet="Taxonomies" />
+            <End Role="TreeNode" EntitySet="TreeNodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreeNode_TreeNode" Association="TickBoxModel.FK_TreeNode_TreeNode">
+            <End Role="TreeNode" EntitySet="TreeNodes" />
+            <End Role="TreeNode1" EntitySet="TreeNodes" />
+          </AssociationSet>
+          <AssociationSet Name="TaxonomySpecialism" Association="TickBoxModel.TaxonomySpecialism">
+            <End Role="Specialism" EntitySet="Specialism" />
+            <End Role="Taxonomy" EntitySet="Taxonomies" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Node">
           <Key>
             <PropertyRef Name="NodeId" />
           </Key>
-          <Property Name="NodeId" Type="Int32" Nullable="false" />
-          <Property Name="NodeTitle" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="NodeDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="AllowMultiSelectChildren" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="NodeSpecialisms" Relationship="TickBoxModel.FK_nodeSpecialisms_nodes" FromRole="nodes" ToRole="nodeSpecialisms" />
-          <NavigationProperty Name="TreeNodes" Relationship="TickBoxModel.FK_treeNodes_nodes" FromRole="nodes" ToRole="treeNodes" />
+          <Property Type="Int32" Name="NodeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NodeTitle" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NodeDesc" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ChildrenMultiSelect" Nullable="false" />
+          <NavigationProperty Name="NodeSpecialism" Relationship="TickBoxModel.FK_NodeSpecialism_Node" FromRole="Node" ToRole="NodeSpecialism" />
+          <NavigationProperty Name="TreeNodes" Relationship="TickBoxModel.FK_TreeNode_Node" FromRole="Node" ToRole="TreeNode" />
         </EntityType>
         <EntityType Name="NodeSpecialism">
           <Key>
             <PropertyRef Name="NodeSpecialismId" />
           </Key>
-          <Property Name="NodeSpecialismId" Type="Int32" Nullable="false" />
-          <Property Name="NodeId" Type="Int32" Nullable="false" />
-          <Property Name="SpecialismId" Type="Int32" Nullable="false" />
-          <Property Name="SequenceOrder" Type="Int32" Nullable="false" />
-          <Property Name="Guidelines" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="DocumentLink" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Node" Relationship="TickBoxModel.FK_nodeSpecialisms_nodes" FromRole="nodeSpecialisms" ToRole="nodes" />
-          <NavigationProperty Name="Specialism" Relationship="TickBoxModel.FK_nodeSpecialisms_specialisms" FromRole="nodeSpecialisms" ToRole="specialisms" />
+          <Property Type="Int32" Name="NodeSpecialismId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="NodeId" Nullable="false" />
+          <Property Type="Int32" Name="SpecialismId" Nullable="false" />
+          <Property Type="Int32" Name="SequenceOrder" Nullable="false" />
+          <Property Type="String" Name="Guidelines" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocumentLink" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsScaffold" Nullable="false" />
+          <NavigationProperty Name="Node" Relationship="TickBoxModel.FK_NodeSpecialism_Node" FromRole="NodeSpecialism" ToRole="Node" />
+          <NavigationProperty Name="Specialism" Relationship="TickBoxModel.FK_NodeSpecialism_Specialism" FromRole="NodeSpecialism" ToRole="Specialism" />
         </EntityType>
         <EntityType Name="Specialism">
           <Key>
             <PropertyRef Name="SpecialismId" />
           </Key>
-          <Property Name="SpecialismId" Type="Int32" Nullable="false" />
-          <Property Name="SpecialismTitle" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="NodeSpecialisms" Relationship="TickBoxModel.FK_nodeSpecialisms_specialisms" FromRole="specialisms" ToRole="nodeSpecialisms" />
+          <Property Type="Int32" Name="SpecialismId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SpecialismDesc" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsScaffold" Nullable="false" />
-          <NavigationProperty Name="Taxonomies" Relationship="TickBoxModel.taxonomySpecialisms" FromRole="Specialism" ToRole="Taxonomy" />
+          <NavigationProperty Name="NodeSpecialism" Relationship="TickBoxModel.FK_NodeSpecialism_Specialism" FromRole="Specialism" ToRole="NodeSpecialism" />
+          <NavigationProperty Name="Taxonomies" Relationship="TickBoxModel.TaxonomySpecialism" FromRole="Specialism" ToRole="Taxonomy" />
         </EntityType>
         <EntityType Name="Taxonomy">
           <Key>
             <PropertyRef Name="TaxonomyId" />
           </Key>
-          <Property Name="TaxonomyId" Type="Int32" Nullable="false" />
-          <Property Name="TemplateId" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Template" Relationship="TickBoxModel.FK_taxonomies_templates" FromRole="taxonomies" ToRole="templates" />
-          <NavigationProperty Name="TreeNodes" Relationship="TickBoxModel.FK_treeNodes_taxonomies" FromRole="taxonomies" ToRole="treeNodes" />
+          <Property Type="Int32" Name="TaxonomyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TemplateId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsScaffold" Nullable="false" />
-          <NavigationProperty Name="Specialisms" Relationship="TickBoxModel.taxonomySpecialisms" FromRole="Taxonomy" ToRole="Specialism" />
+          <NavigationProperty Name="Template" Relationship="TickBoxModel.FK_Taxonomy_Template" FromRole="Taxonomy" ToRole="Template" />
+          <NavigationProperty Name="TreeNodes" Relationship="TickBoxModel.FK_TreeNode_Taxonomy" FromRole="Taxonomy" ToRole="TreeNode" />
+          <NavigationProperty Name="Specialism" Relationship="TickBoxModel.TaxonomySpecialism" FromRole="Taxonomy" ToRole="Specialism" />
         </EntityType>
         <EntityType Name="Template">
           <Key>
             <PropertyRef Name="TemplateId" />
           </Key>
-          <Property Name="TemplateId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="DocumentLink" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Taxonomies" Relationship="TickBoxModel.FK_taxonomies_templates" FromRole="templates" ToRole="taxonomies" />
+          <Property Type="Int32" Name="TemplateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocumentLink" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsScaffold" Nullable="false" />
+          <NavigationProperty Name="Taxonomies" Relationship="TickBoxModel.FK_Taxonomy_Template" FromRole="Template" ToRole="Taxonomy" />
         </EntityType>
         <EntityType Name="TreeNode">
           <Key>
             <PropertyRef Name="TreeNodeId" />
           </Key>
-          <Property Name="TaxonomyId" Type="Int32" Nullable="false" />
-          <Property Name="TreeNodeId" Type="Int32" Nullable="false" />
-          <Property Name="ParentTreeNodeId" Type="Int32" Nullable="true" />
-          <Property Name="NodeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Node" Relationship="TickBoxModel.FK_treeNodes_nodes" FromRole="treeNodes" ToRole="nodes" />
-          <NavigationProperty Name="Taxonomy" Relationship="TickBoxModel.FK_treeNodes_taxonomies" FromRole="treeNodes" ToRole="taxonomies" />
+          <Property Type="Int32" Name="TreeNodeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TaxonomyId" Nullable="false" />
+          <Property Type="Int32" Name="ParentTreeNodeId" />
+          <Property Type="Int32" Name="NodeId" Nullable="false" />
           <Property Type="Boolean" Name="IsScaffold" Nullable="false" />
-          </EntityType>
-        <Association Name="FK_nodeSpecialisms_nodes">
-          <End Role="nodes" Type="TickBoxModel.Node" Multiplicity="1" />
-          <End Role="nodeSpecialisms" Type="TickBoxModel.NodeSpecialism" Multiplicity="*" />
+          <NavigationProperty Name="Node" Relationship="TickBoxModel.FK_TreeNode_Node" FromRole="TreeNode" ToRole="Node" />
+          <NavigationProperty Name="Taxonomy" Relationship="TickBoxModel.FK_TreeNode_Taxonomy" FromRole="TreeNode" ToRole="Taxonomy" />
+          <NavigationProperty Name="Children" Relationship="TickBoxModel.FK_TreeNode_TreeNode" FromRole="TreeNode" ToRole="TreeNode1" />
+          <NavigationProperty Name="Parent" Relationship="TickBoxModel.FK_TreeNode_TreeNode" FromRole="TreeNode1" ToRole="TreeNode" />
+        </EntityType>
+        <Association Name="FK_NodeSpecialism_Node">
+          <End Type="TickBoxModel.Node" Role="Node" Multiplicity="1" />
+          <End Type="TickBoxModel.NodeSpecialism" Role="NodeSpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="nodes">
+            <Principal Role="Node">
               <PropertyRef Name="NodeId" />
             </Principal>
-            <Dependent Role="nodeSpecialisms">
+            <Dependent Role="NodeSpecialism">
               <PropertyRef Name="NodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_treeNodes_nodes">
-          <End Role="nodes" Type="TickBoxModel.Node" Multiplicity="1" />
-          <End Role="treeNodes" Type="TickBoxModel.TreeNode" Multiplicity="*" />
+        <Association Name="FK_TreeNode_Node">
+          <End Type="TickBoxModel.Node" Role="Node" Multiplicity="1" />
+          <End Type="TickBoxModel.TreeNode" Role="TreeNode" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="nodes">
+            <Principal Role="Node">
               <PropertyRef Name="NodeId" />
             </Principal>
-            <Dependent Role="treeNodes">
+            <Dependent Role="TreeNode">
               <PropertyRef Name="NodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_nodeSpecialisms_specialisms">
-          <End Role="specialisms" Type="TickBoxModel.Specialism" Multiplicity="1" />
-          <End Role="nodeSpecialisms" Type="TickBoxModel.NodeSpecialism" Multiplicity="*" />
+        <Association Name="FK_NodeSpecialism_Specialism">
+          <End Type="TickBoxModel.Specialism" Role="Specialism" Multiplicity="1" />
+          <End Type="TickBoxModel.NodeSpecialism" Role="NodeSpecialism" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="specialisms">
+            <Principal Role="Specialism">
               <PropertyRef Name="SpecialismId" />
             </Principal>
-            <Dependent Role="nodeSpecialisms">
+            <Dependent Role="NodeSpecialism">
               <PropertyRef Name="SpecialismId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_taxonomies_templates">
-          <End Role="templates" Type="TickBoxModel.Template" Multiplicity="1" />
-          <End Role="taxonomies" Type="TickBoxModel.Taxonomy" Multiplicity="*" />
+        <Association Name="FK_Taxonomy_Template">
+          <End Type="TickBoxModel.Template" Role="Template" Multiplicity="1" />
+          <End Type="TickBoxModel.Taxonomy" Role="Taxonomy" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="templates">
+            <Principal Role="Template">
               <PropertyRef Name="TemplateId" />
             </Principal>
-            <Dependent Role="taxonomies">
+            <Dependent Role="Taxonomy">
               <PropertyRef Name="TemplateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_treeNodes_taxonomies">
-          <End Role="taxonomies" Type="TickBoxModel.Taxonomy" Multiplicity="1" />
-          <End Role="treeNodes" Type="TickBoxModel.TreeNode" Multiplicity="*" />
+        <Association Name="FK_TreeNode_Taxonomy">
+          <End Type="TickBoxModel.Taxonomy" Role="Taxonomy" Multiplicity="1" />
+          <End Type="TickBoxModel.TreeNode" Role="TreeNode" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="taxonomies">
+            <Principal Role="Taxonomy">
               <PropertyRef Name="TaxonomyId" />
             </Principal>
-            <Dependent Role="treeNodes">
+            <Dependent Role="TreeNode">
               <PropertyRef Name="TaxonomyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="taxonomySpecialisms">
+        <Association Name="FK_TreeNode_TreeNode">
+          <End Type="TickBoxModel.TreeNode" Role="TreeNode" Multiplicity="0..1" />
+          <End Type="TickBoxModel.TreeNode" Role="TreeNode1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreeNode">
+              <PropertyRef Name="TreeNodeId" />
+            </Principal>
+            <Dependent Role="TreeNode1">
+              <PropertyRef Name="ParentTreeNodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TaxonomySpecialism">
           <End Type="TickBoxModel.Specialism" Role="Specialism" Multiplicity="*" />
           <End Type="TickBoxModel.Taxonomy" Role="Taxonomy" Multiplicity="*" />
         </Association>
@@ -366,51 +400,75 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TickBoxModelStoreContainer" CdmEntityContainer="TickBoxEntities">
-          <EntitySetMapping Name="Nodes"><EntityTypeMapping TypeName="TickBoxModel.Node"><MappingFragment StoreEntitySet="nodes">
-            <ScalarProperty Name="NodeId" ColumnName="nodeId" />
-            <ScalarProperty Name="NodeTitle" ColumnName="nodeTitle" />
-            <ScalarProperty Name="NodeDescription" ColumnName="nodeDescription" />
-            <ScalarProperty Name="AllowMultiSelectChildren" ColumnName="allowMultiSelectChildren" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="NodeSpecialisms"><EntityTypeMapping TypeName="TickBoxModel.NodeSpecialism"><MappingFragment StoreEntitySet="nodeSpecialisms">
-                <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-                <ScalarProperty Name="Guidelines" ColumnName="guidelines" />
-                <ScalarProperty Name="NodeSpecialismId" ColumnName="nodeSpecialismId" />
-            <ScalarProperty Name="NodeId" ColumnName="nodeId" />
-            <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
-            <ScalarProperty Name="SequenceOrder" ColumnName="sequenceOrder" />
-            <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Specialisms"><EntityTypeMapping TypeName="TickBoxModel.Specialism"><MappingFragment StoreEntitySet="specialisms">
-                <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-                <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
-            <ScalarProperty Name="SpecialismTitle" ColumnName="specialismTitle" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Taxonomies"><EntityTypeMapping TypeName="TickBoxModel.Taxonomy"><MappingFragment StoreEntitySet="taxonomies">
-                <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-                <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
-            <ScalarProperty Name="TemplateId" ColumnName="templateId" />
-            <ScalarProperty Name="Title" ColumnName="title" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Templates"><EntityTypeMapping TypeName="TickBoxModel.Template"><MappingFragment StoreEntitySet="templates">
-            <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-                <ScalarProperty Name="TemplateId" ColumnName="templateId" />
-            <ScalarProperty Name="Name" ColumnName="name" />
-            <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="TreeNodes"><EntityTypeMapping TypeName="TickBoxModel.TreeNode"><MappingFragment StoreEntitySet="treeNodes">
-                <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-                <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
-            <ScalarProperty Name="TreeNodeId" ColumnName="treeNodeId" />
-            <ScalarProperty Name="ParentTreeNodeId" ColumnName="parentTreeNodeId" />
-            <ScalarProperty Name="NodeId" ColumnName="nodeId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <AssociationSetMapping Name="taxonomySpecialisms" TypeName="TickBoxModel.taxonomySpecialisms" StoreEntitySet="taxonomySpecialisms">
+          <EntitySetMapping Name="Nodes">
+            <EntityTypeMapping TypeName="TickBoxModel.Node">
+              <MappingFragment StoreEntitySet="Node">
+                <ScalarProperty Name="ChildrenMultiSelect" ColumnName="ChildrenMultiSelect" />
+                <ScalarProperty Name="NodeDesc" ColumnName="NodeDesc" />
+                <ScalarProperty Name="NodeTitle" ColumnName="NodeTitle" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NodeSpecialism">
+            <EntityTypeMapping TypeName="TickBoxModel.NodeSpecialism">
+              <MappingFragment StoreEntitySet="NodeSpecialism">
+                <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+                <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+                <ScalarProperty Name="Guidelines" ColumnName="Guidelines" />
+                <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+                <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="NodeSpecialismId" ColumnName="NodeSpecialismId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialism">
+            <EntityTypeMapping TypeName="TickBoxModel.Specialism">
+              <MappingFragment StoreEntitySet="Specialism">
+                <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+                <ScalarProperty Name="SpecialismDesc" ColumnName="SpecialismDesc" />
+                <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxonomies">
+            <EntityTypeMapping TypeName="TickBoxModel.Taxonomy">
+              <MappingFragment StoreEntitySet="Taxonomy">
+                <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="TickBoxModel.Template">
+              <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+                <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreeNodes">
+            <EntityTypeMapping TypeName="TickBoxModel.TreeNode">
+              <MappingFragment StoreEntitySet="TreeNode">
+                <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="ParentTreeNodeId" ColumnName="ParentTreeNodeId" />
+                <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
+                <ScalarProperty Name="TreeNodeId" ColumnName="TreeNodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TaxonomySpecialism" TypeName="TickBoxModel.TaxonomySpecialism" StoreEntitySet="TaxonomySpecialism">
             <EndProperty Name="Taxonomy">
-              <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
+              <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
             </EndProperty>
             <EndProperty Name="Specialism">
-              <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
+              <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -435,38 +493,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="TickBox" ZoomLevel="98">
-        <EntityTypeShape EntityType="TickBoxModel.Node" Width="1.75" PointX="6.375" PointY="2.75" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickBoxModel.NodeSpecialism" Width="1.5" PointX="3.875" PointY="0.5" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickBoxModel.Specialism" Width="1.75" PointX="0.75" PointY="2.875" Height="1.9802864583333326" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickBoxModel.Taxonomy" Width="1.5" PointX="3.875" PointY="7.75" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickBoxModel.Template" Width="1.5" PointX="3.875" PointY="4.375" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickBoxModel.TreeNode" Width="1.75" PointX="6.375" PointY="6.125" Height="2.3648893229166656" IsExpanded="true" />
-        <AssociationConnector Association="TickBoxModel.FK_nodeSpecialisms_nodes" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.375" PointY="2.99974609375" />
-          <ConnectorPoint PointX="5.375" PointY="2.99974609375" />
-        </AssociationConnector>
-        <AssociationConnector Association="TickBoxModel.FK_treeNodes_nodes" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.25" PointY="4.922587890625" />
-          <ConnectorPoint PointX="7.25" PointY="6.125" />
-        </AssociationConnector>
-        <AssociationConnector Association="TickBoxModel.FK_nodeSpecialisms_specialisms" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.5" PointY="3.06224609375" />
-          <ConnectorPoint PointX="3.875" PointY="3.06224609375" />
-        </AssociationConnector>
-        <AssociationConnector Association="TickBoxModel.FK_taxonomies_templates" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.625" PointY="6.3552864583333335" />
-          <ConnectorPoint PointX="4.625" PointY="7.75" />
-        </AssociationConnector>
-        <AssociationConnector Association="TickBoxModel.FK_treeNodes_taxonomies" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.375" PointY="8.1199446614583337" />
-          <ConnectorPoint PointX="6.375" PointY="8.1199446614583337" />
-        </AssociationConnector>
-        <AssociationConnector Association="TickBoxModel.taxonomySpecialisms" >
-          <ConnectorPoint PointX="1.625" PointY="4.8552864583333326" />
-          <ConnectorPoint PointX="1.625" PointY="8.9324446614583337" />
-          <ConnectorPoint PointX="3.875" PointY="8.9324446614583337" />
-        </AssociationConnector>
-        </Diagram>
+        <EntityTypeShape EntityType="TickBoxModel.Node" Width="1.5" PointX="12.25" PointY="11.875" />
+        <EntityTypeShape EntityType="TickBoxModel.NodeSpecialism" Width="1.5" PointX="7.25" PointY="11.5" />
+        <EntityTypeShape EntityType="TickBoxModel.Specialism" Width="1.5" PointX="3.875" PointY="11.875" />
+        <EntityTypeShape EntityType="TickBoxModel.Taxonomy" Width="1.5" PointX="0.5" PointY="11.5" />
+        <EntityTypeShape EntityType="TickBoxModel.Template" Width="1.5" PointX="0.5" PointY="8.375" />
+        <EntityTypeShape EntityType="TickBoxModel.TreeNode" Width="1.5" PointX="6.125" PointY="15.375" />
+        <AssociationConnector Association="TickBoxModel.FK_NodeSpecialism_Node" />
+        <AssociationConnector Association="TickBoxModel.FK_TreeNode_Node" />
+        <AssociationConnector Association="TickBoxModel.FK_NodeSpecialism_Specialism" />
+        <AssociationConnector Association="TickBoxModel.FK_Taxonomy_Template" />
+        <AssociationConnector Association="TickBoxModel.FK_TreeNode_Taxonomy" />
+        <AssociationConnector Association="TickBoxModel.FK_TreeNode_TreeNode" />
+        <AssociationConnector Association="TickBoxModel.TaxonomySpecialism" />
+      </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

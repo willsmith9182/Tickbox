@@ -30,8 +30,8 @@ namespace TickBox.Data.Context
           throw new UnintentionalCodeFirstException();
       }
       	public IDbSet<Node> Nodes { get; set; }
-    	public IDbSet<NodeSpecialism> NodeSpecialisms { get; set; }
-    	public IDbSet<Specialism> Specialisms { get; set; }
+    	public IDbSet<NodeSpecialism> NodeSpecialism { get; set; }
+    	public IDbSet<Specialism> Specialism { get; set; }
     	public IDbSet<Taxonomy> Taxonomies { get; set; }
     	public IDbSet<Template> Templates { get; set; }
     	public IDbSet<TreeNode> TreeNodes { get; set; }

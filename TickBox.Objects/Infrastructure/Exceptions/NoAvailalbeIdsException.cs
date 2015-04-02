@@ -31,7 +31,7 @@ namespace TickBox.Objects
         /// The message.
         /// </param>
         public NoAvailalbeIdsException(string message)
-            : base(message + "please increase that data type to int64.")
+            : base(message + " please increase that data type to int64.")
         {
         }
 
@@ -45,7 +45,7 @@ namespace TickBox.Objects
         /// The inner.
         /// </param>
         public NoAvailalbeIdsException(string message, Exception inner)
-            : base(message + "please increase that data type to int64.", inner)
+            : base(message + " please increase that data type to int64.", inner)
         {
         }
 

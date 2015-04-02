@@ -1,14 +1,8 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Scaffolding.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using TickBox.Objects;
+using TickBox.Data.Context;
 
-namespace TickBox.Business
+namespace TickBox.Business.Scaffold
 {
     public static class Scaffolding
     {
@@ -19,7 +13,7 @@ namespace TickBox.Business
         /// <param name="newTemplate">
         /// The new template.
         /// </param>
-        public static void CreateScaffold(Template newTemplate, IDataUnitOfWork dataUnitOfWork)
+        public static void CreateScaffold(Template newTemplate)
         {
             var referenceTemplate = dataUnitOfWork.GetItem<Template>(t => t.TemplateId == -1);
             var referenceTaxonomy = referenceTemplate.Taxonomies.First(t => t.IsScaffold);
@@ -38,7 +32,7 @@ namespace TickBox.Business
         /// <param name="newTaxonomy">
         /// The new taxonomy.
         /// </param>
-        public static void CreateScaffold(Taxonomy newTaxonomy, IDataUnitOfWork dataUnitOfWork)
+        public static void CreateScaffold(Taxonomy newTaxonomy)
         {
             var referenceTaxonomy = dataUnitOfWork.GetItem<Taxonomy>(t => t.TaxonomyId == -1);
             var referneceSpecialisms = referenceTaxonomy.Specialisms.ToList();
@@ -56,7 +50,7 @@ namespace TickBox.Business
         /// <param name="newSpecialism">
         /// The new specialism.
         /// </param>
-        public static void CreateScaffold(Specialism newSpecialism, IDataUnitOfWork dataUnitOfWork)
+        public static void CreateScaffold(Specialism newSpecialism)
         {
             var referenceSpecialism = dataUnitOfWork.GetItem<Specialism>(t => t.IsScaffold);
             var referenceTaxonomies = referenceSpecialism.Taxonomies;
@@ -74,7 +68,7 @@ namespace TickBox.Business
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public static void CreateScaffold(Node newNode, IDataUnitOfWork dataUnitOfWork)
+        public static void CreateScaffold(Node newNode)
         {
             // make new node, create node specialisms for default specialism, create tree node, add tree node to bottom of default model/default taxonomy 
             var referenceSpecialism = dataUnitOfWork.GetItem<Specialism>(t => t.IsScaffold);
@@ -200,7 +194,7 @@ namespace TickBox.Business
         /// <returns>
         /// The <see cref="Taxonomy"/>.
         /// </returns>
-        private static Taxonomy ScaffoldTaxonomy(Template template, IDataUnitOfWork dataUnitOfWork)
+        private static Taxonomy ScaffoldTaxonomy(Template template)
         {
             return new Taxonomy
                        {
@@ -296,7 +290,7 @@ namespace TickBox.Business
         /// The <see cref="IEnumerable{TreeNode}"/>.
         /// </returns>
         private static IEnumerable<TreeNode> ScaffoldTreeNode(IEnumerable<TreeNode> referenceTreeNodes,
-                                                              Taxonomy scaffoldTaxonomy, IDataUnitOfWork dataUnitOfWork)
+                                                              Taxonomy scaffoldTaxonomy)
         {
             return referenceTreeNodes.Select(tn => new TreeNode
                                                        {
@@ -323,8 +317,7 @@ namespace TickBox.Business
         /// <returns>
         /// The <see cref="TreeNode"/>.
         /// </returns>
-        private static TreeNode ScaffoldTreeNode(TreeNode referenceParentNode, Node newNode,
-                                                 IDataUnitOfWork dataUnitOfWork)
+        private static TreeNode ScaffoldTreeNode(TreeNode referenceParentNode, Node newNode)
         {
             return new TreeNode
                        {

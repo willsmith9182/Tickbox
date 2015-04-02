@@ -40,3 +40,24 @@ C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Web\bin\Enti
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Web\bin\Newtonsoft.Json.xml
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Web\obj\Debug\TickBox.Web.dll
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Web\obj\Debug\TickBox.Web.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Web.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Web.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Autofac.Configuration.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Autofac.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Autofac.Integration.Mvc.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\DelegateDecompiler.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Mono.Reflection.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Newtonsoft.Json.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\PerpetuumSoft.Knockout.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Business.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Data.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Objects.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Business.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Data.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\TickBox.Objects.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Autofac.xml
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\EntityFramework.xml
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\bin\Newtonsoft.Json.xml
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\obj\Debug\TickBox.Web.csprojResolveAssemblyReference.cache
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\obj\Debug\TickBox.Web.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Web\obj\Debug\TickBox.Web.pdb

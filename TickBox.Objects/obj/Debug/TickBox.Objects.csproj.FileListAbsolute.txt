@@ -16,3 +16,6 @@ C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Objects\bin\
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Objects\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Objects\obj\Debug\TickBox.Objects.dll
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Objects\obj\Debug\TickBox.Objects.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Objects\obj\Debug\TickBox.Objects.csprojResolveAssemblyReference.cache
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Objects\obj\Debug\TickBox.Objects.dll
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Objects\obj\Debug\TickBox.Objects.pdb

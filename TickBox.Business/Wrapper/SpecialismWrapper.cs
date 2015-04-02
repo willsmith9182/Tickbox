@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TickBox.Business.Scaffold;
 using TickBox.Objects;
 using TickBox.Objects.Notifications;
 

@@ -3,73 +3,73 @@
   <EntityContainerMapping StorageEntityContainer="TickBoxModelStoreContainer" CdmEntityContainer="TickBoxEntities">
     <EntitySetMapping Name="Nodes">
       <EntityTypeMapping TypeName="TickBoxModel.Node">
-        <MappingFragment StoreEntitySet="nodes">
-          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
-          <ScalarProperty Name="NodeTitle" ColumnName="nodeTitle" />
-          <ScalarProperty Name="NodeDescription" ColumnName="nodeDescription" />
-          <ScalarProperty Name="AllowMultiSelectChildren" ColumnName="allowMultiSelectChildren" />
+        <MappingFragment StoreEntitySet="Node">
+          <ScalarProperty Name="ChildrenMultiSelect" ColumnName="ChildrenMultiSelect" />
+          <ScalarProperty Name="NodeDesc" ColumnName="NodeDesc" />
+          <ScalarProperty Name="NodeTitle" ColumnName="NodeTitle" />
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NodeSpecialisms">
+    <EntitySetMapping Name="NodeSpecialism">
       <EntityTypeMapping TypeName="TickBoxModel.NodeSpecialism">
-        <MappingFragment StoreEntitySet="nodeSpecialisms">
-          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-          <ScalarProperty Name="Guidelines" ColumnName="guidelines" />
-          <ScalarProperty Name="NodeSpecialismId" ColumnName="nodeSpecialismId" />
-          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
-          <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
-          <ScalarProperty Name="SequenceOrder" ColumnName="sequenceOrder" />
-          <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
+        <MappingFragment StoreEntitySet="NodeSpecialism">
+          <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+          <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+          <ScalarProperty Name="Guidelines" ColumnName="Guidelines" />
+          <ScalarProperty Name="SequenceOrder" ColumnName="SequenceOrder" />
+          <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+          <ScalarProperty Name="NodeSpecialismId" ColumnName="NodeSpecialismId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Specialisms">
+    <EntitySetMapping Name="Specialism">
       <EntityTypeMapping TypeName="TickBoxModel.Specialism">
-        <MappingFragment StoreEntitySet="specialisms">
-          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-          <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
-          <ScalarProperty Name="SpecialismTitle" ColumnName="specialismTitle" />
+        <MappingFragment StoreEntitySet="Specialism">
+          <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+          <ScalarProperty Name="SpecialismDesc" ColumnName="SpecialismDesc" />
+          <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Taxonomies">
       <EntityTypeMapping TypeName="TickBoxModel.Taxonomy">
-        <MappingFragment StoreEntitySet="taxonomies">
-          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-          <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
-          <ScalarProperty Name="TemplateId" ColumnName="templateId" />
-          <ScalarProperty Name="Title" ColumnName="title" />
+        <MappingFragment StoreEntitySet="Taxonomy">
+          <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Templates">
       <EntityTypeMapping TypeName="TickBoxModel.Template">
-        <MappingFragment StoreEntitySet="templates">
-          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-          <ScalarProperty Name="TemplateId" ColumnName="templateId" />
-          <ScalarProperty Name="Name" ColumnName="name" />
-          <ScalarProperty Name="DocumentLink" ColumnName="documentLink" />
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+          <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TreeNodes">
       <EntityTypeMapping TypeName="TickBoxModel.TreeNode">
-        <MappingFragment StoreEntitySet="treeNodes">
-          <ScalarProperty Name="IsScaffold" ColumnName="isScaffold" />
-          <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
-          <ScalarProperty Name="TreeNodeId" ColumnName="treeNodeId" />
-          <ScalarProperty Name="ParentTreeNodeId" ColumnName="parentTreeNodeId" />
-          <ScalarProperty Name="NodeId" ColumnName="nodeId" />
+        <MappingFragment StoreEntitySet="TreeNode">
+          <ScalarProperty Name="IsScaffold" ColumnName="IsScaffold" />
+          <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+          <ScalarProperty Name="ParentTreeNodeId" ColumnName="ParentTreeNodeId" />
+          <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
+          <ScalarProperty Name="TreeNodeId" ColumnName="TreeNodeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="taxonomySpecialisms" TypeName="TickBoxModel.taxonomySpecialisms" StoreEntitySet="taxonomySpecialisms">
+    <AssociationSetMapping Name="TaxonomySpecialism" TypeName="TickBoxModel.TaxonomySpecialism" StoreEntitySet="TaxonomySpecialism">
       <EndProperty Name="Taxonomy">
-        <ScalarProperty Name="TaxonomyId" ColumnName="taxonomyId" />
+        <ScalarProperty Name="TaxonomyId" ColumnName="TaxonomyId" />
       </EndProperty>
       <EndProperty Name="Specialism">
-        <ScalarProperty Name="SpecialismId" ColumnName="specialismId" />
+        <ScalarProperty Name="SpecialismId" ColumnName="SpecialismId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

@@ -1,0 +1,2 @@
+C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\obj\Debug\Tickbox.Core.csprojResolveAssemblyReference.cache
+C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\obj\Debug\Tickbox.Core.dll

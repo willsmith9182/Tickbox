@@ -4,6 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using TickBox.Business.Scaffold;
 using TickBox.Objects;
 using TickBox.Objects.Notifications;
 

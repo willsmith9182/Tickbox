@@ -28,3 +28,5 @@ C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Business\bin
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Business\bin\Debug\EntityFramework.xml
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Business\obj\Debug\TickBox.Business.dll
 C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Business\obj\Debug\TickBox.Business.pdb
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Business\obj\Debug\TickBox.Business.csprojResolveAssemblyReference.cache
+C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Business\obj\Debug\TickBox.Business.dll

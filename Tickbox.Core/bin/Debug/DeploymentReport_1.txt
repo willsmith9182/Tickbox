@@ -1,0 +1,46 @@
+﻿** Warnings
+     The object reference [dbo].[NodeSpecialism].[NodeSpecialismID] differs only by case from the object definition
+       [dbo].[NodeSpecialism].[NodeSpecialismId].
+     The object reference [dbo].[Node].[NodeID] differs only by case from the object definition [dbo].[Node].[NodeId].
+     The object reference [dbo].[Taxonomy].[TaxonomyID] differs only by case from the object definition
+       [dbo].[Taxonomy].[TaxonomyId].
+     The object reference [dbo].[Specialism].[SpecialismID] differs only by case from the object definition
+       [dbo].[Specialism].[SpecialismId].
+     The object reference [dbo].[TreeNode].[TreeNodeID] differs only by case from the object definition
+       [dbo].[TreeNode].[TreeNodeId].
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       on [dbo].[Node]
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The table [dbo].[Node] is being dropped and re-created since all non-computed columns within the table have been
+         redefined.
+
+** User actions
+     Drop
+       on [dbo].[Node] (Primary Key)
+       [dbo].[Node] (Table)
+     Create
+       [dbo].[Node] (Table)
+       [dbo].[NodeSpecialism] (Table)
+       [dbo].[Specialism] (Table)
+       [dbo].[Taxonomy] (Table)
+       [dbo].[TaxonomySpecialism] (Table)
+       [dbo].[Template] (Table)
+       [dbo].[TreeNode] (Table)
+       [dbo].[FK_NodeSpecialism_Node] (Foreign Key)
+       [dbo].[FK_NodeSpecialism_Specialism] (Foreign Key)
+       [dbo].[FK_Taxonomy_Template] (Foreign Key)
+       [dbo].[FK_TaxonomySpecialism_Taxonomy] (Foreign Key)
+       [dbo].[FK_TaxonomySpecialism_Specialism] (Foreign Key)
+       [dbo].[FK_TreeNode_Node] (Foreign Key)
+       [dbo].[FK_TreeNode_TreeNode] (Foreign Key)
+
+** Supporting actions
+
+The table [dbo].[Node] is being dropped and re-created since all non-computed columns within the table have been redefined.
+

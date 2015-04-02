@@ -42,6 +42,9 @@
     <Reference Include="Autofac.Integration.Mvc, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc3.2.6.3.862\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Mehdime.Entity">
+      <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -83,12 +86,6 @@
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\IMappingProvider.cs" />
     <Compile Include="Mapper\Mapper.cs" />
-    <Compile Include="Node.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NodeSpecialism.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
     <Compile Include="POCO_Extras\EntityList\EntityList.cs" />
     <Compile Include="POCO_Extras\EntityList\EntityListGenerator.cs" />
     <Compile Include="POCO_Extras\EntityList\IEntityList.cs" />
@@ -109,23 +106,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="POCO_Extras\InheritedPocoSplitter\IInheritedPocoSplitter.cs" />
     <Compile Include="POCO_Extras\InheritedPocoSplitter\InheritedPocoSplitter.cs" />
-    <Compile Include="Specialism.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Taxonomy.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Template.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TickBox.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TreeNode.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
     <Compile Include="Wrapper\INodeWrapper.cs" />
     <Compile Include="Wrapper\INodeSpecialismWrapper.cs" />
     <Compile Include="Wrapper\IScaffoldWrapper.cs" />
@@ -138,11 +118,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Settings.StyleCop" />
-    <None Include="TickBox.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TickBox.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
