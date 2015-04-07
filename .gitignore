@@ -2,3 +2,7 @@ packages/*
 TickboxDatabase/obj/*
 */obj/*
 */bin/*
+.docstates.suo
+.metadata/*
+packages/*
+packages/**
