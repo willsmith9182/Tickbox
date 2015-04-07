@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BA023B20-61CA-46A1-8608-AB0EB30796C3}</ProjectGuid>
+    <ProjectGuid>{E4AD25BA-5519-4ED5-956E-254BBBCF8115}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TickBox.Business</RootNamespace>
-    <AssemblyName>TickBox.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Tickbox.Business</RootNamespace>
+    <AssemblyName>Tickbox.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,24 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac.Configuration, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc3.2.6.3.862\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mehdime.Entity">
+    <Reference Include="Mehdime.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,31 +56,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\IoC\IoCModule.cs" />
+    <Compile Include="IoCModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scaffold\Scaffolding.cs" />
-    <Compile Include="Wrapper\ScaffoldWrapper.cs" />
-    <Compile Include="Wrapper\SpecialismWrapper.cs" />
-    <Compile Include="Wrapper\TaxonomyWrapper.cs" />
-    <Compile Include="Wrapper\NodeWrapper.cs" />
-    <Compile Include="Wrapper\MenuWrapper.cs" />
-    <Compile Include="Wrapper\NodeSpecialismWrapper.cs" />
-    <Compile Include="Wrapper\TemplateWrapper.cs" />
-    <Compile Include="Wrapper\WrapperBase.cs" />
+    <Compile Include="Scaffolding\NodeScaffold.cs" />
+    <Compile Include="Scaffolding\TaxonomyScaffold.cs" />
+    <Compile Include="Scaffolding\TemplateScaffold.cs" />
+    <Compile Include="Scaffolding\SpecialismScaffold.cs" />
+    <Compile Include="Services\TaxonomyService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TickBox.Data\TickBox.Data.csproj">
-      <Project>{790149B0-7773-43B3-A0CB-95D66779B78B}</Project>
-      <Name>TickBox.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TickBox.Objects\TickBox.Objects.csproj">
-      <Project>{CBA2A88C-79B8-4091-A69C-A90EEC6DC12B}</Project>
-      <Name>TickBox.Objects</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tickbox.Core\Tickbox.Core.csproj">
+      <Project>{33232AE7-A76D-4563-AF03-F3DBFD93D3E8}</Project>
+      <Name>Tickbox.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tickbox.DatabaseApi\Tickbox.DatabaseApi.csproj">
+      <Project>{129728DC-3DC1-47CD-AE8A-AD75A528DC24}</Project>
+      <Name>Tickbox.DatabaseApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tickbox.Data\Tickbox.Data.csproj">
+      <Project>{DC30004E-3CA2-48AF-897C-2015EB69E3A5}</Project>
+      <Name>Tickbox.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tickbox.Web.Models\Tickbox.Web.Models.csproj">
+      <Project>{A359F58A-E501-40F1-BD97-DD2875E80AC3}</Project>
+      <Name>Tickbox.Web.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,106 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter type="System.String" name="package" #>
+<#@ parameter type="System.String" name="enumName" #>
+<#@ parameter type="System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.GenEnumItem>" name="enumValues" #>
+<#@ parameter type="System.Boolean" name="hasDescriptions" #>
+
+	// this is a generated file from the "Tool.GenerateJava" project in .Net, please do not edit directly
+
+package <#= package #>;
+
+<# if (hasDescriptions) { #>
+	import java.util.Arrays;
+	import java.util.EnumSet;
+
+	import com.google.gwt.user.client.ui.ListBox;
+	<# } #>
+
+
+
+import tickbox.web.shared.util.NullableEnum;
+import com.google.gwt.user.client.Window;
+
+public enum <#= enumName #> {
+	
+<#
+	//Google(101, "Google Adwords"),
+	//Bing(102, "Bing Ads");
+	var index = 0;
+	foreach(var d in enumValues) {
+	#>
+	<#= d.Name #>(<#= d.Value #><#= hasDescriptions ? string.Format(",\"{0}\"", d.Description.Replace("\"", "\\\"")) : "" #>)<#= enumValues.Count -1 == index ? ";" : "," #>
+	<#
+	index++;
+	}
+#>
+
+	
+    private final int mVal;
+	<# if (hasDescriptions) { #>private final String mDescription;
+	<# } #>
+
+    private <#= enumName #>(int val<# if (hasDescriptions) { #>, String description<# } #>) {
+    	mVal = val;
+    	<# if (hasDescriptions) { #>mDescription = description;
+<# } #>
+    }
+    
+    public int getValue() {
+    	return mVal;
+    }
+	
+<# if (hasDescriptions) { #>
+	public String getDescription() {
+		return mDescription;
+	}
+<# } #>
+
+	public static <#= enumName #> fromValue(int val) {
+		for (<#= enumName #> b : <#= enumName #>.values()) {
+			if (val == b.mVal) {
+				return b;
+			}
+		}
+		Window.alert("Unknown <#= enumName #>: " + String.valueOf(val));
+		return null;
+	}
+
+	
+	public static NullableEnum<<#= enumName #>> fromValue(String valStr) {
+		if ("".equals(valStr) || "0".equals(valStr)) {
+			return new NullableEnum<<#= enumName #>>();
+		}
+		int val = Integer.parseInt(valStr);
+		for (<#= enumName #> b : <#= enumName #>.values()) {
+			if (val == b.mVal) {
+				return new NullableEnum<<#= enumName #>>(b);
+			}
+		}
+		Window.alert("Unknown <#= enumName #>: " + String.valueOf(val));
+		return null;
+	}
+
+	<# if (hasDescriptions) { #>
+	public static void fillDropdown(ListBox target){
+		fillDropdown(target, new <#= enumName #>[0]);
+	}
+
+	public static void fillDropdown(ListBox target, <#= enumName #>[] ignore){
+		
+		EnumSet<<#= enumName #>> toIgnore = EnumSet.copyOf(Arrays.asList(ignore));		
+		target.clear();
+		for(<#= enumName #> v : <#= enumName #>.values()){
+			if(!toIgnore.contains(v)){				
+				target.addItem(v.getDescription(), String.valueOf(v.getValue()));
+			}
+		}
+	}
+	<# } #>
+
+	
+}
+

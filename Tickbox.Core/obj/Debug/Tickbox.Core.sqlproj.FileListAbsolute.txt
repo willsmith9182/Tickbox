@@ -1,6 +1,0 @@
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\bin\Debug\Tickbox.Core.dacpac
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\bin\Debug\Tickbox.Core_Create.sql
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\bin\Debug\Tickbox.Core.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\bin\Debug\Tickbox.Core.pdb
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\obj\Debug\Tickbox.Core.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\Tickbox.Core\obj\Debug\Tickbox.Core.pdb

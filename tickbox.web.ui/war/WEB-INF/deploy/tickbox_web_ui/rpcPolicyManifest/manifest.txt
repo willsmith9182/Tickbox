@@ -1,0 +1,3 @@
+# Module tickbox_web_ui
+# RPC service class, partial path of RPC policy file
+tickbox.web.ui.client.GreetingService, E68A8999BEE2AD261252A78AA336AFF8.gwt.rpc

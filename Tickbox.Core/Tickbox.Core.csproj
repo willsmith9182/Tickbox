@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B5274BE-C0F5-4087-9247-7FF3FAD1617E}</ProjectGuid>
+    <ProjectGuid>{33232AE7-A76D-4563-AF03-F3DBFD93D3E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tickbox.Core</RootNamespace>
@@ -30,14 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mehdime.Entity">
+    <Reference Include="Mehdime.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -49,22 +52,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
+    <Compile Include="DataAccess\DbContextFactroy.cs" />
+    <Compile Include="DataAccess\IRepo.cs" />
+    <Compile Include="DataAccess\RepoBase.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Exceptions\DatabaseNotRegisteredException.cs" />
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\ICacheFactory.cs" />
+    <Compile Include="IoCModule.cs" />
+    <Compile Include="Notifications\Definitions\Implementations\DebugNotification.cs" />
+    <Compile Include="Notifications\Definitions\Implementations\ErrorNotification.cs" />
+    <Compile Include="Notifications\Definitions\Implementations\InfoNotification.cs" />
+    <Compile Include="Notifications\Definitions\Implementations\SuccessNotification.cs" />
+    <Compile Include="Notifications\Definitions\Notification.cs" />
+    <Compile Include="Notifications\Notifier\INotify.cs" />
+    <Compile Include="Notifications\Notifier\Notifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TickBox.Data\TickBox.Data.csproj">
-      <Project>{790149B0-7773-43B3-A0CB-95D66779B78B}</Project>
-      <Name>TickBox.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TickBox.Objects\TickBox.Objects.csproj">
-      <Project>{CBA2A88C-79B8-4091-A69C-A90EEC6DC12B}</Project>
-      <Name>TickBox.Objects</Name>
-    </ProjectReference>
+    <Compile Include="Scaffold\DisabledScaffoldingProvider.cs" />
+    <Compile Include="Scaffold\IScaffoldDefinition.cs" />
+    <Compile Include="Scaffold\IScaffoldingProvider.cs" />
+    <Compile Include="Scaffold\ScaffoldDefinition.cs" />
+    <Compile Include="Scaffold\ScaffoldingProvider.cs" />
+    <Compile Include="Service\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tickbox.DatabaseApi\Tickbox.DatabaseApi.csproj">
+      <Project>{129728DC-3DC1-47CD-AE8A-AD75A528DC24}</Project>
+      <Name>Tickbox.DatabaseApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,32 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{790149B0-7773-43B3-A0CB-95D66779B78B}</ProjectGuid>
+    <ProjectGuid>{DC30004E-3CA2-48AF-897C-2015EB69E3A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TickBox.Data</RootNamespace>
-    <AssemblyName>TickBox.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Tickbox.Data</RootNamespace>
+    <AssemblyName>Tickbox.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,29 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Configuration, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc3.2.6.3.862\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Mehdime.Entity">
+    <Reference Include="Mehdime.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,106 +51,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ContextProvider.cs" />
-    <Compile Include="Context\IContextProvider.cs" />
-    <Compile Include="Context\TickBoxModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TickBoxModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infrastructure\IoC\IoCModule.cs" />
-    <Compile Include="Model\TickBox.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TickBox.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Node.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\NodeSpecialism.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
+    <Compile Include="IoCModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\ScaffoldRepository.cs" />
-    <Compile Include="Context\Specialism.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Taxonomy.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Template.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\TickBox.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Context\TreeNode.cs">
-      <DependentUpon>TickBox.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UnitOfWork\EFUnitOfWork.cs" />
+    <Compile Include="Repository\INodeRepo.cs" />
+    <Compile Include="Repository\NodeRepo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="Context\TickBoxModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TickBoxModel.Context.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <EntityDeploy Include="Model\TickBox.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TickBox.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Settings.StyleCop" />
-    <None Include="Context\TickBox.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TickBox.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
-      <Visible>False</Visible>
-      <ProductName>SQL Server 2008 Express</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 4.5</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TickBox.Objects\TickBox.Objects.csproj">
-      <Project>{CBA2A88C-79B8-4091-A69C-A90EEC6DC12B}</Project>
-      <Name>TickBox.Objects</Name>
+    <ProjectReference Include="..\Tickbox.Core\Tickbox.Core.csproj">
+      <Project>{33232AE7-A76D-4563-AF03-F3DBFD93D3E8}</Project>
+      <Name>Tickbox.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\Tickbox.DatabaseApi\Tickbox.DatabaseApi.csproj">
+      <Project>{129728DC-3DC1-47CD-AE8A-AD75A528DC24}</Project>
+      <Name>Tickbox.DatabaseApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

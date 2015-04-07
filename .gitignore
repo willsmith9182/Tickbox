@@ -6,3 +6,5 @@ TickboxDatabase/obj/*
 .metadata/*
 packages/*
 packages/**
+*/bin/*
+*/obj/*

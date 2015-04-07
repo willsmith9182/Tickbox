@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="7d2e2ee6-68a5-4175-a312-f0e0b84a65ee" ChangeDateTime="04/07/2015 18:10:09">
+    <Property Name="ElementName" Value="[dbo].[MasterTemplates].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MasterTemplates]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MasterTemplateId" />
+  </Operation>
+</Operations>

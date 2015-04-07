@@ -1,0 +1,121 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter type="System.String" name="package" #>
+<#@ parameter type="System.String" name="className" #>
+<#@ parameter type="System.String" name="dtoPackage" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="imports" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="properties" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="customCode" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="customImports" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="constructorCode" #>
+<#@ parameter type="System.String" name="constructorParams" #>
+<#@ parameter type="System.String" name="fromDtoConstrArgs" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="fromDtoSetStmts" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="toDtoSetStmts" #>
+<#@ parameter type="System.String" name="relFactoryNamespace" #>
+
+
+	// this is a generated file from the "Tool.GenerateJava" project in .Net, please do not edit directly
+
+package <#= package #>;
+
+//*** Start Custom imports ***
+<#
+	foreach(var cc in customImports) {
+		#><#= cc #>
+<#
+	}
+#>//*** End Custom imports ***
+
+import <#= dtoPackage #>.I<#= className #>;
+import tickbox.web.shared.util.ObjFactory;
+<#
+	foreach(var import in imports) {
+		#>import <#= import #>;
+<#
+	}
+#>
+
+
+
+
+public class <#= className #>Tm {
+
+//*** Start Custom code block ***
+<#
+	foreach(var cc in customCode) {
+		#><#= cc #>
+<#
+	}
+#>//*** End Custom code block ***
+
+
+	public <#= className #>Tm(<#= constructorParams #>) {
+<#
+	foreach(var cc in constructorCode) {
+		#><#= cc #>
+<#
+	}
+#>
+
+		init();
+	}
+	
+
+
+<#
+	foreach(var p in properties) {
+		#><#= p #>
+<#
+	}
+#>
+
+
+
+	public void setFrom(I<#= className #> dto) {
+		if (dto == null) {
+			dto = ObjFactory.dto()<#= relFactoryNamespace #>.newI<#= className #>();
+		}
+		
+
+		copy(dto, this);
+	}
+	
+	public static void copy(I<#= className #> from, <#= className #>Tm to) {	
+<#
+	foreach(var p in fromDtoSetStmts) {
+		#><#= p #>
+<#
+	}
+#>
+	}
+	
+
+	public static <#= className #>Tm fromDto(I<#= className #> dto) {
+		if (dto == null) {
+			return null;
+		}
+		<#= className #>Tm result = new <#= className #>Tm(<#= fromDtoConstrArgs #>);
+		
+		copy(dto, result);
+		
+		return result;
+	}
+	
+	public I<#= className #> toDto() {
+		I<#= className #> result = ObjFactory.dto()<#= relFactoryNamespace #>.newI<#= className #>();
+		
+<#
+	foreach(var p in toDtoSetStmts) {
+		#><#= p #>
+<#
+	}
+#>
+		
+		return result;
+	}
+
+}

@@ -1,5 +1,0 @@
-c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\AutoTest.Net\_tmpIntermediateAT\ResolveAssemblyReference.cache
-c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\AutoTest.Net\_tmpIntermediateAT\KnockoutObjects.dll
-c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\AutoTest.Net\_tmpIntermediateAT\KnockoutObjects.pdb
-c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\AutoTest.Net\KnockoutObjects.dll
-c:\users\wjjs2\documents\visual studio 2010\Projects\KnockoutObjects\KnockoutObjects\bin\AutoTest.Net\KnockoutObjects.pdb

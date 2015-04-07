@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{05D1BA4B-DB60-4106-BA9B-1D773BBB5E7B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tool.GenerateJava</RootNamespace>
+    <AssemblyName>Tool.GenerateJava</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>..\packages\Mono.Cecil.0.9.5.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GenerateModel\GenClass.cs" />
+    <Compile Include="GenerateModel\GenEnum.cs" />
+    <Compile Include="GenerateModel\GenEnumItem.cs" />
+    <Compile Include="GenerateModel\GenPackage.cs" />
+    <Compile Include="GenerateModel\GenProperty.cs" />
+    <Compile Include="GenerateModel\IDatatypeGenerator.cs" />
+    <Compile Include="GenerateModel\JavaClassTemplate.cs">
+      <DependentUpon>JavaClassTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GenerateModel\JavaClassTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaEnumTemplate.cs">
+      <DependentUpon>JavaEnumTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="GenerateModel\JavaEnumTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaFactoryGwtTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaFactoryGwtTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaFactoryGwtTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaFactoryInterfaceTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaFactoryInterfaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaFactoryInterfaceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaInterfaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaInterfaceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaInterfaceTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaStubTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaStubTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaStubTemplateCustom.cs" />
+    <Compile Include="GenerateModel\JavaTModelClassTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaTModelClassTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaTModelClassTemplateCustom.cs" />
+    <Compile Include="GenerateModel\ModelGenerator.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\BooleanPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\BytePGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\EnumerableLocalClassPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\EnumPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\LocalClassArrayPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\DateKeyPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\DateTimeOffsetPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\DateTimePGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NumberPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\EnumArrayPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\Int16PGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\Int32ArrayPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\Int32PGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\LocalClassPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\LongPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullBooleanPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullDateKeyPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullDateTimeOffsetPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullDateTimePGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullEnumPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullInt32PGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullLongPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NullNumberPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\NumberArrayPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\ObjectPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\DtGenUtil.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\DatatypeGeneratorFactory.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\StringArrayPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\StringPGen.cs" />
+    <Compile Include="GenerateModel\DatatypeGenerators\UnsupportedPGen.cs" />
+    <Compile Include="GenerateModel\PackageName.cs" />
+    <Compile Include="GenerateWebApi\ClassNamePair.cs" />
+    <Compile Include="GenerateWebApi\GenWebClass.cs" />
+    <Compile Include="GenerateWebApi\GenWebMethod.cs" />
+    <Compile Include="GenerateWebApi\JavaClassTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaClassTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateWebApi\JavaClassTemplateCustom.cs" />
+    <Compile Include="GenerateWebApi\JavaFactoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaFactoryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateWebApi\JavaFactoryTemplateCustom.cs" />
+    <Compile Include="GenerateWebApi\JavaInterfaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaInterfaceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateWebApi\JavaInterfaceTemplateCustom.cs" />
+    <Compile Include="GenerateWebApi\WebApiGenerator.cs" />
+    <Compile Include="GenerateWebApi\WebGenParam.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="GenerateModel\JavaClassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaClassTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaEnumTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaEnumTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaFactoryGwtTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFactoryGwtTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaFactoryInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFactoryInterfaceTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaInterfaceTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>JavaInterfaceTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaStubTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaStubTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateModel\JavaTModelClassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaTModelClassTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateWebApi\JavaClassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaClassTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateWebApi\JavaFactoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFactoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="GenerateWebApi\JavaInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaInterfaceTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter type="System.String" name="package" #>
+<#@ parameter type="System.String" name="endPackageName" #>
+<#@ parameter type="System.Collections.Generic.List<System.String>" name="classNames" #>
+<#@ parameter type="System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.PackageName>" name="subPackageNames" #>
+
+	// this is a generated file from the "Tool.GenerateJava" project in .Net, please do not edit directly
+
+package <#= package #>;
+
+<# foreach(var p in subPackageNames){ #>
+import <#= package #>.<#= p.LowerCase #>.I<#= p.MixCase #>ObjFactory;
+<# } #>
+
+
+public interface I<#= endPackageName #>ObjFactory {
+<# foreach(string c in classNames){ #>
+	I<#= c #> newI<#= c #>();
+<# } #>
+
+<# foreach(var p in subPackageNames){ #>	
+	I<#= p.MixCase #>ObjFactory <#= p.LowerCase #>();
+<# } #>
+	
+}

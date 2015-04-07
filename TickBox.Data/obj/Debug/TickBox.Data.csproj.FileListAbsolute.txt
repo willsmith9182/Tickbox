@@ -1,42 +1,15 @@
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.pdb
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\Autofac.Configuration.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\Autofac.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\Autofac.Integration.Mvc.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\EntityFramework.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\TickBox.Objects.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\TickBox.Objects.pdb
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\Autofac.xml
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\EntityFramework.xml
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\obj\Debug\TickBox.Data.dll
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\obj\Debug\TickBox.Data.pdb
-C:\Users\Will\Documents\Visual Studio 2010\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.dll.config
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\TickBox.Data.dll.config
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\TickBox.Data.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\TickBox.Data.pdb
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\Autofac.Configuration.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\Autofac.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\Autofac.Integration.Mvc.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\EntityFramework.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\TickBox.Objects.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\TickBox.Objects.pdb
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\Autofac.xml
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\bin\Debug\EntityFramework.xml
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\obj\Debug\TickBox.Data.dll
-C:\Users\Will\Documents\Visual Studio 2010\Projects\TickBox\TickBox.Data\obj\Debug\TickBox.Data.pdb
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.dll.config
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\TickBox.Data.pdb
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\Autofac.Configuration.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\Autofac.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\Autofac.Integration.Mvc.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\EntityFramework.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\TickBox.Objects.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\TickBox.Objects.pdb
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\Autofac.xml
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\bin\Debug\EntityFramework.xml
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\obj\Debug\TickBox.Data.csprojResolveAssemblyReference.cache
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\obj\Debug\TickBox.Data.dll
-C:\Users\william.smith\Documents\Tickbox\Tickbox\TickBox.Data\obj\Debug\TickBox.Data.pdb
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.Data.dll.config
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.Data.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.Data.pdb
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Autofac.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\EntityFramework.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Mehdime.Entity.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.Core.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.DatabaseApi.dll
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.Core.pdb
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Tickbox.DatabaseApi.pdb
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\Autofac.xml
+E:\Git\Tickbox\Tickbox.Data\bin\Debug\EntityFramework.xml
+E:\Git\Tickbox\Tickbox.Data\obj\Debug\Tickbox.Data.csprojResolveAssemblyReference.cache
+E:\Git\Tickbox\Tickbox.Data\obj\Debug\Tickbox.Data.dll
+E:\Git\Tickbox\Tickbox.Data\obj\Debug\Tickbox.Data.pdb
