@@ -18,9 +18,9 @@ namespace Tool.GenerateJava.GenerateModel
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
+    #line 1 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class JavaInterfaceTemplate : JavaInterfaceTemplateBase
+    public partial class JavaFactoryStubTemplate : JavaFactoryStubTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,75 +28,180 @@ namespace Tool.GenerateJava.GenerateModel
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n\r\n\r\n\t// this is a generated file from the \"Tool.GenerateJava\" project in .Net, " +
-                    "please do not edit directly\r\n\r\npackage ");
+            this.Write("\r\n\t// this is a generated file from the \"Tool.GenerateJava\" project in .Net, plea" +
+                    "se do not edit directly\r\n\r\npackage ");
             
-            #line 15 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
+            #line 13 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(package));
             
             #line default
             #line hidden
             this.Write(";\r\n\r\n");
             
-            #line 17 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-
-	foreach(var import in imports) {
-		
+            #line 15 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ foreach(var p in subPackageNames){ 
             
             #line default
             #line hidden
             this.Write("import ");
             
-            #line 19 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(import));
+            #line 16 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(package));
             
             #line default
             #line hidden
-            this.Write(";\r\n");
+            this.Write(".");
             
-            #line 20 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-
-	}
-
+            #line 16 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.LowerCase));
             
             #line default
             #line hidden
-            this.Write("\r\n\r\npublic interface ");
+            this.Write(".");
             
-            #line 25 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(interfaceName));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n");
-            
-            #line 26 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-
-	foreach(var meth in javaMethods) {
-
+            #line 16 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.MixCase));
             
             #line default
             #line hidden
+            this.Write("ObjFactoryStub;\r\nimport ");
             
-            #line 28 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(meth));
+            #line 17 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(package));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 17 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.LowerCase));
+            
+            #line default
+            #line hidden
+            this.Write(".I");
+            
+            #line 17 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.MixCase));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactory;\r\n");
+            
+            #line 18 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\npublic class ");
+            
+            #line 21 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(endPackageName));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactoryStub implements I");
+            
+            #line 21 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(endPackageName));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactory {\r\n\r\n\t\r\n");
+            
+            #line 24 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ foreach(string c in classNames){ 
+            
+            #line default
+            #line hidden
+            this.Write("\t@Override public I");
+            
+            #line 25 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c));
+            
+            #line default
+            #line hidden
+            this.Write(" newI");
+            
+            #line 25 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c));
+            
+            #line default
+            #line hidden
+            this.Write("() { return new Stub");
+            
+            #line 25 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c));
+            
+            #line default
+            #line hidden
+            this.Write("(); }\r\n");
+            
+            #line 26 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 29 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
-
-	}
-
+            #line 28 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ foreach(var p in subPackageNames){ 
             
             #line default
             #line hidden
-            this.Write("}");
+            this.Write("\t\r\n\tpublic I");
+            
+            #line 29 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.MixCase));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactory _");
+            
+            #line 29 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.LowerCase));
+            
+            #line default
+            #line hidden
+            this.Write(" = new ");
+            
+            #line 29 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.MixCase));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactoryStub();\r\n\t@Override public I");
+            
+            #line 30 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.MixCase));
+            
+            #line default
+            #line hidden
+            this.Write("ObjFactory ");
+            
+            #line 30 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.LowerCase));
+            
+            #line default
+            #line hidden
+            this.Write("() { return _");
+            
+            #line 30 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.LowerCase));
+            
+            #line default
+            #line hidden
+            this.Write("; }\r\n");
+            
+            #line 31 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaInterfaceTemplate.tt"
+        #line 1 "D:\Lat Projects\WL_Main\Tool.GenerateJava\GenerateModel\JavaFactoryStubTemplate.tt"
 
 private string _packageField;
 
@@ -111,42 +216,42 @@ private string package
     }
 }
 
-private string _interfaceNameField;
+private string _endPackageNameField;
 
 /// <summary>
-/// Access the interfaceName parameter of the template.
+/// Access the endPackageName parameter of the template.
 /// </summary>
-private string interfaceName
+private string endPackageName
 {
     get
     {
-        return this._interfaceNameField;
+        return this._endPackageNameField;
     }
 }
 
-private global::System.Collections.Generic.List<System.String> _importsField;
+private global::System.Collections.Generic.List<System.String> _classNamesField;
 
 /// <summary>
-/// Access the imports parameter of the template.
+/// Access the classNames parameter of the template.
 /// </summary>
-private global::System.Collections.Generic.List<System.String> imports
+private global::System.Collections.Generic.List<System.String> classNames
 {
     get
     {
-        return this._importsField;
+        return this._classNamesField;
     }
 }
 
-private global::System.Collections.Generic.List<System.String> _javaMethodsField;
+private global::System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.PackageName> _subPackageNamesField;
 
 /// <summary>
-/// Access the javaMethods parameter of the template.
+/// Access the subPackageNames parameter of the template.
 /// </summary>
-private global::System.Collections.Generic.List<System.String> javaMethods
+private global::System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.PackageName> subPackageNames
 {
     get
     {
-        return this._javaMethodsField;
+        return this._subPackageNamesField;
     }
 }
 
@@ -172,46 +277,46 @@ if ((packageValueAcquired == false))
         this._packageField = ((string)(data));
     }
 }
-bool interfaceNameValueAcquired = false;
-if (this.Session.ContainsKey("interfaceName"))
+bool endPackageNameValueAcquired = false;
+if (this.Session.ContainsKey("endPackageName"))
 {
-    this._interfaceNameField = ((string)(this.Session["interfaceName"]));
-    interfaceNameValueAcquired = true;
+    this._endPackageNameField = ((string)(this.Session["endPackageName"]));
+    endPackageNameValueAcquired = true;
 }
-if ((interfaceNameValueAcquired == false))
+if ((endPackageNameValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("interfaceName");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("endPackageName");
     if ((data != null))
     {
-        this._interfaceNameField = ((string)(data));
+        this._endPackageNameField = ((string)(data));
     }
 }
-bool importsValueAcquired = false;
-if (this.Session.ContainsKey("imports"))
+bool classNamesValueAcquired = false;
+if (this.Session.ContainsKey("classNames"))
 {
-    this._importsField = ((global::System.Collections.Generic.List<System.String>)(this.Session["imports"]));
-    importsValueAcquired = true;
+    this._classNamesField = ((global::System.Collections.Generic.List<System.String>)(this.Session["classNames"]));
+    classNamesValueAcquired = true;
 }
-if ((importsValueAcquired == false))
+if ((classNamesValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("imports");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("classNames");
     if ((data != null))
     {
-        this._importsField = ((global::System.Collections.Generic.List<System.String>)(data));
+        this._classNamesField = ((global::System.Collections.Generic.List<System.String>)(data));
     }
 }
-bool javaMethodsValueAcquired = false;
-if (this.Session.ContainsKey("javaMethods"))
+bool subPackageNamesValueAcquired = false;
+if (this.Session.ContainsKey("subPackageNames"))
 {
-    this._javaMethodsField = ((global::System.Collections.Generic.List<System.String>)(this.Session["javaMethods"]));
-    javaMethodsValueAcquired = true;
+    this._subPackageNamesField = ((global::System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.PackageName>)(this.Session["subPackageNames"]));
+    subPackageNamesValueAcquired = true;
 }
-if ((javaMethodsValueAcquired == false))
+if ((subPackageNamesValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("javaMethods");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("subPackageNames");
     if ((data != null))
     {
-        this._javaMethodsField = ((global::System.Collections.Generic.List<System.String>)(data));
+        this._subPackageNamesField = ((global::System.Collections.Generic.List<Tool.GenerateJava.GenerateModel.PackageName>)(data));
     }
 }
 
@@ -232,7 +337,7 @@ if ((javaMethodsValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class JavaInterfaceTemplateBase
+    public class JavaFactoryStubTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

@@ -59,7 +59,7 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
         public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
         {
             //            yield return "static org.tessell.model.properties.NewProperty.integerProperty";
-            yield return "tickbox.web.shared.utilNumberProperty";
+            yield return "latitude.gwt.tessellshared.client.tessell.NumberProperty";
             //yield return "org.tessell.model.validation.rules.Range";
             yield return "org.tessell.model.validation.rules.Required";
             yield return "org.tessell.model.values.SetValue";

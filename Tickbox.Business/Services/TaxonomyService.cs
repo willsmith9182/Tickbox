@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Mehdime.Entity;
 using Tickbox.Core.Service;
 using Tickbox.Data.Repository;
-using Tickbox.DatabaseApi;
 using Tickbox.Web.Models.Request;
 
 namespace Tickbox.Business.Services
@@ -33,7 +27,7 @@ namespace Tickbox.Business.Services
 
     public interface INodeService
     {
-        void Create(CreateNodeRequest req);
+        void Create(CreateNode req);
     }
 
     public class NodeService : ServiceBase, INodeService
@@ -42,25 +36,11 @@ namespace Tickbox.Business.Services
         private readonly ISpecialismRepo _specialismRepo;
 
 
-        public void Create(CreateNodeRequest req)
+        public void Create(CreateNode req)
         {
             using (var scope = ScopeFactory.CreateWithTransaction(IsolationLevel.ReadCommitted))
             {
-                var specialisms = _specialismRepo.Find(s => req.Sepcialisms.Contains(s.SpecialismId)).ToList();
-                var nodeSpeiclaisms = specialisms.Select(s => new NodeSpecialism
-                {
-                    Specialism = s,
-                    SpecialismId = s.SpecialismId
-                }).ToList();
-                var newNode = new Node
-                {
-                  NodeSpecialism = nodeSpeiclaisms,
-                  ChildrenMultiSelect = req.ChildrenMultiSelect,
-                  NodeDesc = req.NodeDesc,
-                  NodeTitle = req.NodeTitle
-                };
-                _nodeRepo.Add(newNode);
-
+                
                 scope.SaveChanges();
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using Mono.Cecil;
 using Mono.Cecil.Rocks;
 using Tool.GenerateJava.GenerateModel;
@@ -335,10 +336,10 @@ namespace Tool.GenerateJava.GenerateWebApi
         }
 
 
-        private static IEnumerable<TypeDefinition> GetTypes(string fileName,string fileNamespace)
+        private static IEnumerable<TypeDefinition> GetTypes(string fileName)
         {
-            var module = AssemblyDefinition.ReadAssembly(fileName);
-            return module.MainModule.Types.Where(t=> t.IsPublic && t.Namespace.Contains(fileNamespace)).Where(type => type.IsPublic);
+            var module = ModuleDefinition.ReadModule(fileName);
+            return module.Types.Where(type => type.IsPublic);
         }
 
         private static IEnumerable<GenWebClass> ReadClasses(string assemblyPath, string sourceNamespace, string sourceModelNamespace)
@@ -350,10 +351,9 @@ namespace Tool.GenerateJava.GenerateWebApi
             //                      && t.Name.StartsWith("<")
             //                select t)
             //                .ToList();
-            
 
 
-            return from t in GetTypes(assemblyPath,sourceNamespace)
+            return from t in GetTypes(assemblyPath)
                 where (t.Namespace ?? "").StartsWith(sourceNamespace)
                       && !t.IsNested
                       && t.IsClass

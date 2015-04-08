@@ -104,7 +104,7 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
         public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
         {
             yield return "tickbox.web.shared.util.DateOnly";
-            yield return "tickbox.web.shared.utilDateOnlyProperty";
+            yield return "latitude.gwt.tessellshared.client.tessell.DateOnlyProperty";
             yield return "org.tessell.model.values.SetValue";
             yield return "tickbox.web.shared.util.NullableDate";
 //            yield return "org.tessell.model.validation.rules.Required";

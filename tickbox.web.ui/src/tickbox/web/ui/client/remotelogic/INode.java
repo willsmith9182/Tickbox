@@ -6,7 +6,7 @@
 package tickbox.web.ui.client.remotelogic;
 
 import com.google.gwt.http.client.Request;
-import tickbox.web.shared.dto.request.ICreateNodeRequest;
+import tickbox.web.shared.dto.request.ICreateNode;
 import tickbox.web.shared.util.IRequestVoid;
 
 
@@ -14,7 +14,7 @@ import tickbox.web.shared.util.IRequestVoid;
 public interface INode {
 	
 
-	public Request createNode(ICreateNodeRequest params, IRequestVoid req);
+	public Request createNode(ICreateNode params, IRequestVoid req);
 
 
 

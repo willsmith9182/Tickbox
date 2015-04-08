@@ -10,7 +10,7 @@ namespace Tickbox.Web.Controllers
         private readonly INodeService _nodeService;
 
         [HttpPost]
-        public void CreateNode(CreateNodeRequest req)
+        public void CreateNode(CreateNode req)
         {
             _nodeService.Create(req);
         }

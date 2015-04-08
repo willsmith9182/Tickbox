@@ -84,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JavaFactoryInterfaceTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenerateModel\JavaFactoryStubTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaFactoryStubTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateModel\JavaFactoryStubTemplateCustom.cs" />
     <Compile Include="GenerateModel\JavaInterfaceTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +140,7 @@
     <Compile Include="GenerateModel\DatatypeGenerators\StringPGen.cs" />
     <Compile Include="GenerateModel\DatatypeGenerators\UnsupportedPGen.cs" />
     <Compile Include="GenerateModel\PackageName.cs" />
+    <Compile Include="GenerateModel\TessellModelGenerator.cs" />
     <Compile Include="GenerateWebApi\ClassNamePair.cs" />
     <Compile Include="GenerateWebApi\GenWebClass.cs" />
     <Compile Include="GenerateWebApi\GenWebMethod.cs" />
@@ -178,8 +185,12 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>JavaFactoryInterfaceTemplate.cs</LastGenOutput>
     </None>
+    <None Include="GenerateModel\JavaFactoryStubTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFactoryStubTemplate.cs</LastGenOutput>
+    </None>
     <None Include="GenerateModel\JavaInterfaceTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>JavaInterfaceTemplate.cs</LastGenOutput>
     </None>
     <None Include="GenerateModel\JavaStubTemplate.tt">
@@ -206,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

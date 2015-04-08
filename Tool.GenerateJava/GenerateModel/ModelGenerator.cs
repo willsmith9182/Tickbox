@@ -17,19 +17,15 @@ namespace Tool.GenerateJava.GenerateModel
             var sourceNamespace = args[2];
             var destDtoSrcDirectory = args[3];
             var destDtoPackage = args[4];
-            // var destTModelSrcDirectory = args[5];
-            //var destTModelPackage = args[6];
 
             var destDtoDirectory = Path.Combine(destDtoSrcDirectory, PackageToDirectory(destDtoPackage));
 
             var classes = ReadClasses(assemblyPath, sourceNamespace)
                 .ToList();
-            
+
             RemoveDateTimePropertiesWithMatchingDateKeyProperty(classes);
             MakeIEnumerableReadOnly(classes);
-
-            var packagesAndClasses = ConvertToPackagesAndClasses(classes);
-
+            
             var enums = ReadEnums(assemblyPath, sourceNamespace)
                 .ToList();
 
@@ -97,37 +93,7 @@ namespace Tool.GenerateJava.GenerateModel
                     destDtoDirectory + string.Join("", c.RelativeDotNetNamespace.Select(s => "\\" + s)).ToLowerInvariant(),
                     string.Format("I{0}.java", c.Name));
 
-
-
-
-                var stubTemplate = new JavaStubTemplate
-                {
-                    ClassName = c.Name,
-                    Imports = genDatatypes
-                        .SelectMany(p => p.Generator.GenerateStubImports(sourceNamespace, c.RelativeDotNetNamespace, destDtoPackage))
-                        .Where(i => i != null)
-                        .Distinct()
-                        .ToList(),
-                    JavaMethods = genDatatypes
-                        .SelectMany(p => p.Generator.GenerateStubPropertyMethods(sourceNamespace, c))
-                        .Where(p => p != null)
-                        .ToList(),
-                    Package =
-                        destDtoPackage + string.Join("", c.RelativeDotNetNamespace.Select(s => "." + s)).ToLowerInvariant()
-                };
-
-                var javaStubContents = stubTemplate.TransformText();
-                WriteToFile(javaStubContents,
-                    destDtoDirectory + string.Join("", c.RelativeDotNetNamespace.Select(s => "\\" + s)).ToLowerInvariant(),
-                    string.Format("Stub{0}.java", c.Name));
-
             }
-
-            //var destTModelDirectory = Path.Combine(destDirectory, PackageToDirectory(destTModelPackage));
-
-            GeneratePackageFactories(destDtoDirectory, destDtoPackage, packagesAndClasses.Classes,
-                packagesAndClasses.Packages);
-
 
             foreach (var e in enums)
             {
@@ -145,71 +111,8 @@ namespace Tool.GenerateJava.GenerateModel
                     destDtoDirectory + string.Join("", e.RelativeNamespace.Select(s => "\\" + s)).ToLowerInvariant(),
                     string.Format("{0}.java", e.Name));
             }
-
-           // TessellModelGenerator.Run(destTModelPackage, destTModelSrcDirectory, classes, destDtoPackage, sourceNamespace);
         }
-
-        private static void GeneratePackageFactories(string destDirectory, string destPackage, List<string> classes, List<GenPackage> subPackages)
-        {
-
-            var packageName = new PackageName(destPackage.Substring(destPackage.LastIndexOf('.') + 1));
-
-
-            classes = classes
-                .OrderBy(c => c)
-                .ToList();
-            var subPackageNames = subPackages
-                .Select(p => new PackageName(p.Name))
-                .ToList();
-
-            var classGwtTemplate = new JavaFactoryGwtTemplate()
-            {
-                EndPackageName = packageName.MixCase,
-                Package = destPackage,
-                ClassNames = classes,
-                SubPackageNames = subPackageNames
-            };
-            var javaGwtContents = classGwtTemplate.TransformText();
-            WriteToFile(javaGwtContents,
-                destDirectory,
-                string.Format("{0}ObjFactoryGwt.java", packageName.MixCase));
-
-
-            var classStubTemplate = new JavaFactoryStubTemplate()
-            {
-                EndPackageName = packageName.MixCase,
-                Package = destPackage,
-                ClassNames = classes,
-                SubPackageNames = subPackageNames
-            };
-            var javaStubContents = classStubTemplate.TransformText();
-            WriteToFile(javaStubContents,
-                destDirectory,
-                string.Format("{0}ObjFactoryStub.java", packageName.MixCase));
-
-
-            var classInterfaceTemplate = new JavaFactoryInterfaceTemplate()
-            {
-                EndPackageName = packageName.MixCase,
-                Package = destPackage,
-                ClassNames = classes,
-                SubPackageNames = subPackageNames
-            };
-            var javaInterfaceContents = classInterfaceTemplate.TransformText();
-            WriteToFile(javaInterfaceContents,
-                destDirectory,
-                string.Format("I{0}ObjFactory.java", packageName.MixCase));
-
-
-
-
-            foreach (var subP in subPackages)
-            {
-                GeneratePackageFactories(Path.Combine(destDirectory, subP.Name), destPackage + "." + subP.Name,
-                    subP.Classes, subP.Packages);
-            }
-        }
-
+        
         private class PackageAndClasses
         {
             public readonly List<GenPackage> Packages = new List<GenPackage>();
@@ -399,14 +302,14 @@ namespace Tool.GenerateJava.GenerateModel
 
         private static IEnumerable<GenClass> ReadClasses(string assemblyPath, string sourceNamespace)
         {
-            var assemb = Assembly.LoadFrom(assemblyPath);
+            var assemb = Assembly.LoadFile(assemblyPath);
 
             //            var test = (from t in assemb.GetTypes()
             //                where (t.Namespace ?? "").StartsWith(sourceNamespace)
             //                      && t.Name.StartsWith("<")
             //                select t)
             //                .ToList();
-         
+
             return from t in assemb.GetTypes()
                    where (t.Namespace ?? "").StartsWith(sourceNamespace)
                          && !t.IsNested

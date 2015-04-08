@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using Tool.GenerateJava.GenerateModel;
 using Tool.GenerateJava.GenerateWebApi;
@@ -19,7 +24,7 @@ namespace Tool.GenerateJava
                         @"D:\Lat Projects\WL_Main\Latitude.WhiteLabel.Models\bin\Release\Latitude.WhiteLabel.Models.dll",
                         "Latitude.WhiteLabel.Models",
                         @"D:\Lat Projects\WL_Main\Latitude.WhiteLabel.Models\obj\Debug\Temp",
-                        "latitude.gwt.shared.dto",
+                        "tickbox.web.shared.dto",
                         @"D:\Lat Projects\WL_Main\Latitude.WhiteLabel.Models\obj\Debug\TessellTemp",
                         "latitude.gwt.tessellshared.tmodel",
                     };
@@ -31,7 +36,7 @@ namespace Tool.GenerateJava
 //                        @"D:\Lat Projects\WL_SEO4SME\\latitude.seoportal.ui\src\latitude\seoportal\ui\client\remotelogic",
 //                        "latitude.seoportal.ui.client.remotelogic",
 //                        "Latitude.WhiteLabel.Models",
-//                        "latitude.gwt.shared.dto"
+//                        "tickbox.web.shared.dto"
 //                    };
 
 

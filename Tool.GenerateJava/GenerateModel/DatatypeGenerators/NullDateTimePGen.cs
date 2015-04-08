@@ -74,7 +74,7 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
         public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
         {
             yield return "tickbox.web.shared.util.DateTime";
-            yield return "tickbox.web.shared.utilDateTimeProperty";
+            yield return "latitude.gwt.tessellshared.client.tessell.DateTimeProperty";
             yield return "org.tessell.model.values.SetValue";
             yield return "tickbox.web.shared.util.NullableDate";
             //            yield return "org.tessell.model.validation.rules.Required";

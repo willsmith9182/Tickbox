@@ -4,7 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ parameter type="System.String" name="package" #>
-<#@ parameter type="System.String" name="className" #>
+<#@ parameter type="System.String" name="interfaceName" #>
 <#@ parameter type="System.Collections.Generic.List<System.String>" name="imports" #>
 <#@ parameter type="System.Collections.Generic.List<System.String>" name="javaMethods" #>
 
@@ -22,16 +22,11 @@ package <#= package #>;
 #>
 
 
-	// ---- this is a generated file, please do not edit directly -------
-public interface I<#= className #> {
-	
+public interface <#= interfaceName #> {
 <#
 	foreach(var meth in javaMethods) {
 #><#= meth #>
 <#
 	}
 #>
-
-
-
 }

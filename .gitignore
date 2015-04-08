@@ -5,3 +5,5 @@ packages/*
 .metadata/*
 
 
+*/bin
+*obj
