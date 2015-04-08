@@ -1,22 +1,22 @@
 namespace Tickbox.Core.Notifications.Definitions
 {
     /// <summary>
-    /// The notification type.
+    ///     The notification type.
     /// </summary>
     public enum NotificationType
     {
         /// <summary>
-        /// The error.
+        ///     The error.
         /// </summary>
         Error,
 
         /// <summary>
-        /// The warning.
+        ///     The warning.
         /// </summary>
         Info,
 
         /// <summary>
-        /// The success.
+        ///     The success.
         /// </summary>
         Success,
 

@@ -11,21 +11,19 @@ namespace Tickbox.Business.Services
         private readonly INodeRepo _nodeRepo;
         private readonly ISpecialismRepo _specialismRepo;
 
-
-        public void Create(CreateNode req)
-        {
-            using (var scope = ScopeFactory.CreateWithTransaction(IsolationLevel.ReadCommitted))
-            {
-                
-                scope.SaveChanges();
-            }
-        }
-
         public NodeService(IDbContextScopeFactory scopeFactory, INodeRepo nodeRepo, ISpecialismRepo specialismRepo)
             : base(scopeFactory)
         {
             _nodeRepo = nodeRepo;
             _specialismRepo = specialismRepo;
+        }
+
+        public void Create(CreateNode req)
+        {
+            using (var scope = ScopeFactory.CreateWithTransaction(IsolationLevel.ReadCommitted))
+            {
+                scope.SaveChanges();
+            }
         }
     }
 }

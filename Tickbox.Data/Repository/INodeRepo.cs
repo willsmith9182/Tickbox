@@ -5,6 +5,6 @@ namespace Tickbox.Data.Repository
 {
     public interface INodeRepo : IRepo<Node>
     {
-       // IList<NodeModel> GetNodes();
+        
     }
 }

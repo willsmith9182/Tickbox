@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="CacheFactory.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-using System.Web;
+﻿using System.Web;
 using Tickbox.Core.Cache;
 using Tickbox.Core.Web.Session;
 
@@ -23,7 +17,7 @@ namespace Tickbox.Core.Web.Cache
 
         public ICache<T> CreateCache<T>(string sessionKey) where T : class, new()
         {
-            return new WebCache<T>(this.sessionStore, sessionKey);
+            return new WebCache<T>(sessionStore, sessionKey);
         }
 
         #endregion

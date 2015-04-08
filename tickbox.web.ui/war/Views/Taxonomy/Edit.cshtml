@@ -5,7 +5,8 @@
 @section PageHeader
 {
     <h2>
-        Edit Taxonomy Details</h2>
+        Edit Taxonomy Details
+    </h2>
 }
 @using (Html.BeginForm("Edit", "Taxonomy", FormMethod.Post))
 {
@@ -17,7 +18,7 @@
             @Html.LabelFor(model => model.AvailableTemplates)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(m => m.TemplateId, Model.AvailableTemplates, new { value = Model.TemplateId })
+            @Html.DropDownListFor(m => m.TemplateId, Model.AvailableTemplates, new {value = Model.TemplateId})
             @Html.ValidationMessageFor(model => model.Title)
         </div>
         <div class="editor-label">
@@ -33,22 +34,22 @@
         <div class="editor-field">
             <table>
                 <thead>
-                    <tr>
-                        <th>
-                            Link
-                        </th>
-                        <th>
-                            Specialism Name:
-                        </th>
-                    </tr>
+                <tr>
+                    <th>
+                        Link
+                    </th>
+                    <th>
+                        Specialism Name:
+                    </th>
+                </tr>
                 </thead>
                 <tbody>
-                    @Html.EditorFor( m=> m.AvailableSpecialisms)
+                @Html.EditorFor(m => m.AvailableSpecialisms)
                 </tbody>
             </table>
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save"/>
         </p>
     </fieldset>
 }

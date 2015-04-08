@@ -4,7 +4,7 @@ namespace Tickbox.Core.Notifications.Notifier
     {
         public NotfierVerbosityHolder()
         {
-            this.Level = NotificationLevel.Verbose;
+            Level = NotificationLevel.Verbose;
         }
 
         public NotificationLevel Level { get; set; }

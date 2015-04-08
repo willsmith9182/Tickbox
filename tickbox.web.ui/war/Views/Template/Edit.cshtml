@@ -5,7 +5,8 @@
 @section PageHeader
 {
     <h2>
-        Edit Template Details</h2>
+        Edit Template Details
+    </h2>
 }
 @using (Html.BeginForm("Edit", "Template", FormMethod.Post))
 {
@@ -28,10 +29,10 @@
             @Html.ValidationMessageFor(model => model.DocumentLink)
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save"/>
         </p>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Back", "Index","Home")
+    @Html.ActionLink("Back", "Index", "Home")
 </div>

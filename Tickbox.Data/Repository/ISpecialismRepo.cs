@@ -5,6 +5,6 @@ namespace Tickbox.Data.Repository
 {
     public interface ISpecialismRepo : IRepo<Specialism>
     {
-        // IList<NodeModel> GetNodes();
+        
     }
 }

@@ -5,6 +5,5 @@ namespace Tickbox.Data.Repository
 {
     public interface ITaxonomyRepo : IRepo<Taxonomy>
     {
-        
     }
 }

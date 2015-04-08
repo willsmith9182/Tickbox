@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Tickbox.Web.Models.Request
+﻿namespace Tickbox.Web.Models.Request
 {
     public class CreateTemplate
     {

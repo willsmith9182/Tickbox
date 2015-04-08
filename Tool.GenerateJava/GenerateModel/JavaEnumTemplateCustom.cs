@@ -4,27 +4,24 @@ namespace Tool.GenerateJava.GenerateModel
 {
     partial class JavaEnumTemplate
     {
-
-
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
 
         public string EnumName
         {
-            set { _enumNameField = value; }
+            set { enumName = value; }
         }
 
         public List<GenEnumItem> EnumValues
         {
-            set { _enumValuesField = value; }
+            set { enumValues = value; }
         }
 
         public bool HasDescriptions
         {
-            set { _hasDescriptionsField = value; }
+            set { hasDescriptions = value; }
         }
-
     }
 }

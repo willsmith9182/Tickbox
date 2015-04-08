@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 namespace Tickbox.Core.DataAccess
 {
     public interface IRepo<TSet>
-       where TSet : class
+        where TSet : class
     {
         // find methods
         // uses single or default
@@ -15,10 +15,8 @@ namespace Tickbox.Core.DataAccess
         IQueryable<TSet> Find(Expression<Func<TSet, bool>> pred);
         // where
         IQueryable<TSet> Find(Expression<Func<TSet, int, bool>> pred);
-
         void Add(TSet item);
         void Add(IEnumerable<TSet> items);
-
         void Remove(TSet item);
         void Remove(IEnumerable<TSet> items);
     }

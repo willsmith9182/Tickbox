@@ -6,7 +6,8 @@
 @section PageHeader
 {
     <h2>
-        Create New Template</h2>
+        Create New Template
+    </h2>
 }
 
 @using (Html.BeginForm("Create", "Template", FormMethod.Post))
@@ -29,10 +30,10 @@
             @Html.ValidationMessageFor(model => model.DocumentLink)
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create"/>
         </p>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Back", "Index","Home")
+    @Html.ActionLink("Back", "Index", "Home")
 </div>

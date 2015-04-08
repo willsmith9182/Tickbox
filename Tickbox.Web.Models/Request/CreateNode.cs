@@ -7,6 +7,5 @@ namespace Tickbox.Web.Models.Request
         public bool ChildrenMultiSelect { get; set; }
         public int TaxonomyId { get; set; }
         public int ParentTreeNodeId { get; set; }
-
     }
 }
