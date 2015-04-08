@@ -10,3 +10,4 @@ packages/*/*
 bin/
 *.dbmdl
 *Database.dbmdl
+TickboxDatabase/TickboxDatabase.dbmdl
