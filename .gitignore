@@ -9,3 +9,4 @@ packages/*/*
 *obj
 bin/
 *.dbmdl
+*Database.dbmdl
