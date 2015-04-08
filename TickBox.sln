@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Websites", "Websites", "{A5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService", "UserService", "{4AB3ADDB-D2A5-498F-8D07-4758A7F1A864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tickbox.System.UserService", "Tickbox.System.UserService\Tickbox.System.UserService.csproj", "{689C84F4-7F98-4788-B13E-4584A2D09720}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tickbox.UserService", "Tickbox.System.UserService\Tickbox.UserService.csproj", "{689C84F4-7F98-4788-B13E-4584A2D09720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
