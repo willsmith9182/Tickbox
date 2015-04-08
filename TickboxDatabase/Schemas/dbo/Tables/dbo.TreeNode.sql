@@ -4,7 +4,6 @@
 	TaxonomyId			INT			NOT NULL,
 	ParentTreeNodeId	INT			NULL,
 	NodeId				INT			NOT NULL,
-	IsScaffold			BIT			NOT NULL,
 
 	CONSTRAINT [PK_TreeNode]
 		PRIMARY KEY CLUSTERED (TreeNodeId),

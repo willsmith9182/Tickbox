@@ -23,7 +23,6 @@ namespace Tickbox.DatabaseApi
         public int TaxonomyId { get; set; }
         public int TemplateId { get; set; }
         public string Title { get; set; }
-        public bool IsScaffold { get; set; }
     
         public virtual Template Template { get; set; }
         public virtual ICollection<TreeNode> TreeNode { get; set; }

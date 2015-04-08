@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MasterTemplate.cs">
+      <DependentUpon>TickboxEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Node.cs">
       <DependentUpon>TickboxEntities.tt</DependentUpon>
     </Compile>

@@ -6,7 +6,6 @@
 	SequenceOrder				INT				NOT NULL,
 	Guidelines					VARCHAR(MAX)	NOT NULL,
 	DocumentLink				VARCHAR(MAX)	NOT NULL,
-	IsScaffold					BIT				NOT NULL,
 
 	CONSTRAINT [PK_NodeSpecilaism] 
 				PRIMARY KEY CLUSTERED (NodeSpecialismId),

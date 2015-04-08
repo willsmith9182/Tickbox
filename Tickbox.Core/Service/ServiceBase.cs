@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mehdime.Entity;
-using Tickbox.Core.Scaffold;
 
 namespace Tickbox.Core.Service
 {

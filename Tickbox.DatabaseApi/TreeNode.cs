@@ -16,18 +16,17 @@ namespace Tickbox.DatabaseApi
     {
         public TreeNode()
         {
-            this.TreeNode1 = new HashSet<TreeNode>();
+            this.Children = new HashSet<TreeNode>();
         }
     
         public int TreeNodeId { get; set; }
         public int TaxonomyId { get; set; }
         public Nullable<int> ParentTreeNodeId { get; set; }
         public int NodeId { get; set; }
-        public bool IsScaffold { get; set; }
     
         public virtual Node Node { get; set; }
         public virtual Taxonomy Taxonomy { get; set; }
-        public virtual ICollection<TreeNode> TreeNode1 { get; set; }
-        public virtual TreeNode TreeNode2 { get; set; }
+        public virtual ICollection<TreeNode> Children { get; set; }
+        public virtual TreeNode Parent { get; set; }
     }
 }

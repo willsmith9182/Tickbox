@@ -22,7 +22,7 @@
 	CONSTRAINT
 		[tbxUserRole_tbx_Role_FK]
 	FOREIGN KEY(
-		RoleID
+		RoleId
 	) 
 	REFERENCES [tbx].[Role](
 		RoleId

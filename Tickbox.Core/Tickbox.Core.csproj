@@ -70,11 +70,6 @@
     <Compile Include="Notifications\Notifier\INotify.cs" />
     <Compile Include="Notifications\Notifier\Notifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scaffold\DisabledScaffoldingProvider.cs" />
-    <Compile Include="Scaffold\IScaffoldDefinition.cs" />
-    <Compile Include="Scaffold\IScaffoldingProvider.cs" />
-    <Compile Include="Scaffold\ScaffoldDefinition.cs" />
-    <Compile Include="Scaffold\ScaffoldingProvider.cs" />
     <Compile Include="Service\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>

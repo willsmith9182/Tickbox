@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mehdime.Entity;
 using Tickbox.Core.DataAccess;
-using Tickbox.Core.Scaffold;
+
 using Tickbox.DatabaseApi;
 
 namespace Tickbox.Data.Repository

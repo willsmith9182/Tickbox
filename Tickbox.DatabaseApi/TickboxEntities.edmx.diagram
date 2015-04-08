@@ -4,20 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e4cb3fe4700245b18f9abceb7de16a6b" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="TickboxDatabase.Node" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickboxDatabase.NodeSpecialism" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickboxDatabase.Specialism" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickboxDatabase.Taxonomy" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickboxDatabase.Template" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TickboxDatabase.TreeNode" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+      <Diagram DiagramId="e4cb3fe4700245b18f9abceb7de16a6b" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="TickboxDatabase.Node" Width="1.5" PointX="8.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TickboxDatabase.NodeSpecialism" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TickboxDatabase.Specialism" Width="1.5" PointX="3.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TickboxDatabase.Taxonomy" Width="1.5" PointX="3.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TickboxDatabase.Template" Width="1.5" PointX="0.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TickboxDatabase.TreeNode" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="TickboxDatabase.FK_NodeSpecialism_Node" ManuallyRouted="false" />
         <AssociationConnector Association="TickboxDatabase.FK_TreeNode_Node" ManuallyRouted="false" />
         <AssociationConnector Association="TickboxDatabase.FK_NodeSpecialism_Specialism" ManuallyRouted="false" />
         <AssociationConnector Association="TickboxDatabase.FK_Taxonomy_Template" ManuallyRouted="false" />
         <AssociationConnector Association="TickboxDatabase.FK_TreeNode_Taxonomy" ManuallyRouted="false" />
-        <AssociationConnector Association="TickboxDatabase.FK_TreeNode_TreeNode" ManuallyRouted="false" />
+        <AssociationConnector Association="TickboxDatabase.FK_TreeNode_TreeNode" ManuallyRouted="false" >
+        </AssociationConnector>
         <AssociationConnector Association="TickboxDatabase.TaxonomySpecialism" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TickboxDatabase.MasterTemplate" Width="1.5" PointX="0.875" PointY="0.5" />
+        <AssociationConnector Association="TickboxDatabase.FK_dboTemplate_MasterTemplate" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

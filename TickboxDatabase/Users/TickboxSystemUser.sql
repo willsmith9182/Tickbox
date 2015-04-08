@@ -1,5 +1,0 @@
-﻿CREATE USER [TickboxSystemUser]
-	FOR LOGIN [TickboxApi]
-	WITH DEFAULT_SCHEMA = tbx
-GO;
-GRANT SELECT, UPDATE, INSERT, DELETE ON SCHEMA :: dbo TO [TickboxSystemUser]

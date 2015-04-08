@@ -56,10 +56,6 @@
   <ItemGroup>
     <Compile Include="IoCModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scaffolding\NodeScaffold.cs" />
-    <Compile Include="Scaffolding\TaxonomyScaffold.cs" />
-    <Compile Include="Scaffolding\TemplateScaffold.cs" />
-    <Compile Include="Scaffolding\SpecialismScaffold.cs" />
     <Compile Include="Services\TaxonomyService.cs" />
   </ItemGroup>
   <ItemGroup>

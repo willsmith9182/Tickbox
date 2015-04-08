@@ -22,9 +22,9 @@ namespace Tickbox.DatabaseApi
         public int TemplateId { get; set; }
         public string Name { get; set; }
         public string DocumentLink { get; set; }
-        public bool IsScaffold { get; set; }
-        public bool IsMaster { get; set; }
+        public int MasterTemplateId { get; set; }
     
         public virtual ICollection<Taxonomy> Taxonomy { get; set; }
+        public virtual MasterTemplate MasterTemplate { get; set; }
     }
 }

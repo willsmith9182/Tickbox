@@ -22,7 +22,6 @@ namespace Tickbox.DatabaseApi
     
         public int SpecialismId { get; set; }
         public string SpecialismDesc { get; set; }
-        public bool IsScaffold { get; set; }
     
         public virtual ICollection<NodeSpecialism> NodeSpecialism { get; set; }
         public virtual ICollection<Taxonomy> Taxonomy { get; set; }

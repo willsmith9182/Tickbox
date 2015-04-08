@@ -20,7 +20,6 @@ namespace Tickbox.DatabaseApi
         public int SequenceOrder { get; set; }
         public string Guidelines { get; set; }
         public string DocumentLink { get; set; }
-        public bool IsScaffold { get; set; }
     
         public virtual Node Node { get; set; }
         public virtual Specialism Specialism { get; set; }

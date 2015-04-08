@@ -31,5 +31,6 @@ namespace Tickbox.DatabaseApi
         public virtual DbSet<Taxonomy> Taxonomy { get; set; }
         public virtual DbSet<Template> Template { get; set; }
         public virtual DbSet<TreeNode> TreeNode { get; set; }
+        public virtual DbSet<MasterTemplate> MasterTemplate { get; set; }
     }
 }

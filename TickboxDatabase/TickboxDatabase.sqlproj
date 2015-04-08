@@ -61,31 +61,22 @@
     <Folder Include="Properties" />
     <Folder Include="Domain Values" />
     <Folder Include="Post-Deployment Scripts" />
+    <Folder Include="Domain Values\dbo" />
+    <Folder Include="SchemaLevelObjects" />
+    <Folder Include="SchemaLevelObjects\Login" />
+    <Folder Include="SchemaLevelObjects\Users" />
     <Folder Include="Schemas" />
     <Folder Include="Schemas\dbo" />
     <Folder Include="Schemas\dbo\Tables" />
-    <Folder Include="Domain Values\dbo" />
     <Folder Include="Schemas\tbx" />
     <Folder Include="Schemas\tbx\Tables" />
-    <Folder Include="Login" />
-    <Folder Include="Users" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schemas\dbo\Tables\dbo.Node.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.NodeSpecialism.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.Specialism.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.Taxonomy.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.TaxonomySpecialism.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.Template.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.TreeNode.sql" />
     <None Include="Script.PrepublishDeployment.sql" />
-    <Build Include="Schemas\dbo\Tables\dbo.MasterTemplate.sql" />
-    <Build Include="Schemas\tbx\Tables\tbx.User.sql" />
-    <Build Include="Schemas\tbx\Tables\tbx.UserRole.sql" />
-    <Build Include="Schemas\tbx\Tables\tbx.Role.sql" />
-    <Build Include="Users\TickboxSystemUser.sql" />
-    <Build Include="Login\TickboxApi.sql" />
-    <Build Include="Schemas\tbx\tbx.sql" />
+    <Build Include="SchemaLevelObjects\Login\TickboxApi.sql" />
+    <Build Include="SchemaLevelObjects\Login\TickboxSystem.sql" />
+    <None Include="SchemaLevelObjects\Users\TickboxApiUser.sql" />
+    <None Include="SchemaLevelObjects\Users\TickboxSystemUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
@@ -100,6 +91,17 @@
     <None Include="Domain Values\dbo\MasterData.sql" />
   </ItemGroup>
   <ItemGroup>
-    <RefactorLog Include="TickboxDatabase.refactorlog" />
+    <Build Include="Schemas\dbo\Tables\dbo.MasterTemplate.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.Node.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.NodeSpecialism.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.Specialism.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.Taxonomy.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.TaxonomySpecialism.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.Template.sql" />
+    <Build Include="Schemas\dbo\Tables\dbo.TreeNode.sql" />
+    <Build Include="Schemas\tbx\Tables\tbx.Role.sql" />
+    <Build Include="Schemas\tbx\Tables\tbx.User.sql" />
+    <Build Include="Schemas\tbx\Tables\tbx.UserRole.sql" />
+    <Build Include="SchemaLevelObjects\tbx.sql" />
   </ItemGroup>
 </Project>
