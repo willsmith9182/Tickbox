@@ -1,4 +1,4 @@
-packages/*
+packages/*/*
 */obj/*
 */bin/*
 .docstates.suo
@@ -8,3 +8,4 @@ packages/*
 */bin
 *obj
 bin/
+*.dbmdl
