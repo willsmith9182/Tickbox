@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\DbContextFactroy.cs" />
+    <Compile Include="DataAccess\DbContextFactory.cs" />
     <Compile Include="DataAccess\IRepo.cs" />
     <Compile Include="DataAccess\RepoBase.cs" />
     <Compile Include="Enums.cs" />
@@ -67,7 +67,10 @@
     <Compile Include="Notifications\Definitions\Implementations\InfoNotification.cs" />
     <Compile Include="Notifications\Definitions\Implementations\SuccessNotification.cs" />
     <Compile Include="Notifications\Definitions\Notification.cs" />
+    <Compile Include="Notifications\Definitions\NotificationType.cs" />
     <Compile Include="Notifications\Notifier\INotify.cs" />
+    <Compile Include="Notifications\Notifier\NotfierVerbosityHolder.cs" />
+    <Compile Include="Notifications\Notifier\NotificationLevel.cs" />
     <Compile Include="Notifications\Notifier\Notifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ServiceBase.cs" />

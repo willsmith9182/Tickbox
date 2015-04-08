@@ -7,20 +7,4 @@ namespace Tickbox.Data.Repository
     {
        // IList<NodeModel> GetNodes();
     }
-    public interface ITemplateRepo : IRepo<Template>
-    {
-        // IList<NodeModel> GetNodes();
-    }
-    public interface ITaxonomyRepo : IRepo<Taxonomy>
-    {
-        
-    }
-    public interface ISpecialismRepo : IRepo<Specialism>
-    {
-        // IList<NodeModel> GetNodes();
-    }
-    public interface ITreeNodeRepo : IRepo<TreeNode>
-    {
-        // IList<NodeModel> GetNodes();
-    }
 }

@@ -57,6 +57,10 @@
     <Compile Include="IoCModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\INodeRepo.cs" />
+    <Compile Include="Repository\ISpecialismRepo.cs" />
+    <Compile Include="Repository\ITaxonomyRepo.cs" />
+    <Compile Include="Repository\ITemplateRepo.cs" />
+    <Compile Include="Repository\ITreeNodeRepo.cs" />
     <Compile Include="Repository\NodeRepo.cs" />
   </ItemGroup>
   <ItemGroup>

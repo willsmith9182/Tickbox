@@ -16,25 +16,6 @@ using Tickbox.Core.Notifications.Definitions;
 
 namespace Tickbox.Core.Notifications.Notifier
 {
-    public enum NotificationLevel
-    {
-        Verbose = -1,
-        Default = 0,
-        Info = 1,
-        Save = 2,
-        Error = 9
-    }
-
-    internal class NotfierVerbosityHolder
-    {
-        public NotfierVerbosityHolder()
-        {
-            this.Level = NotificationLevel.Verbose;
-        }
-
-        public NotificationLevel Level { get; set; }
-    }
-
     /// <summary>
     /// The notifier.
     /// </summary>

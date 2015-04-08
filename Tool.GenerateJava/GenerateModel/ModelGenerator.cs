@@ -113,56 +113,7 @@ namespace Tool.GenerateJava.GenerateModel
             }
         }
         
-        private class PackageAndClasses
-        {
-            public readonly List<GenPackage> Packages = new List<GenPackage>();
-            public readonly List<string> Classes = new List<string>(); 
-        }
-
-        private static PackageAndClasses ConvertToPackagesAndClasses(IEnumerable<GenClass> classes)
-        {
-            var result = new PackageAndClasses();
-            foreach (var c in classes)
-            {
-                var packages = c.RelativeDotNetNamespace
-                    .Select(n => n.ToLowerInvariant())
-                    .ToList();
-                if (packages.Any())
-                {
-                    var package = GetOrCreatePackage(result.Packages, packages);
-                    package.Classes.Add(c.Name);
-                }
-                else
-                {
-                    result.Classes.Add(c.Name);
-                }
-            }
-
-            return result;
-
-        }
-
-        private static GenPackage GetOrCreatePackage(List<GenPackage> dest, List<string> packages)
-        {
-            while (true)
-            {
-                if (!packages.Any())
-                {
-                    throw new Exception("There must be at least one package.");
-                }
-                var package = dest.FirstOrDefault(p => p.Name == packages.First());
-                if (package == null)
-                {
-                    package = new GenPackage(packages.First());
-                    dest.Add(package);
-                }
-                var subList = packages.Skip(1).ToList();
-                if (!subList.Any()) return package;
-                dest = package.Packages;
-                packages = subList;
-            }
-        }
-
+     
         internal static string PackageToDirectory(string package)
         {
             var folderNames = package.Split('.');
@@ -220,11 +171,8 @@ namespace Tool.GenerateJava.GenerateModel
                                   .FirstOrDefault();
                 return attribute;
             }
-
-            //return null;
-            //or
-
-            throw new NotImplementedException("There is no description for this enum");
+            // if there is no description then we will use the enum name as the descritption. 
+            return memberInfo.Name;
         }
 
         public static void MakeIEnumerableReadOnly(List<GenClass> classes)
