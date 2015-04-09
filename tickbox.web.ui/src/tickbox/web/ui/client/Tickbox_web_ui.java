@@ -4,6 +4,7 @@ import tickbox.web.ui.client.widget.TreeNode;
 
 import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
 
@@ -11,14 +12,14 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class Tickbox_web_ui implements EntryPoint {
 		
 	public void onModuleLoad() {
-		
-		RootPanel rp = RootPanel.get("errorLabelContainer");
+		//Window.alert("loaded");
+		RootPanel rp = RootPanel.get("rooty");
 		TreeNode parentNode = new TreeNode("Root Node");
-		for(int i = 0; i< 10; i++){
+		for(int i = 0; i< 5; i++){
 			TreeNode parentOne = new TreeNode("Node : "+ (i+1));
-			for(int j = 0; i< 3; i++){
+			for(int j = 0; j< 3; j++){
 				TreeNode parentTwo = new TreeNode("Node : "+ (i+1) + " : " + (j+1));
-				for(int k = 0; i< 2; i++){
+				for(int k = 0; k< 2; k++){
 					TreeNode child = new TreeNode("Node : "+ (i+1) + " : " + (j+1) + " : " + (k+1));			
 					parentTwo.AddChild(child);
 				}	
@@ -28,5 +29,6 @@ public class Tickbox_web_ui implements EntryPoint {
 		}
 		
 		rp.add(parentNode);
+		//Window.alert("loaded");
 	}
 }

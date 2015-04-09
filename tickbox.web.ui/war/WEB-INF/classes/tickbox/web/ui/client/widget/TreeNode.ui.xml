@@ -4,8 +4,8 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel styleName="node">
 		<g:HTMLPanel ui:field="_uiTitle" styleName="nodeTitle"/>		
-		<g:HTMLPanel ui:field="_uiChildren" stylename="nodeContainer"/>		
+		<g:HTMLPanel ui:field="_uiChildren" styleName="nodeContainer"/>		
 	</g:HTMLPanel>
 </ui:UiBinder> 

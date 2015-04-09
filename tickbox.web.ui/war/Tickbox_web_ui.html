@@ -12,7 +12,16 @@
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
     <link type="text/css" rel="stylesheet" href="Tickbox_web_ui.css">
-
+<style>
+div.node{
+padding: 5px;
+background-color:#e6f3ff;
+border-bottom: 1px solid #a3cbeb;
+}
+div.nodeContainer{
+margin-left:15px;
+}
+</style>
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
@@ -46,17 +55,7 @@
 
     <h1>Web Application Starter Project</h1>
 
-    <table align="center">
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Please enter your name:</td>        
-      </tr>
-      <tr>
-        <td id="nameFieldContainer"></td>
-        <td id="sendButtonContainer"></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="color:red;" id="errorLabelContainer"></td>
-      </tr>
-    </table>
+   <div id="rooty" style="background-color:rgb(200,200,200); padding:15px;">
+   </div>
   </body>
 </html>
