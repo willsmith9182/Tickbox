@@ -5,7 +5,12 @@
 	
 	</ui:style>
 	<g:HTMLPanel styleName="node">
-		<g:HTMLPanel ui:field="_uiTitle" styleName="nodeTitle"/>		
-		<g:HTMLPanel ui:field="_uiChildren" styleName="nodeContainer"/>		
+		<g:HTMLPanel styleName="nodeTitle">
+			<g:HTMLPanel ui:field="_uiTitleHandle" styleName="nodeHandle">X</g:HTMLPanel>
+			<g:InlineLabel ui:field="_uiTitle" styleName="titleText"/>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="_uiDropsHolder" styleName="dropsContainer"/>		
+		<g:HTMLPanel ui:field="_uiChildren" styleName="nodeContainer"/>
+				
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -14,12 +14,72 @@
     <link type="text/css" rel="stylesheet" href="Tickbox_web_ui.css">
 <style>
 div.node{
-padding: 5px;
-background-color:#e6f3ff;
-border-bottom: 1px solid #a3cbeb;
+
+	
+			
 }
+
+div.node.root{
+	display:inline-block;
+}
+
 div.nodeContainer{
-margin-left:15px;
+	margin-left:20px;	
+}
+
+
+
+div.node div.dropsContainer div.dropLocation{
+	width:20px;
+	height:20px;
+	float:left;
+	background-color:#E1EAF7;	
+}
+
+div.node div.dropsContainer div.dropLocation.final{	
+	margin-left:20px;
+	float:none;
+	width:95%;
+}
+
+div.dropLocation.deadDrop{	
+	background-color:#e6f3ff;
+	
+}
+div.node div.dropsContainer{
+	height:3px;	
+	overflow: hidden;
+	
+}
+
+div.node.dropTarget > div.dropsContainer{	
+	height:20px;
+	border-top:2px solid #F7EC9D;
+}
+
+div.node div.nodeTitle{
+	min-width:350px;
+	border:1px solid #000;
+	background-color:#e6f3ff;
+}
+div.node.dropTarget > div.nodeTitle{
+	border-bottom-size:0px;;
+	
+	
+}
+
+div.nodeTitle div.titleText{
+margin-left:5px;
+}
+
+div.node div.nodeTitle div.nodeHandle{
+	display:block;
+	height:18px;
+	width:10px;
+	margin-left:5px;
+	margin-right:5px;
+	float:left;
+	text-align:center;
 }
 </style>
     <!--                                           -->
@@ -32,6 +92,9 @@ margin-left:15px;
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <script type="text/javascript" language="javascript" src="tickbox_web_ui/tickbox_web_ui.nocache.js"></script>
   </head>
 
