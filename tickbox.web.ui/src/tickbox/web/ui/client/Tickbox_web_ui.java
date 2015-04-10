@@ -1,53 +1,60 @@
 package tickbox.web.ui.client;
 
-import tickbox.web.ui.client.widget.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
-import com.allen_sauer.gwt.dnd.client.drop.GridConstrainedDropController;
+import tickbox.web.ui.client.widget.DragDropLabel;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Tree;
+import com.google.gwt.user.client.ui.TreeItem;
 
 
 
 public class Tickbox_web_ui implements EntryPoint {
 		
 	public void onModuleLoad() {
-		boolean hasActive = false;
-		GridConstrainedDropController t;
-		//Window.alert("loaded");
+		Tree aTree = new Tree();
 		RootPanel rp = RootPanel.get("rooty");
-		TreeNode parentNode = new TreeNode("Root Node",true);
-		for(int i = 0; i< 5; i++){
-			TreeNode parentOne = new TreeNode("Node : "+ (i+1));
-			for(int j = 0; j< 3; j++){				
-				TreeNode parentTwo = new TreeNode("Node : "+ (i+1) + " : " + (j+1));
-				for(int k = 0; k< 2; k++){
-					TreeNode child = new TreeNode("Node : "+ (i+1) + " : " + (j+1) + " : " + (k+1));			
-					parentTwo.AddChild(child);
-				}	
-				if(!hasActive){
-					hasActive=true;
-					parentTwo.setActive();
-				}
-				parentOne.AddChild(parentTwo);
-			}	
-			parentNode.AddChild(parentOne);
-		}
+		rp.add(aTree);
 		
-		rp.add(parentNode);
-		//Window.alert("loaded");
-		registerMouseOver();
+		// root is not draggable.
+				TreeItem root = new TreeItem(new DragDropLabel("root", false, true));
+				aTree.addItem(root);
+				
+				
+				// Add some folders
+				root.addItem(new DragDropLabel("folder1", true, true));
+				root.addItem(new DragDropLabel("folder2", true, true));
+				
+				TreeItem folder3 = root.addItem(new DragDropLabel("folder3", true, true));
+				folder3.addItem(new DragDropLabel("folder3-1", true, true));
+				folder3.addItem(new DragDropLabel("folder3-2", true, true));
+
+				// Add some leaves to the tree
+				List<TreeItem> stack = new ArrayList<TreeItem>();
+				stack.add(aTree.getItem(0));
+				
+				int filenum=1;
+				while(!stack.isEmpty())
+				{
+					TreeItem item = stack.remove(0);
+					for(int i=0;i<item.getChildCount();i++)
+					{
+						stack.add(item.getChild(i));
+					}
+
+					int files = Random.nextInt(4) + 1;
+					for(int j=0;j<files;j++)
+					{
+						item.addItem(new TreeItem(new DragDropLabel("File " + filenum, true, false)));
+						filenum++;
+					}
+					item.setState(true);
+				}
 	}
-	
-	private native void registerMouseOver()/*-{		
-		$wnd.jQuery('.dropsContainer').mouseenter(function(){
-			var that = $wnd.jQuery(this);
-			$wnd.jQuery('.node.dropTarget').removeClass('dropTarget');
-			that.parent().addClass('dropTarget');
-			
-		});
-	}-*/;
+
 
 }
 
