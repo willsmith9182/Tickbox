@@ -1,6 +1,8 @@
 name: .NET
 
-on: status
+on:
+  - status
+  - workflow_dispatch:
 
 jobs:  
   build:
