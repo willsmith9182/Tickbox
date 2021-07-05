@@ -1,40 +1,19 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TemplateController.cs" company="TickBox Inc.">
-//   Copyright 2013 William J J Smith
-// </copyright>
-// <summary>
-//   The template controller.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using Tickbox.Web.Models.View;
 
 namespace Tickbox.Web.Controllers
 {
     /// <summary>
-    /// The template controller.
+    ///     The template controller.
     /// </summary>
     public class TemplateController : ApiController
     {
-
-
         /// <summary>
-        /// Initialises a new instance of the <see cref="TemplateController"/> class.
-        /// </summary>
-        /// <param name="templateManager">
-        /// The template manager.
-        /// </param>
-        public TemplateController()
-        {
-        }
-
-        /// <summary>
-        /// The index.
+        ///     The index.
         /// </summary>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         public ActionResult Index()
         {
@@ -42,13 +21,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The view.
+        ///     The view.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult View(int id)
@@ -57,10 +36,10 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The create.
+        ///     The create.
         /// </summary>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult Create()
@@ -69,13 +48,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The create.
+        ///     The create.
         /// </summary>
         /// <param name="templateModel">
-        /// The template model.
+        ///     The template model.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpPost]
         public ActionResult Create(TemplateViewModel templateModel)
@@ -85,13 +64,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The edit.
+        ///     The edit.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult Edit(int id)
@@ -100,18 +79,18 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The edit.
+        ///     The edit.
         /// </summary>
         /// <param name="templateModel">
-        /// The template model.
+        ///     The template model.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpPost]
         public ActionResult Edit(TemplateViewModel templateModel)
         {
-           // this.templateManager.Update(templateModel);
+            // this.templateManager.Update(templateModel);
             return null; //"Edit", (object)null); // new { id = templateModel.TemplateId });
         }
     }

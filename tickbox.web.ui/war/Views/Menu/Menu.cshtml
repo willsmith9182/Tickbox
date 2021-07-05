@@ -1,8 +1,11 @@
 ﻿@model TickBox.Web.Models.Menu.MenuViewModel
 <ul>
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li><a id="newMsg" href="">Document Creator</a></li>
-    <li><a href="#">Templates</a>
+    <li>
+        <a id="newMsg" href="">Document Creator</a>
+    </li>
+    <li>
+        <a href="#">Templates</a>
         <ul>
             <li>@Html.ActionLink("Create New", "Create", "Template")</li>
             @if (Model.HasTemplates)
@@ -12,7 +15,8 @@
             }
         </ul>
     </li>
-    <li><a href="#">Taxonomies</a>
+    <li>
+        <a href="#">Taxonomies</a>
         <ul>
             @if (Model.HasTemplates)
             {
@@ -24,7 +28,8 @@
             }
         </ul>
     </li>
-    <li><a href="#">Spacialisms</a>
+    <li>
+        <a href="#">Spacialisms</a>
         <ul>
             <li>@Html.ActionLink("Create New", "Create", "Specialism")</li>
             @if (Model.HasSpecialisms)
@@ -33,5 +38,5 @@
             }
         </ul>
     </li>
-    
+
 </ul>

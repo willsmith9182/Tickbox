@@ -4,7 +4,7 @@ using Tickbox.DatabaseApi;
 
 namespace Tickbox.Core.Scaffold
 {
-    class TemplateScaffold : ScaffoldDefinition<Template>
+    internal class TemplateScaffold : ScaffoldDefinition<Template>
     {
         private readonly ITaxonomyRepo _taxonomyRepo;
 

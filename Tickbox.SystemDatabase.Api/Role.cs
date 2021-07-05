@@ -7,21 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tickbox.SystemDatabase.Api
+using System;
+using System.Collections.Generic;
+
+public partial class Role
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Role
+    public Role()
     {
-        public Role()
-        {
-            this.User = new HashSet<User>();
-        }
-    
-        public int RoleId { get; set; }
-        public string RoleDesc { get; set; }
-    
-        public virtual ICollection<User> User { get; set; }
+        this.User = new HashSet<User>();
     }
+
+    public int RoleId { get; set; }
+    public string RoleDesc { get; set; }
+
+    public virtual ICollection<User> User { get; set; }
 }

@@ -7,16 +7,14 @@ namespace Tickbox.Core.Web.Cache
 {
     internal class WebCache<T> : ICache<T> where T : class, new()
     {
-        private readonly HttpSessionStateBase sessionStore;
-
         private readonly string key;
-
         private readonly SessionItem<T> myItem;
+        private readonly HttpSessionStateBase sessionStore;
 
         public WebCache(HttpSessionStateBase sessionStore, string itemKey)
         {
             this.sessionStore = sessionStore;
-            this.key = itemKey;
+            key = itemKey;
 
             if (this.sessionStore == null)
             {
@@ -26,43 +24,40 @@ namespace Tickbox.Core.Web.Cache
             {
                 this.sessionStore[key] = new SessionItem<T>();
             }
-            this.myItem = this.sessionStore[key] as SessionItem<T>;
+            myItem = this.sessionStore[key] as SessionItem<T>;
 
-            if (this.myItem.IsDirty)
+            if (myItem.IsDirty)
             {
-                this.myItem.Item = new T();
+                myItem.Item = new T();
             }
         }
 
         public bool IsDirty
         {
-            get
-            {
-                return this.myItem.IsDirty;
-            }
+            get { return myItem.IsDirty; }
         }
 
         #region Implementation of ICache<T>
 
         public T RetrieveItem()
         {
-            return this.myItem.Item;
+            return myItem.Item;
         }
 
         public void SetItem(T item)
         {
-            this.myItem.Item = item;
+            myItem.Item = item;
         }
 
         public void SetDirty()
         {
-            this.myItem.IsDirty = true;
+            myItem.IsDirty = true;
         }
 
         public void Reset()
         {
-            this.myItem.Item = new T();
-            this.myItem.IsDirty = false;
+            myItem.Item = new T();
+            myItem.IsDirty = false;
         }
 
         #endregion

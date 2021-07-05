@@ -2,7 +2,7 @@
 
 namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 {
-    class DateKeyPGen : IDatatypeGenerator
+    internal class DateKeyPGen : IDatatypeGenerator
     {
         private readonly GenProperty _prop;
 
@@ -11,7 +11,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             _prop = prop;
         }
 
-        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList, string destPackage)
+        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList,
+            string destPackage)
         {
             yield return "tickbox.web.shared.util.Utils";
             yield return "java.util.Date";
@@ -41,7 +42,6 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             {
                 yield return DtGenUtil.GenNativeDeleteMethod(_prop.DateTimeSisterProperty);
             }
-
         }
 
         public IEnumerable<string> GenerateInitCode(string sourceNamespace)
@@ -56,7 +56,9 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
                 yield return string.Format("delete{0}();", _prop.DateTimeSisterProperty.Name);
             }
         }
-        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+
+        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             yield return "java.util.Date";
         }
@@ -75,7 +77,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             }
         }
 
-        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             yield return "java.util.Date";
             yield return "tickbox.web.shared.util.Utils";
@@ -89,15 +92,19 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             yield return DtGenUtil.GenStubPrivateMember(_prop, "Date", "Utils.fromDateKey(19700101)");
             if (_prop.CanRead)
             {
-                yield return string.Format("\t@Override public Date get{0}() {{ return _{1}; }}", nameWoKey, _prop.Name);
+                yield return string.Format("\t@Override public Date get{0}() {{ return _{1}; }}", nameWoKey, _prop.Name)
+                    ;
             }
             if (_prop.CanWrite)
             {
-                yield return string.Format("\t@Override public I{1} set{0}(Date d) {{ _{2} = d; return this; }}", nameWoKey, genClass.Name, _prop.Name);
+                yield return
+                    string.Format("\t@Override public I{1} set{0}(Date d) {{ _{2} = d; return this; }}", nameWoKey,
+                        genClass.Name, _prop.Name);
             }
         }
 
-        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
+        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace,
+            string dtoPackage, string destTModelPackage)
         {
             yield return "tickbox.web.shared.util.DateOnly";
             yield return "latitude.gwt.tessellshared.client.tessell.DateOnlyProperty";
@@ -107,27 +114,37 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 
         public IEnumerable<string> GenerateTModelProperties(string sourceNamespace, GenClass genClass)
         {
-
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\tpublic final DateOnlyProperty {0} = new DateOnlyProperty(new SetValue<DateOnly>(\"{0}\"));", DtGenUtil.ToJavaMemberName(nameWoKey));
+            yield return
+                string.Format(
+                    "\tpublic final DateOnlyProperty {0} = new DateOnlyProperty(new SetValue<DateOnly>(\"{0}\"));",
+                    DtGenUtil.ToJavaMemberName(nameWoKey));
         }
 
-        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\t\t{0}.addRule(new Required(\"required field\"));", DtGenUtil.ToJavaMemberName(nameWoKey));
+            yield return
+                string.Format("\t\t{0}.addRule(new Required(\"required field\"));",
+                    DtGenUtil.ToJavaMemberName(nameWoKey));
         }
 
-        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\t\tto.{0}.set(new DateOnly(from.get{1}()));", DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
+            yield return
+                string.Format("\t\tto.{0}.set(new DateOnly(from.get{1}()));", DtGenUtil.ToJavaMemberName(nameWoKey),
+                    nameWoKey);
         }
 
         public IEnumerable<string> GenerateTModelToDtoStatements(string sourceNamespace, GenClass genClass)
         {
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\t\tresult.set{1}(DateOnly.toDate({0}.get()));", DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
+            yield return
+                string.Format("\t\tresult.set{1}(DateOnly.toDate({0}.get()));", DtGenUtil.ToJavaMemberName(nameWoKey),
+                    nameWoKey);
         }
     }
 }

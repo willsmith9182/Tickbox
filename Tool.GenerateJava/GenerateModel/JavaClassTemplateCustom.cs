@@ -6,32 +6,32 @@ namespace Tool.GenerateJava.GenerateModel
     {
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
 
         public string ClassName
         {
-            set { _classNameField = value; }
+            set { className = value; }
         }
 
         public List<string> Imports
         {
-            set { _importsField = value; }
+            set { imports = value; }
         }
+
         public List<string> JavaMethods
         {
-            set { _javaMethodsField = value; }
+            set { javaMethods = value; }
         }
+
         public List<string> DefaultDataInitCodeField
         {
-            set { _defaultDataInitCodeField = value; }
+            set { defaultDataInitCode = value; }
         }
+
         public List<string> ConvertDates
         {
-            set { _convertDatesField = value; }
+            set { convertDates = value; }
         }
-
-
-
     }
 }

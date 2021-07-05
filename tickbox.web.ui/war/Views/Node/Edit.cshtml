@@ -29,11 +29,11 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save"/>
         </p>
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Back to Tree", "View", "Structure", new { taxononmyId = Model.TaxonomyId }, null)
+    @Html.ActionLink("Back to Tree", "View", "Structure", new {taxononmyId = Model.TaxonomyId}, null)
     <span> a link to edit specialisms on this node, maybe even a table for them below giving the option to edit.</span>
 </div>

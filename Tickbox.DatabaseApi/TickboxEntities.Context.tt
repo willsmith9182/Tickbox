@@ -30,6 +30,7 @@ if (container == null)
 <#
 
 var codeNamespace = code.VsNamespaceSuggestion();
+codeNamespace = codeNamespace == string.Empty ? "Tickbox.Database.Api":codeNamespace;
 if (!String.IsNullOrEmpty(codeNamespace))
 {
 #>

@@ -1,2 +1,0 @@
-serviceClass: tickbox.web.ui.client.GreetingService
-path: E68A8999BEE2AD261252A78AA336AFF8.gwt.rpc

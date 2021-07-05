@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tool.GenerateJava.GenerateModel
 {
@@ -10,22 +6,22 @@ namespace Tool.GenerateJava.GenerateModel
     {
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
 
         public string EndPackageName
         {
-            set { _endPackageNameField = value; }
+            set { endPackageName = value; }
         }
 
         public List<string> ClassNames
         {
-            set { _classNamesField = value; }
+            set { classNames = value; }
         }
 
         public List<PackageName> SubPackageNames
         {
-            set { _subPackageNamesField = value; }
+            set { subPackageNames = value; }
         }
     }
 }

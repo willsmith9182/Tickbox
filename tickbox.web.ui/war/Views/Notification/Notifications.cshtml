@@ -1,10 +1,8 @@
-﻿@using TickBox.Objects.Notifications
-@model IEnumerable<INotification>
+﻿@model IEnumerable<INotification>
 <div id="pageMessageWrap">
     <ul>
         @foreach (var notification in Model)
         {
-       
             <li class="pageMessage">
                 <div class="messageWrap @notification.Type.ToString().ToLower()">
                     @if (notification.HasClose)
@@ -16,7 +14,7 @@
                         <span class="title">@notification.Title</span>
                     </div>
                     <p class="message">
-                        @Html.Raw(notification.Message.Replace("/n","<br />"))
+                        @Html.Raw(notification.Message.Replace("/n", "<br />"))
                     </p>
                     @if (notification.HasUndo)
                     {
@@ -29,8 +27,7 @@
 </div>
 @{
     var controlsClass = Model.Any() ? "showing" : string.Empty;
-    var controllsDisplay ="display:" + (Model.Any() ? "block" : "none") +";";
-    
+    var controllsDisplay = "display:" + (Model.Any() ? "block" : "none") + ";";
 }
 <div id="messageControls" class="@controlsClass" style="@controllsDisplay">
     <span><a href="#">Clear All Messages</a></span>

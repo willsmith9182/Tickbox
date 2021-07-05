@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Tool.GenerateJava.GenerateModel
 {
-    static class TessellModelGenerator
+    internal static class TessellModelGenerator
     {
-
-        public static void Run(string destTModelPackage, string destTModelSrcDirectory, List<GenClass> classes, string destDtoPackage, string sourceNamespace)
+        public static void Run(string destTModelPackage, string destTModelSrcDirectory, List<GenClass> classes,
+            string destDtoPackage, string sourceNamespace)
         {
-
-            var destTModelDirectory = Path.Combine(destTModelSrcDirectory, ModelGenerator.PackageToDirectory(destTModelPackage));
+            var destTModelDirectory = Path.Combine(destTModelSrcDirectory,
+                ModelGenerator.PackageToDirectory(destTModelPackage));
 
             var destTModelDir = new DirectoryInfo(destTModelDirectory);
             if (!destTModelDir.Exists)
@@ -22,7 +22,9 @@ namespace Tool.GenerateJava.GenerateModel
 
             foreach (var c in classes)
             {
-                var destFile = destTModelDir.FullName + string.Join("", c.RelativeDotNetNamespace.Select(n => "\\" + n.ToLowerInvariant())) + "\\" + c.Name + "Tm.java";
+                var destFile = destTModelDir.FullName +
+                               string.Join("", c.RelativeDotNetNamespace.Select(n => "\\" + n.ToLowerInvariant())) +
+                               "\\" + c.Name + "Tm.java";
                 var existingFile = existingFiles.GetOrDefault(destFile);
 
                 GenerateClass(destFile, existingFile, c, destTModelPackage, destDtoPackage, sourceNamespace);
@@ -31,20 +33,17 @@ namespace Tool.GenerateJava.GenerateModel
                 {
                     existingFiles.Remove(destFile);
                 }
-
             }
 
             foreach (var f in existingFiles)
             {
                 f.Value.Delete();
             }
-
         }
 
-        private static void GenerateClass(string destFile, FileInfo existingFile, GenClass genClass, string destTModelPackage, string destDtoPackage, string sourceNamespace)
+        private static void GenerateClass(string destFile, FileInfo existingFile, GenClass genClass,
+            string destTModelPackage, string destDtoPackage, string sourceNamespace)
         {
-
-
             var customCode = new List<string>();
             var customImports = new List<string>();
 
@@ -107,19 +106,14 @@ namespace Tool.GenerateJava.GenerateModel
                 {
                     existingFile.Directory.Create();
                 }
-
-
-
-
             }
 
 
             if (customCode.All(string.IsNullOrWhiteSpace))
             {
-
                 customCode = new[]
                 {
-                    "\tprivate void init() {", 
+                    "\tprivate void init() {",
                     "\t}"
                 }.ToList();
             }
@@ -150,8 +144,9 @@ namespace Tool.GenerateJava.GenerateModel
                     destTModelPackage +
                     string.Join("", genClass.RelativeDotNetNamespace.Select(s => "." + s)).ToLowerInvariant(),
                 DtoPackage = destDtoPackage +
-                    string.Join("", genClass.RelativeDotNetNamespace.Select(s => "." + s)).ToLowerInvariant(),
-                RelFactoryNamespace = string.Join("", genClass.RelativeDotNetNamespace.Select(s => "." + s + "()")).ToLowerInvariant(),
+                             string.Join("", genClass.RelativeDotNetNamespace.Select(s => "." + s)).ToLowerInvariant(),
+                RelFactoryNamespace =
+                    string.Join("", genClass.RelativeDotNetNamespace.Select(s => "." + s + "()")).ToLowerInvariant(),
                 Properties =
                     genClass.Properties.SelectMany(
                         p => p.GetGenerator(sourceNamespace).GenerateTModelProperties(sourceNamespace, genClass))
@@ -162,13 +157,17 @@ namespace Tool.GenerateJava.GenerateModel
                 CustomImports = customImports,
                 ConstructorCode =
                     genClass.Properties.SelectMany(
-                        p => p.GetGenerator(sourceNamespace).GenerateTModelConstructorStatements(sourceNamespace, genClass, constructorParams))
+                        p =>
+                            p.GetGenerator(sourceNamespace)
+                                .GenerateTModelConstructorStatements(sourceNamespace, genClass, constructorParams))
                         .Where(i => i != null)
                         .Distinct()
                         .ToList(),
                 FromDtoSetStmts =
                     genClass.Properties.SelectMany(
-                        p => p.GetGenerator(sourceNamespace).GenerateTModelFromDtoStatements(sourceNamespace, genClass, fromDtoConstructorParams))
+                        p =>
+                            p.GetGenerator(sourceNamespace)
+                                .GenerateTModelFromDtoStatements(sourceNamespace, genClass, fromDtoConstructorParams))
                         .Where(i => i != null)
                         .Distinct()
                         .ToList(),
@@ -177,7 +176,7 @@ namespace Tool.GenerateJava.GenerateModel
                         p => p.GetGenerator(sourceNamespace).GenerateTModelToDtoStatements(sourceNamespace, genClass))
                         .Where(i => i != null)
                         .Distinct()
-                        .ToList(),
+                        .ToList()
             };
 
             template.ConstructorParams = string.Join(",", constructorParams);
@@ -192,10 +191,6 @@ namespace Tool.GenerateJava.GenerateModel
                     writer.Write(javaClassContents);
                 }
             }
-
-
-
-
         }
 
         private static void CleanCustomCode(List<string> customCode)
@@ -214,7 +209,6 @@ namespace Tool.GenerateJava.GenerateModel
             customCode.Insert(0, "");
             customCode.Add("");
         }
-
 
         internal static T GetOrDefault<T, TK>(this IDictionary<TK, T> src, TK key)
         {
