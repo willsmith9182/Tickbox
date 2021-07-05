@@ -1,20 +1,15 @@
 name: CI
-on: [status, workflow_dispatch]  
+on:
+  push:
+  - master
+  - release-*
+  pull_request:
 jobs:
   # NUKE eventually
   build:
-  # run if our app triggers a build or manually
-    if: (github.event.context == 'AtomReleaseNotes/automated-build') || (github.event.workflow == '.github/workflows/main.yml')
+  # run if our app triggers a build or manually  
     runs-on: ubuntu-latest
-    steps:         
-      - name: Trigger Pending Status
-        uses: tierconnect/github-actions-statuses@master
-        with:
-          remotetoken: ${{ secrets.GIT_TOKEN }}
-          upstream: ${{ env.UPSTREAM }}
-          previousstate: ${{ job.status }}
-          init: true
-
+    steps:
       - name: Checkout
         uses: actions/checkout@v2  
 
@@ -23,12 +18,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo test, and deploy your project.
-
-      - name: Trigger Finishing Status
-        uses: tierconnect/github-actions-statuses@master
-        with:
-          remotetoken: ${{ secrets.GIT_TOKEN }}          
-          previousstate: ${{ job.status }}
-        if: always()
-      
+          echo test, and deploy your project.      
