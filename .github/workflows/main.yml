@@ -1,8 +1,9 @@
 name: CI
 on:
   push:
-  - master
-  - release-*
+    branches:
+    - master
+    - release-*
   pull_request:
 jobs:
   # NUKE eventually
