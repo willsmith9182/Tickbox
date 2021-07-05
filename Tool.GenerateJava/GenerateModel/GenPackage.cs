@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tool.GenerateJava.GenerateModel
 {
-    class GenPackage
+    internal class GenPackage
     {
+        public readonly List<string> Classes = new List<string>();
+        public readonly string Name;
+        public readonly List<GenPackage> Packages = new List<GenPackage>();
+
         public GenPackage(string name)
         {
             Name = name;
         }
-
-        public readonly string Name;
-        public readonly List<GenPackage> Packages = new List<GenPackage>();
-        public readonly List<string> Classes = new List<string>(); 
     }
 }

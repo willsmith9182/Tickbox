@@ -6,9 +6,10 @@
 @section PageHeader
 {
     <h2>
-        Edit Specialism Details</h2>
+        Edit Specialism Details
+    </h2>
 }
-@using (Html.BeginForm("Edit","Specialism",FormMethod.Post))
+@using (Html.BeginForm("Edit", "Specialism", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -25,11 +26,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back", "Index","Home")
+    @Html.ActionLink("Back", "Index", "Home")
 </div>

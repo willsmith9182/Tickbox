@@ -6,7 +6,6 @@ namespace Tickbox.Web.Controllers
 {
     public class NodeController : ApiController
     {
-
         private readonly INodeService _nodeService;
 
         [HttpPost]
@@ -14,6 +13,5 @@ namespace Tickbox.Web.Controllers
         {
             _nodeService.Create(req);
         }
-
     }
 }

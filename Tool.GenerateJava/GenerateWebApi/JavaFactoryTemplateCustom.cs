@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tool.GenerateJava.GenerateWebApi
 {
     partial class JavaFactoryTemplate
     {
-
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
 
         public List<ClassNamePair> ClassNames
         {
-            set { _classNamesField = value; }
+            set { classNames = value; }
         }
-
     }
 }

@@ -7,7 +7,7 @@
         <legend>New Node {Parent ID: @Model.ParentId, Taxonomy ID: @Model.TaxonomyId}</legend>
         @Html.HiddenFor(m => m.TaxonomyId)
         @Html.HiddenFor(m => m.ParentId)
-       
+
         <div class="editor-label">
             @Html.LabelFor(model => model.NodeTitle)
         </div>
@@ -24,11 +24,11 @@
             @Html.ValidationMessageFor(model => model.NodeDescription)
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to Tree", "View", "Structure", new { taxononmyId = Model.TaxonomyId }, null)
+    @Html.ActionLink("Back to Tree", "View", "Structure", new {taxononmyId = Model.TaxonomyId}, null)
 </div>

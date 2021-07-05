@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using Mono.Cecil;
 using Mono.Cecil.Rocks;
 using Tool.GenerateJava.GenerateModel;
@@ -8,7 +7,7 @@ using Tool.GenerateJava.GenerateModel.DatatypeGenerators;
 
 namespace Tool.GenerateJava.GenerateWebApi
 {
-    static class WebApiGenerator
+    internal static class WebApiGenerator
     {
         public static void GenGwt(string[] args)
         {
@@ -32,10 +31,10 @@ namespace Tool.GenerateJava.GenerateWebApi
 //                    .ToList();
 
 
-
             ModelGenerator.DeleteDirectory(destDirectory);
 
-            classes.ForEach(c => GenerateClassFile(c, destDirectory, destPackage, sourceModelNamespace, destModelPackage));
+            classes.ForEach(
+                c => GenerateClassFile(c, destDirectory, destPackage, sourceModelNamespace, destModelPackage));
 
             GenerateFactoryClass(destDirectory, destPackage, classes);
         }
@@ -55,7 +54,8 @@ namespace Tool.GenerateJava.GenerateWebApi
                 "RemoteFactory.java");
         }
 
-        private static void GenerateClassFile(GenWebClass clas, string destDirectory, string destPackage, string sourceModelNamespace, string destModelPackage)
+        private static void GenerateClassFile(GenWebClass clas, string destDirectory, string destPackage,
+            string sourceModelNamespace, string destModelPackage)
         {
             var implImports = new List<string>();
             var interfaceImports = new List<string>();
@@ -70,7 +70,10 @@ namespace Tool.GenerateJava.GenerateWebApi
                 Package = package,
                 ClassName = className,
                 JavaMethods = clas.Methods
-                    .Select(m => GenerateMethod(m, clas.Name, sourceModelNamespace, destModelPackage, implImports, interfaceMethods, interfaceImports))
+                    .Select(
+                        m =>
+                            GenerateMethod(m, clas.Name, sourceModelNamespace, destModelPackage, implImports,
+                                interfaceMethods, interfaceImports))
                     .ToList()
             };
 
@@ -97,7 +100,8 @@ namespace Tool.GenerateJava.GenerateWebApi
                 string.Format("I{0}.java", ToJavaClassName(clas.Name)));
         }
 
-        private static string GenerateMethod(GenWebMethod method, string className, string sourceModelNamespace, string destModelPackage, List<string> imports, List<string> interfaceMethods, List<string> interfaceImports)
+        private static string GenerateMethod(GenWebMethod method, string className, string sourceModelNamespace,
+            string destModelPackage, List<string> imports, List<string> interfaceMethods, List<string> interfaceImports)
         {
             /*
              * 0 = method name
@@ -212,50 +216,71 @@ namespace Tool.GenerateJava.GenerateWebApi
                 imports.Add("com.google.gwt.json.client.JSONObject");
                 if (method.Parameter != null)
                 {
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Parameter.Name);
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
-                    interfaceImports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + "." + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    interfaceImports.Add(destModelPackage +
+                                         string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                             .ToLowerInvariant() + ".I" + method.Parameter.Name);
                 }
                 interfaceImports.Add("tickbox.web.shared.util.IRequestVoid");
                 template = method.Parameter == null ? voidReturnedNoParam : voidReturnedObjectParam;
-                interfaceTemplate = method.Parameter == null ? voidReturnedNoParamInterface : voidReturnedObjectParamInterface;
+                interfaceTemplate = method.Parameter == null
+                    ? voidReturnedNoParamInterface
+                    : voidReturnedObjectParamInterface;
             }
             else if (genericInstanceReturnType != null &&
-                ((genericInstanceReturnType.Name == "IEnumerable`1"
-                      && genericInstanceReturnType.GenericArguments.Count == 1
-                      &&
-                      (genericInstanceReturnType.GenericArguments[0].Namespace ?? "").StartsWith(sourceModelNamespace)
-                      && !genericInstanceReturnType.GenericArguments[0].IsValueType)
-                     || (genericInstanceReturnType.Name == "List`1"
-                         && genericInstanceReturnType.Namespace == "System.Collections.Generic"
-                         && genericInstanceReturnType.GenericArguments.Count == 1
-                         &&
-                         (genericInstanceReturnType.GenericArguments[0].Namespace ?? "").StartsWith(
-                             sourceModelNamespace)
-                         && !genericInstanceReturnType.GenericArguments[0].IsValueType)))
+                     ((genericInstanceReturnType.Name == "IEnumerable`1"
+                       && genericInstanceReturnType.GenericArguments.Count == 1
+                       &&
+                       (genericInstanceReturnType.GenericArguments[0].Namespace ?? "").StartsWith(sourceModelNamespace)
+                       && !genericInstanceReturnType.GenericArguments[0].IsValueType)
+                      || (genericInstanceReturnType.Name == "List`1"
+                          && genericInstanceReturnType.Namespace == "System.Collections.Generic"
+                          && genericInstanceReturnType.GenericArguments.Count == 1
+                          &&
+                          (genericInstanceReturnType.GenericArguments[0].Namespace ?? "").StartsWith(
+                              sourceModelNamespace)
+                          && !genericInstanceReturnType.GenericArguments[0].IsValueType)))
             {
-
                 imports.Add("tickbox.web.shared.util.IRequest");
                 imports.Add("tickbox.web.shared.util.IJsArray");
                 imports.Add("tickbox.web.shared.util.JsArrayWrapper");
                 imports.Add("tickbox.web.shared.util.ReqConverter");
                 imports.Add("com.google.gwt.json.client.JSONObject");
-                imports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Return.Name);
-                imports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Return.Name);
+                imports.Add(destModelPackage +
+                            string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() +
+                            "." + method.Return.Name);
+                imports.Add(destModelPackage +
+                            string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() +
+                            ".I" + method.Return.Name);
                 if (method.Parameter != null)
                 {
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Parameter.Name);
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
-                    interfaceImports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + "." + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    interfaceImports.Add(destModelPackage +
+                                         string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                             .ToLowerInvariant() + ".I" + method.Parameter.Name);
                 }
 
                 interfaceImports.Add("tickbox.web.shared.util.IRequest");
                 interfaceImports.Add("tickbox.web.shared.util.IJsArray");
-                interfaceImports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Return.Name);
+                interfaceImports.Add(destModelPackage +
+                                     string.Join("", method.Return.RelativeNamespace.Select(s => "." + s))
+                                         .ToLowerInvariant() + ".I" + method.Return.Name);
 
 
                 template = method.Parameter == null ? listReturnedNoParam : listReturnedObjectParam;
-                interfaceTemplate = method.Parameter == null ? listReturnedNoParamInterface : listReturnedObjectParamInterface;
+                interfaceTemplate = method.Parameter == null
+                    ? listReturnedNoParamInterface
+                    : listReturnedObjectParamInterface;
                 //                useGenericReturnName = true;
             }
             else if (method.Return.RelativeNamespace == null)
@@ -263,12 +288,18 @@ namespace Tool.GenerateJava.GenerateWebApi
                 // these are primitive JSON return types like int/string/DateTime, etc
                 imports.Add("tickbox.web.shared.util.IRequest");
                 imports.Add("tickbox.web.shared.util.ReqConverter");
-                imports.Add("com.google.gwt.json.client.JSONObject"); 
+                imports.Add("com.google.gwt.json.client.JSONObject");
                 if (method.Parameter != null)
                 {
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Parameter.Name);
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
-                    interfaceImports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + "." + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    interfaceImports.Add(destModelPackage +
+                                         string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                             .ToLowerInvariant() + ".I" + method.Parameter.Name);
                 }
 
                 if (method.Return.DataType.FullName == "System.String")
@@ -284,26 +315,42 @@ namespace Tool.GenerateJava.GenerateWebApi
                 interfaceImports.Add("tickbox.web.shared.util.IRequest");
 
                 template = method.Parameter == null ? valueReturnedNoParam : valueReturnedObjectParam;
-                interfaceTemplate = method.Parameter == null ? valueReturnedNoParamInterface : valueReturnedObjectParamInterface;
+                interfaceTemplate = method.Parameter == null
+                    ? valueReturnedNoParamInterface
+                    : valueReturnedObjectParamInterface;
             }
             else
             {
                 imports.Add("tickbox.web.shared.util.IRequest");
                 imports.Add("tickbox.web.shared.util.ReqConverter");
                 imports.Add("com.google.gwt.json.client.JSONObject");
-                imports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Return.Name);
-                imports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Return.Name);
+                imports.Add(destModelPackage +
+                            string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() +
+                            "." + method.Return.Name);
+                imports.Add(destModelPackage +
+                            string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() +
+                            ".I" + method.Return.Name);
                 if (method.Parameter != null)
                 {
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + "." + method.Parameter.Name);
-                    imports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
-                    interfaceImports.Add(destModelPackage + string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + "." + method.Parameter.Name);
+                    imports.Add(destModelPackage +
+                                string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                    .ToLowerInvariant() + ".I" + method.Parameter.Name);
+                    interfaceImports.Add(destModelPackage +
+                                         string.Join("", method.Parameter.RelativeNamespace.Select(s => "." + s))
+                                             .ToLowerInvariant() + ".I" + method.Parameter.Name);
                 }
                 interfaceImports.Add("tickbox.web.shared.util.IRequest");
-                interfaceImports.Add(destModelPackage + string.Join("", method.Return.RelativeNamespace.Select(s => "." + s)).ToLowerInvariant() + ".I" + method.Return.Name);
+                interfaceImports.Add(destModelPackage +
+                                     string.Join("", method.Return.RelativeNamespace.Select(s => "." + s))
+                                         .ToLowerInvariant() + ".I" + method.Return.Name);
 
                 template = method.Parameter == null ? objectReturnedNoParam : objectReturnedObjectParam;
-                interfaceTemplate = method.Parameter == null ? objectReturnedNoParamInterface : objectReturnedObjectParamInterface;
+                interfaceTemplate = method.Parameter == null
+                    ? objectReturnedNoParamInterface
+                    : objectReturnedObjectParamInterface;
             }
 
             interfaceMethods.Add(string.Format(interfaceTemplate,
@@ -313,8 +360,8 @@ namespace Tool.GenerateJava.GenerateWebApi
                 method.Return == null ? null : method.Return.Name,
                 converterMethod));
 
-            return string.Format(template, 
-                ToJavaMethodName(method.Name), 
+            return string.Format(template,
+                ToJavaMethodName(method.Name),
                 string.Format("\"{0}\"", method.Name),
                 method.Parameter == null ? null : method.Parameter.Name,
                 method.Return == null ? null : method.Return.Name,
@@ -335,14 +382,14 @@ namespace Tool.GenerateJava.GenerateWebApi
             return className;
         }
 
-
         private static IEnumerable<TypeDefinition> GetTypes(string fileName)
         {
             var module = ModuleDefinition.ReadModule(fileName);
             return module.Types.Where(type => type.IsPublic);
         }
 
-        private static IEnumerable<GenWebClass> ReadClasses(string assemblyPath, string sourceNamespace, string sourceModelNamespace)
+        private static IEnumerable<GenWebClass> ReadClasses(string assemblyPath, string sourceNamespace,
+            string sourceModelNamespace)
         {
             //var types = GetTypes(assemblyPath);
 
@@ -357,39 +404,57 @@ namespace Tool.GenerateJava.GenerateWebApi
                 where (t.Namespace ?? "").StartsWith(sourceNamespace)
                       && !t.IsNested
                       && t.IsClass
-                      && t.GetMethods().Any(m => m.CustomAttributes.Any(a => a.AttributeType.FullName == "System.Web.Http.HttpPostAttribute")
-                                                 && m.Parameters.Count <= 1)
+                      &&
+                      t.GetMethods()
+                          .Any(
+                              m =>
+                                  m.CustomAttributes.Any(
+                                      a => a.AttributeType.FullName == "System.Web.Http.HttpPostAttribute")
+                                  && m.Parameters.Count <= 1)
                       && t.BaseType.FullName == "System.Web.Http.ApiController"
                 select new GenWebClass
                 {
                     Name = t.Name,
-                    Methods = t.GetMethods().Where(m => m.CustomAttributes.Any(a => a.AttributeType.FullName == "System.Web.Http.HttpPostAttribute")
-                                                 && m.Parameters.Count <= 1)
-                        .Select(m => new GenWebMethod
-                        {
-                            Name = m.Name,
-                            Parameter = m.Parameters
-                                .Select(c =>
-                                    c.ParameterType is GenericInstanceType
-                                    ? new WebGenParam
-                                    {
-                                        Name = (c.ParameterType as GenericInstanceType).GenericArguments.First().Name,
-                                        RelativeNamespace = DtGenUtil.CalculateRelativeNamespace((c.ParameterType as GenericInstanceType).GenericArguments.First().Namespace, sourceModelNamespace)
-                                            .ToList(),
-                                        DataType = c.ParameterType
-                                    }
-                                    : new WebGenParam
-                                {
-                                    Name = c.ParameterType.Name,
-                                    RelativeNamespace = DtGenUtil.CalculateRelativeNamespace(c.ParameterType.Namespace, sourceModelNamespace)
-                                        .ToList(),
-                                    DataType = c.ParameterType
-                                })
-                                .SingleOrDefault(),
-                            Return = CalculateReturnType(sourceModelNamespace, m.MethodReturnType == null ? null : m.MethodReturnType.ReturnType)
-                                
-                        })
-                        .ToList(),
+                    Methods =
+                        t.GetMethods()
+                            .Where(
+                                m =>
+                                    m.CustomAttributes.Any(
+                                        a => a.AttributeType.FullName == "System.Web.Http.HttpPostAttribute")
+                                    && m.Parameters.Count <= 1)
+                            .Select(m => new GenWebMethod
+                            {
+                                Name = m.Name,
+                                Parameter = m.Parameters
+                                    .Select(c =>
+                                        c.ParameterType is GenericInstanceType
+                                            ? new WebGenParam
+                                            {
+                                                Name =
+                                                    (c.ParameterType as GenericInstanceType).GenericArguments.First()
+                                                        .Name,
+                                                RelativeNamespace =
+                                                    DtGenUtil.CalculateRelativeNamespace(
+                                                        (c.ParameterType as GenericInstanceType).GenericArguments.First()
+                                                            .Namespace, sourceModelNamespace)
+                                                        .ToList(),
+                                                DataType = c.ParameterType
+                                            }
+                                            : new WebGenParam
+                                            {
+                                                Name = c.ParameterType.Name,
+                                                RelativeNamespace =
+                                                    DtGenUtil.CalculateRelativeNamespace(c.ParameterType.Namespace,
+                                                        sourceModelNamespace)
+                                                        .ToList(),
+                                                DataType = c.ParameterType
+                                            })
+                                    .SingleOrDefault(),
+                                Return =
+                                    CalculateReturnType(sourceModelNamespace,
+                                        m.MethodReturnType == null ? null : m.MethodReturnType.ReturnType)
+                            })
+                            .ToList(),
                     RelativeNamespace = DtGenUtil.CalculateRelativeNamespace(t.Namespace, sourceNamespace)
                         .ToList()
                 };
@@ -397,7 +462,8 @@ namespace Tool.GenerateJava.GenerateWebApi
 
         private static WebGenParam CalculateReturnType(string sourceModelNamespace, TypeReference returnType)
         {
-            return returnType == null || returnType.FullName == "System.Void" || returnType.FullName == "System.Threading.Tasks.Task" 
+            return returnType == null || returnType.FullName == "System.Void" ||
+                   returnType.FullName == "System.Threading.Tasks.Task"
                 ? null
                 : returnType.Namespace == "System" //|| returnType.Namespace.StartsWith("System.")
                     ? new WebGenParam
@@ -407,22 +473,28 @@ namespace Tool.GenerateJava.GenerateWebApi
                         DataType = returnType
                     }
                     : returnType.Name == "Task`1" && returnType is GenericInstanceType
-                        ? CalculateReturnType(sourceModelNamespace, (returnType as GenericInstanceType).GenericArguments.First()) 
-                        : (returnType.Name == "List`1" || returnType.Name == "IEnumerable`1") && returnType is GenericInstanceType
-                        ? new WebGenParam
-                        {
-                            Name = (returnType as GenericInstanceType).GenericArguments.First().Name,
-                            RelativeNamespace = DtGenUtil.CalculateRelativeNamespace((returnType as GenericInstanceType).GenericArguments.First().Namespace, sourceModelNamespace)
-                                .ToList(),
-                            DataType = returnType
-                        }
-                        : new WebGenParam
-                    {
-                        Name = returnType.Name,
-                        RelativeNamespace = DtGenUtil.CalculateRelativeNamespace(returnType.Namespace, sourceModelNamespace)
-                            .ToList(),
-                        DataType = returnType
-                    };
+                        ? CalculateReturnType(sourceModelNamespace,
+                            (returnType as GenericInstanceType).GenericArguments.First())
+                        : (returnType.Name == "List`1" || returnType.Name == "IEnumerable`1") &&
+                          returnType is GenericInstanceType
+                            ? new WebGenParam
+                            {
+                                Name = (returnType as GenericInstanceType).GenericArguments.First().Name,
+                                RelativeNamespace =
+                                    DtGenUtil.CalculateRelativeNamespace(
+                                        (returnType as GenericInstanceType).GenericArguments.First().Namespace,
+                                        sourceModelNamespace)
+                                        .ToList(),
+                                DataType = returnType
+                            }
+                            : new WebGenParam
+                            {
+                                Name = returnType.Name,
+                                RelativeNamespace =
+                                    DtGenUtil.CalculateRelativeNamespace(returnType.Namespace, sourceModelNamespace)
+                                        .ToList(),
+                                DataType = returnType
+                            };
         }
     }
 }
