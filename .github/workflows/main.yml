@@ -4,7 +4,7 @@ jobs:
   # NUKE eventually
   build:
   # run if our app triggers a build or manually
-    if: github.event.context == 'AtomReleaseNotes/automated-build' || github.event.workflow == '.github/workflows/main.yml'    
+    if: (github.event.context == 'AtomReleaseNotes/automated-build') || (github.event.workflow == '.github/workflows/main.yml')
     runs-on: ubuntu-latest
     steps:      
       - uses: actions/checkout@v2      
