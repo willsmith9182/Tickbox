@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 {
-    static class DatatypeGeneratorFactory
+    internal static class DatatypeGeneratorFactory
     {
         public static IDatatypeGenerator Get(GenProperty prop, string sourceNamespace)
         {
@@ -125,7 +125,6 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
                 && prop.PropType.GenericTypeArguments[0].IsEnum)
             {
                 return new NullEnumPGen(prop);
-
             }
             if (prop.PropType.Name == "IEnumerable`1"
                 && prop.PropType.IsGenericType

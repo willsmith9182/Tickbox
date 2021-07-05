@@ -7,5 +7,5 @@
 	
     CONSTRAINT [PK_Template]
 		PRIMARY KEY CLUSTERED (TemplateId),
-	CONSTRAINT [FK_dboTemplate_MasterTemplate] FOREIGN KEY(MasterTemplateID) REFERENCES [dbo].[MasterTemplate](MasterTemplateId)
+	CONSTRAINT [FK_dboTemplate_MasterTemplate] FOREIGN KEY(MasterTemplateId) REFERENCES [dbo].[MasterTemplate](MasterTemplateId)
 )

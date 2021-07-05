@@ -1,30 +1,19 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SpecialismController.cs" company="TickBox Inc.">
-//   Copyright 2013 William J J Smith
-// </copyright>
-// <summary>
-//   The specialism controller.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using Tickbox.Web.Models.View;
 
 namespace Tickbox.Web.Controllers
 {
     /// <summary>
-    /// The specialism controller.
+    ///     The specialism controller.
     /// </summary>
     public class SpecialismController : ApiController
     {
-   
-
         /// <summary>
-        /// The index.
+        ///     The index.
         /// </summary>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         public ActionResult Index()
         {
@@ -32,13 +21,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The view.
+        ///     The view.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult View(int id)
@@ -47,10 +36,10 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The create.
+        ///     The create.
         /// </summary>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult Create()
@@ -59,13 +48,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The create.
+        ///     The create.
         /// </summary>
         /// <param name="specialismModel">
-        /// The specialism model.
+        ///     The specialism model.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpPost]
         public ActionResult Create(SpecialismViewModel specialismModel)
@@ -75,13 +64,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The edit.
+        ///     The edit.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpGet]
         public ActionResult Edit(int id)
@@ -90,13 +79,13 @@ namespace Tickbox.Web.Controllers
         }
 
         /// <summary>
-        /// The edit.
+        ///     The edit.
         /// </summary>
         /// <param name="specialismModel">
-        /// The specialism model.
+        ///     The specialism model.
         /// </param>
         /// <returns>
-        /// The <see cref="ActionResult"/>.
+        ///     The <see cref="ActionResult" />.
         /// </returns>
         [System.Web.Mvc.HttpPost]
         public ActionResult Edit(SpecialismViewModel specialismModel)

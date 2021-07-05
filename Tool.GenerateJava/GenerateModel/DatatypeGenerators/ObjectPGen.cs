@@ -2,7 +2,7 @@
 
 namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 {
-    class ObjectPGen : IDatatypeGenerator
+    internal class ObjectPGen : IDatatypeGenerator
     {
         private readonly GenProperty _prop;
 
@@ -11,7 +11,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             _prop = prop;
         }
 
-        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList, string destPackage)
+        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList,
+            string destPackage)
         {
             return new List<string>();
         }
@@ -32,7 +33,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             return new List<string>();
         }
 
-        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             return new List<string>();
         }
@@ -42,7 +44,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             return new List<string>();
         }
 
-        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             return new List<string>();
         }
@@ -52,7 +55,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             return new List<string>();
         }
 
-        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
+        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace,
+            string dtoPackage, string destTModelPackage)
         {
             yield return null;
         }
@@ -65,12 +69,14 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
                     _prop.Name);
         }
 
-        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             yield return null;
         }
 
-        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             yield return
                 string.Format(

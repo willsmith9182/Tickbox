@@ -2,7 +2,7 @@
 
 namespace Tool.GenerateJava.GenerateModel
 {
-    class GenEnum
+    internal class GenEnum
     {
         public GenEnum()
         {

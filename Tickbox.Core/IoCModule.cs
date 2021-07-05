@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IoCModule.cs" company="TickBox Inc.">
-//   Copyright 2013 William J J Smith
-// </copyright>
-// <summary>
-//   The i o c module.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Tickbox.Core
+﻿namespace Tickbox.Core
 {
     ///// <summary>
     ///// The i o c module.
