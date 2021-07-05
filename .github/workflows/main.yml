@@ -9,7 +9,7 @@ on: [status, workflow_dispatch]
 jobs:
   # This workflow contains a single job called "build"
   build:
-    if: github.event.context == 'AtomReleaseNotes/automated-build' || github.eventworkflow == '.github/workflows/main.yml'
+    if: github.event.context == 'AtomReleaseNotes/automated-build' || github.event.workflow == '.github/workflows/main.yml'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
