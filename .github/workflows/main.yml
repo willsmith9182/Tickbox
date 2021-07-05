@@ -1,28 +1,15 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
-
-# Controls when the workflow will run
 on: [status, workflow_dispatch]  
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # NUKE eventually
   build:
-    if: github.event.context == 'AtomReleaseNotes/automated-build' || github.event.workflow == '.github/workflows/main.yml'
-    # The type of runner that the job will run on
+  # run if our app triggers a build or manually
+    if: github.event.context == 'AtomReleaseNotes/automated-build' || github.event.workflow == '.github/workflows/main.yml'    
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
+    steps:      
+      - uses: actions/checkout@v2      
       - name: Run a one-line script
-        run: 'echo ${{ github.event.context }} : Hello, world!'
-
-      # Runs a set of commands using the runners shell
+        run: 'echo Hello, world!'      
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
