@@ -6,15 +6,29 @@ jobs:
   # run if our app triggers a build or manually
     if: (github.event.context == 'AtomReleaseNotes/automated-build') || (github.event.workflow == '.github/workflows/main.yml')
     runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v2   
-      - uses: ouzi-dev/commit-status-updater@v1.1.0
+    steps:         
+      - name: Trigger Pending Status
+        uses: tierconnect/github-actions-statuses@master
         with:
-          status: "error"
+          remotetoken: ${{ secrets.GIT_TOKEN }}
+          upstream: ${{ env.UPSTREAM }}
+          previousstate: ${{ job.status }}
+          init: true
+
+      - name: Checkout
+        uses: actions/checkout@v2  
+
       - name: Run a one-line script
         run: 'echo Hello, world!'      
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Trigger Finishing Status
+        uses: tierconnect/github-actions-statuses@master
+        with:
+          remotetoken: ${{ secrets.GIT_TOKEN }}          
+          previousstate: ${{ job.status }}
+        if: always()
       
