@@ -1,30 +1,21 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ControllerExtensionsHelper.cs" company="TickBox Inc.">
-//   Copyright 2013 William J J Smith
-// </copyright>
-// <summary>
-//   The controller extensions helper.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.IO;
+﻿using System.IO;
 using System.Web.Mvc;
 
 namespace Tickbox.Web.Controllers.Extensions
 {
     /// <summary>
-    /// The controller extensions helper.
+    ///     The controller extensions helper.
     /// </summary>
     public static class ControllerExtensionsHelper
     {
         /// <summary>
-        /// The partial view to string.
+        ///     The partial view to string.
         /// </summary>
         /// <param name="controller">
-        /// The controller.
+        ///     The controller.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string PartialViewToString(this Controller controller)
         {
@@ -32,16 +23,16 @@ namespace Tickbox.Web.Controllers.Extensions
         }
 
         /// <summary>
-        /// The render partial view to string.
+        ///     The render partial view to string.
         /// </summary>
         /// <param name="controller">
-        /// The controller.
+        ///     The controller.
         /// </param>
         /// <param name="viewName">
-        /// The view name.
+        ///     The view name.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string RenderPartialViewToString(this Controller controller, string viewName)
         {
@@ -49,16 +40,16 @@ namespace Tickbox.Web.Controllers.Extensions
         }
 
         /// <summary>
-        /// The render partial view to string.
+        ///     The render partial view to string.
         /// </summary>
         /// <param name="controller">
-        /// The controller.
+        ///     The controller.
         /// </param>
         /// <param name="model">
-        /// The model.
+        ///     The model.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string RenderPartialViewToString(this Controller controller, object model)
         {
@@ -66,19 +57,19 @@ namespace Tickbox.Web.Controllers.Extensions
         }
 
         /// <summary>
-        /// The partial view to string.
+        ///     The partial view to string.
         /// </summary>
         /// <param name="controller">
-        /// The controller.
+        ///     The controller.
         /// </param>
         /// <param name="viewName">
-        /// The view name.
+        ///     The view name.
         /// </param>
         /// <param name="model">
-        /// The model.
+        ///     The model.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        ///     The <see cref="string" />.
         /// </returns>
         public static string PartialViewToString(this Controller controller, string viewName, object model)
         {
@@ -92,7 +83,8 @@ namespace Tickbox.Web.Controllers.Extensions
             using (var stringWriter = new StringWriter())
             {
                 var viewResult = ViewEngines.Engines.FindPartialView(controller.ControllerContext, viewName);
-                var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, stringWriter);
+                var viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData,
+                    controller.TempData, stringWriter);
                 viewResult.View.Render(viewContext, stringWriter);
                 return stringWriter.GetStringBuilder().ToString();
             }

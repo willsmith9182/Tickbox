@@ -1,76 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tool.GenerateJava.GenerateModel
 {
     partial class JavaTModelClassTemplate
     {
-
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
+
         public string DtoPackage
         {
-            set { _dtoPackageField = value; }
+            set { dtoPackage = value; }
         }
 
         public string ClassName
         {
-            set { _classNameField = value; }
+            set { className = value; }
         }
 
         public List<string> Imports
         {
-            set { _importsField = value; }
+            set { imports = value; }
         }
 
         public List<string> Properties
         {
-            set { _propertiesField = value; }
+            set { properties = value; }
         }
 
         public List<string> CustomCode
         {
-            set { _customCodeField = value; }
+            set { customCode = value; }
         }
 
         public List<string> CustomImports
         {
-            set { _customImportsField = value; }
+            set { customImports = value; }
         }
 
         public List<string> ConstructorCode
         {
-            set { _constructorCodeField = value; }
+            set { constructorCode = value; }
         }
 
         public string ConstructorParams
         {
-            set { _constructorParamsField = value; }
+            set { constructorParams = value; }
         }
 
         public string FromDtoConstrArgs
         {
-            set { _fromDtoConstrArgsField = value; }
+            set { fromDtoConstrArgs = value; }
         }
 
         public List<string> FromDtoSetStmts
         {
-            set { _fromDtoSetStmtsField = value; }
+            set { fromDtoSetStmts = value; }
         }
 
         public List<string> ToDtoSetStmts
         {
-            set { _toDtoSetStmtsField = value; }
+            set { toDtoSetStmts = value; }
         }
 
         public string RelFactoryNamespace
         {
-            set { _relFactoryNamespaceField = value; }
+            set { relFactoryNamespace = value; }
         }
     }
 }

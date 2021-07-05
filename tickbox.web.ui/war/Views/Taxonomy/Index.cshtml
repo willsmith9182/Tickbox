@@ -10,7 +10,7 @@
 }
 <table>
     <tr>
-       
+
         <th>
             TemplateId
         </th>
@@ -23,22 +23,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.TemplateId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsScaffold)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TaxonomyId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TemplateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsScaffold)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.TaxonomyId})
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using Tool.GenerateJava.GenerateModel;
 using Tool.GenerateJava.GenerateWebApi;
 
 namespace Tool.GenerateJava
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -26,7 +21,7 @@ namespace Tool.GenerateJava
                         @"D:\Lat Projects\WL_Main\Latitude.WhiteLabel.Models\obj\Debug\Temp",
                         "tickbox.web.shared.dto",
                         @"D:\Lat Projects\WL_Main\Latitude.WhiteLabel.Models\obj\Debug\TessellTemp",
-                        "latitude.gwt.tessellshared.tmodel",
+                        "latitude.gwt.tessellshared.tmodel"
                     };
 //                    : new[]
 //                    {
@@ -71,6 +66,5 @@ namespace Tool.GenerateJava
                 throw;
             }
         }
-
     }
 }

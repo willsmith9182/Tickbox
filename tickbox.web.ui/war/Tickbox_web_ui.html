@@ -12,7 +12,59 @@
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
     <link type="text/css" rel="stylesheet" href="Tickbox_web_ui.css">
+<style>
+.node{
 
+	
+			
+}
+
+.node.root{
+	
+}
+
+.nodeContainer{		
+}
+
+
+
+.node .dropsContainer .dropLocation{	
+	background-color:#E1EAF7;	
+}
+
+.node .dropsContainer .dropLocation.final{
+	
+}
+
+.dropLocation.deadDrop{
+	
+	
+}
+.node .dropsContainer{
+}
+
+.node.dropTarget > .dropsContainer{
+	border-top:2px solid #F7EC9D;
+}
+
+.node .nodeTitle{	
+	border:1px solid #000;
+	background-color:#e6f3ff;
+}
+.node.dropTarget > .nodeTitle{
+	border-bottom-size:0px;;
+	
+	
+}
+
+.nodeTitle .titleText{
+
+}
+
+.node .nodeTitle .nodeHandle{
+
+}
+</style>
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
@@ -23,6 +75,9 @@
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <script type="text/javascript" language="javascript" src="tickbox_web_ui/tickbox_web_ui.nocache.js"></script>
   </head>
 
@@ -46,17 +101,7 @@
 
     <h1>Web Application Starter Project</h1>
 
-    <table align="center">
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Please enter your name:</td>        
-      </tr>
-      <tr>
-        <td id="nameFieldContainer"></td>
-        <td id="sendButtonContainer"></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="color:red;" id="errorLabelContainer"></td>
-      </tr>
-    </table>
+   <div id="rooty" style="background-color:rgb(200,200,200); padding:15px;">
+   </div>
   </body>
 </html>

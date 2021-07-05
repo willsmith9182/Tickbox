@@ -7,25 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tickbox.SystemDatabase.Api
+using System;
+using System.Collections.Generic;
+
+public partial class User
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class User
+    public User()
     {
-        public User()
-        {
-            this.Role = new HashSet<Role>();
-        }
-    
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
-        public string PasswordSHA256B64 { get; set; }
-        public bool IsActive { get; set; }
-    
-        public virtual ICollection<Role> Role { get; set; }
+        this.Role = new HashSet<Role>();
     }
+
+    public int UserId { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string EmailAddress { get; set; }
+    public string PasswordSHA256B64 { get; set; }
+    public bool IsActive { get; set; }
+
+    public virtual ICollection<Role> Role { get; set; }
 }

@@ -12,3 +12,8 @@ bin/
 *Database.dbmdl
 TickboxDatabase/TickboxDatabase.dbmdl
 TickBox.v12.suo
+gwt-unitCache
+TickboxDatabase/TickboxDatabase.dbmdl
+tickbox.web.ui/war/tickbox_web_ui/
+tickbox.web.ui/war/WEB-INF/classes/
+tickbox.web.ui/war/WEB-INF/deploy/

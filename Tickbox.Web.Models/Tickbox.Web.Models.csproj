@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\CreateNode.cs" />
+    <Compile Include="Request\CreateNodeSpecialism.cs" />
+    <Compile Include="Request\CreateSpecialism.cs" />
     <Compile Include="Request\CreateTaxonomyRequest.cs" />
-    <Compile Include="Request\CreateTemplateRequest.cs" />
+    <Compile Include="Request\CreateTemplate.cs" />
     <Compile Include="View\MenuViewModel.cs" />
     <Compile Include="View\NodeSpecialismViewModel.cs" />
     <Compile Include="View\NodeViewModel.cs" />

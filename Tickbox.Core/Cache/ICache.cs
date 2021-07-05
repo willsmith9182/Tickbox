@@ -2,14 +2,10 @@
 {
     public interface ICache<T> where T : class
     {
-        T RetrieveItem();
-
         bool IsDirty { get; }
-
+        T RetrieveItem();
         void SetItem(T item);
-
         void SetDirty();
-
         void Reset();
     }
 }

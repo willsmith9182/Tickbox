@@ -7,7 +7,8 @@
 @section PageHeader
 {
     <h2>
-        Create New Specialism</h2>
+        Create New Specialism
+    </h2>
 }
 @using (Html.BeginForm("Create", "Specialism", FormMethod.Post))
 {
@@ -24,11 +25,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back", "Index","Home")
+    @Html.ActionLink("Back", "Index", "Home")
 </div>
