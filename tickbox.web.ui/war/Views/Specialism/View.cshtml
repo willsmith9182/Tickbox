@@ -6,7 +6,8 @@
 @section PageHeader
 {
     <h2>
-        View Specialism Details</h2>
+        View Specialism Details
+    </h2>
 }
 @using (Html.BeginForm())
 {
@@ -14,13 +15,14 @@
     <fieldset>
         <legend>Specialism {ID: @Model.SpecialismId}</legend>
         <div class="display-label">
-            Title</div>
+            Title
+        </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.SpecialismTitle)
         </div>
     </fieldset>
 }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SpecialismId }) |
-    @Html.ActionLink("Back", "Index","Home")
+    @Html.ActionLink("Edit", "Edit", new {id = Model.SpecialismId}) |
+    @Html.ActionLink("Back", "Index", "Home")
 </p>

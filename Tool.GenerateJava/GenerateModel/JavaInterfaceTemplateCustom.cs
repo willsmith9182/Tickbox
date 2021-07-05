@@ -6,24 +6,22 @@ namespace Tool.GenerateJava.GenerateModel
     {
         public string Package
         {
-            set { _packageField = value; }
+            set { package = value; }
         }
 
         public string InterfaceName
         {
-            set { _interfaceNameField = value; }
+            set { interfaceName = value; }
         }
 
         public List<string> Imports
         {
-            set { _importsField = value; }
+            set { imports = value; }
         }
 
         public List<string> JavaMethods
         {
-            set { _javaMethodsField = value; }
+            set { javaMethods = value; }
         }
-
-
     }
 }

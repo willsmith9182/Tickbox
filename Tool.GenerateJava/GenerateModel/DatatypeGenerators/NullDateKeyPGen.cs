@@ -2,7 +2,7 @@
 
 namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 {
-    class NullDateKeyPGen : IDatatypeGenerator
+    internal class NullDateKeyPGen : IDatatypeGenerator
     {
         private readonly GenProperty _prop;
 
@@ -11,7 +11,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             _prop = prop;
         }
 
-        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList, string destPackage)
+        public IEnumerable<string> GenerateImports(string sourceNamespace, List<string> myNamespaceList,
+            string destPackage)
         {
             yield return "tickbox.web.shared.util.Utils";
             yield return "tickbox.web.shared.util.NullableDate";
@@ -20,7 +21,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
         public IEnumerable<string> GeneratePropertyMethods(string sourceNamespace, GenClass genClass)
         {
             yield return DtGenUtil.GenNativeGetMethod(_prop, "int", false, string.Format("get{0}Raw", _prop.Name));
-            yield return DtGenUtil.GenNativeSetMethod(_prop, "int", false, string.Format("set{0}Raw", _prop.Name), genClass);
+            yield return
+                DtGenUtil.GenNativeSetMethod(_prop, "int", false, string.Format("set{0}Raw", _prop.Name), genClass);
             yield return DtGenUtil.GenNativeGetIsNullMethod(_prop);
             yield return DtGenUtil.GenNativeSetIsNullMethod(_prop);
 
@@ -44,7 +46,6 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             {
                 yield return DtGenUtil.GenNativeDeleteMethod(_prop.DateTimeSisterProperty);
             }
-
         }
 
         public IEnumerable<string> GenerateInitCode(string sourceNamespace)
@@ -60,7 +61,8 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             }
         }
 
-        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+        public IEnumerable<string> GenerateInterfaceImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             yield return "tickbox.web.shared.util.NullableDate";
         }
@@ -77,10 +79,10 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             {
                 yield return string.Format("\tI{1} set{0}(NullableDate val);", nameWoKey, genClass.Name);
             }
-
         }
 
-        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace, string destPackage)
+        public IEnumerable<string> GenerateStubImports(string sourceNamespace, List<string> relativeNamespace,
+            string destPackage)
         {
             yield return "tickbox.web.shared.util.NullableDate";
         }
@@ -93,15 +95,19 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
             yield return DtGenUtil.GenStubPrivateMember(_prop, "NullableDate", "new NullableDate()");
             if (_prop.CanRead)
             {
-                yield return string.Format("\t@Override public NullableDate get{0}() {{ return _{1}; }}", nameWoKey, _prop.Name);
+                yield return
+                    string.Format("\t@Override public NullableDate get{0}() {{ return _{1}; }}", nameWoKey, _prop.Name);
             }
             if (_prop.CanWrite)
             {
-                yield return string.Format("\t@Override public I{1} set{0}(NullableDate d) {{ _{2} = d; return this; }}", nameWoKey, genClass.Name, _prop.Name);
+                yield return
+                    string.Format("\t@Override public I{1} set{0}(NullableDate d) {{ _{2} = d; return this; }}",
+                        nameWoKey, genClass.Name, _prop.Name);
             }
         }
 
-        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace, string dtoPackage, string destTModelPackage)
+        public IEnumerable<string> GenerateTModelImports(string sourceNamespace, List<string> relativeNamespace,
+            string dtoPackage, string destTModelPackage)
         {
             yield return "tickbox.web.shared.util.DateOnly";
             yield return "latitude.gwt.tessellshared.client.tessell.DateOnlyProperty";
@@ -112,28 +118,37 @@ namespace Tool.GenerateJava.GenerateModel.DatatypeGenerators
 
         public IEnumerable<string> GenerateTModelProperties(string sourceNamespace, GenClass genClass)
         {
-
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
 
-            yield return string.Format("\tpublic final DateOnlyProperty {0} = new DateOnlyProperty(new SetValue<DateOnly>(\"{0}\"));", DtGenUtil.ToJavaMemberName(nameWoKey));
+            yield return
+                string.Format(
+                    "\tpublic final DateOnlyProperty {0} = new DateOnlyProperty(new SetValue<DateOnly>(\"{0}\"));",
+                    DtGenUtil.ToJavaMemberName(nameWoKey));
         }
 
-        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelConstructorStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             yield return null;
 //            yield return string.Format("{0}.addRule(new Required(\"required field\"));", DtGenUtil.ToJavaMemberName(_prop.Name));
         }
 
-        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass, List<string> constructorParams)
+        public IEnumerable<string> GenerateTModelFromDtoStatements(string sourceNamespace, GenClass genClass,
+            List<string> constructorParams)
         {
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\t\tto.{0}.set(from.get{1}().isNull() ? null : new DateOnly(from.get{1}().getDate()));", DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
+            yield return
+                string.Format("\t\tto.{0}.set(from.get{1}().isNull() ? null : new DateOnly(from.get{1}().getDate()));",
+                    DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
         }
 
         public IEnumerable<string> GenerateTModelToDtoStatements(string sourceNamespace, GenClass genClass)
         {
             var nameWoKey = _prop.Name.Length > 3 ? _prop.Name.Substring(0, _prop.Name.Length - 3) : "";
-            yield return string.Format("\t\tresult.set{1}({0}.get() == null ? null : new NullableDate(DateOnly.toDate({0}.get())));", DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
+            yield return
+                string.Format(
+                    "\t\tresult.set{1}({0}.get() == null ? null : new NullableDate(DateOnly.toDate({0}.get())));",
+                    DtGenUtil.ToJavaMemberName(nameWoKey), nameWoKey);
         }
     }
 }

@@ -4,22 +4,35 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TickboxDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TickboxDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TickboxDatabaseModelStoreContainer">
+          <EntitySet Name="Role" EntityType="TickboxDatabaseModel.Store.Role" store:Type="Tables" Schema="tbx" />
+          <EntitySet Name="User" EntityType="TickboxDatabaseModel.Store.User" store:Type="Tables" Schema="tbx" />
+          <EntitySet Name="UserRole" EntityType="TickboxDatabaseModel.Store.UserRole" store:Type="Tables" Schema="tbx" />
+          <AssociationSet Name="tbxUserRole_tbx_Role_FK" Association="TickboxDatabaseModel.Store.tbxUserRole_tbx_Role_FK">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="tbxUserRole_tbx_User_FK" Association="TickboxDatabaseModel.Store.tbxUserRole_tbx_User_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleDesc" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleDesc" Type="varchar" Nullable="false" MaxLength="150" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="EmailAddress" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="PasswordSHA256B64" Type="varchar(max)" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
@@ -32,8 +45,8 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="tbxUserRole_tbx_Role_FK">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <End Role="Role" Type="TickboxDatabaseModel.Store.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="TickboxDatabaseModel.Store.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleId" />
@@ -44,8 +57,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="tbxUserRole_tbx_User_FK">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <End Role="User" Type="TickboxDatabaseModel.Store.User" Multiplicity="1" />
+          <End Role="UserRole" Type="TickboxDatabaseModel.Store.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -55,21 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TickboxDatabaseModelStoreContainer">
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="tbx" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="tbx" store:Type="Tables" />
-          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="tbx" store:Type="Tables" />
-          <AssociationSet Name="tbxUserRole_tbx_Role_FK" Association="Self.tbxUserRole_tbx_Role_FK">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="UserRole" EntitySet="UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="tbxUserRole_tbx_User_FK" Association="Self.tbxUserRole_tbx_User_FK">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserRole" EntitySet="UserRole" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TickboxDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

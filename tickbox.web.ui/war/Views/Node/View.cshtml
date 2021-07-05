@@ -11,23 +11,26 @@
     <fieldset>
         <legend>Node {ID: @Model.Id, Parent ID: @Model.ParentId, Taxonomy ID: @Model.TaxonomyId}</legend>
         <div class="display-label">
-            Title</div>
+            Title
+        </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Title)
         </div>
         <div class="display-label">
-            Description</div>
+            Description
+        </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Description)
         </div>
         <div class="display-label">
-            IsSingleSelect</div>
+            IsSingleSelect
+        </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.IsSingleSelect)
         </div>
     </fieldset>
 }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Tree", "View", "Structure", new { taxononmyId = Model.TaxonomyId }, null)
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+    @Html.ActionLink("Back to Tree", "View", "Structure", new {taxononmyId = Model.TaxonomyId}, null)
 </p>

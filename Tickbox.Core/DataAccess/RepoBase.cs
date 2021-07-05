@@ -13,7 +13,6 @@ namespace Tickbox.Core.DataAccess
         where TSet : class
     {
         private readonly IAmbientDbContextLocator _contextLocator;
-        
 
         protected RepoBase(IAmbientDbContextLocator contextLocator)
         {
@@ -21,9 +20,16 @@ namespace Tickbox.Core.DataAccess
         }
 
         // Gets the underlying context for the repo enabling custom queries in derrived types
-        protected TCxt Context { get { return _contextLocator.Get<TCxt>(); } }
+        protected TCxt Context
+        {
+            get { return _contextLocator.Get<TCxt>(); }
+        }
+
         // gets the underlying Set from the underlying context enabling custom queries in derived types. 
-        protected IDbSet<TSet> Entities { get { return _contextLocator.Get<TCxt>().Set<TSet>(); } }
+        protected IDbSet<TSet> Entities
+        {
+            get { return _contextLocator.Get<TCxt>().Set<TSet>(); }
+        }
 
         public TSet FindBy(Expression<Func<TSet, bool>> pred)
         {
@@ -34,19 +40,10 @@ namespace Tickbox.Core.DataAccess
         {
             return _contextLocator.Get<TCxt>().Set<TSet>().Where(pred);
         }
+
         public IQueryable<TSet> Find(Expression<Func<TSet, int, bool>> pred)
         {
             return _contextLocator.Get<TCxt>().Set<TSet>().Where(pred);
-        }
-
-        protected T CustomSetQuery<T>(Func<IDbSet<TSet>, T> pred)
-        {
-            return pred(_contextLocator.Get<TCxt>().Set<TSet>());
-        }
-
-        protected T CustomQuery<T>(Func<TCxt, T> pred)
-        {
-            return pred(_contextLocator.Get<TCxt>());
         }
 
         public void Add(TSet item)
@@ -58,9 +55,8 @@ namespace Tickbox.Core.DataAccess
         {
             foreach (var i in items)
             {
-                this.Add(i);
+                Add(i);
             }
-            
         }
 
         public void Remove(TSet item)
@@ -72,8 +68,18 @@ namespace Tickbox.Core.DataAccess
         {
             foreach (var i in items)
             {
-                this.Remove(i);
+                Remove(i);
             }
+        }
+
+        protected T CustomSetQuery<T>(Func<IDbSet<TSet>, T> pred)
+        {
+            return pred(_contextLocator.Get<TCxt>().Set<TSet>());
+        }
+
+        protected T CustomQuery<T>(Func<TCxt, T> pred)
+        {
+            return pred(_contextLocator.Get<TCxt>());
         }
     }
 }
